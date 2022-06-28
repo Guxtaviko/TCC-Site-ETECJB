@@ -9,22 +9,43 @@
     border-radius: 20px 20px 0px 0px;
 }
 
-.history__topic {
+.topic__content {
     margin: 2rem 0;
+    display: flex;
+    align-items: center;
+    background: var(--color-white);
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    transition: all 1s ease;
 }
 
-.topic__content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    align-items: center;
-    background-color: white;
+.reveal {
+    position: relative;
+    transform: translateX(-150px);
+    opacity: 0;
+}
+
+.reveal:nth-child(even){
+    transform: translateX(150px);
+}
+
+.active {
+    transform: translateX(0px);
+    opacity: 1;
+}
+
+.active:nth-child(even) {
+    transform: translateX(0px);
+}
+
+.topic__img {
+    width: 50%;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 .history__text {
-    padding: 10px;
+    padding: 1rem;
     margin: 15px;
+    width: 50%;
 }
 
 .history__text > h3 {

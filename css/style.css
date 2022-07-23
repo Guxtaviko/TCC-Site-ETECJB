@@ -456,7 +456,7 @@ footer small {
 
 /* SECRET */
 .secret__cmd {
-    background: var(--color-black);
+    background: black;
     width: 285px;
     color: white;
     position: absolute;

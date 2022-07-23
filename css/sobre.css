@@ -38,9 +38,19 @@
     transform: translateX(0px);
 }
 
+.active .topic__img {
+    filter: saturate(100%);
+}
+
 .topic__img {
     width: 50%;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%);
+    filter: saturate(0%);
+}
+
+.topic__img:nth-child(odd) {
+    clip-path: polygon(0 0, 90% 0, 100% 100%, 0% 100%);
 }
 
 .history__text {
@@ -155,7 +165,7 @@
 }
 
 .--current {
-    color: var(--color-primary);
+    text-decoration: underline var(--color-primary);
 }
 
 table {

@@ -163,6 +163,27 @@ nav button {
     height: 41.41px;
 }
 
+/* THEME SWITCH */
+.theme__switch {
+    position: fixed;
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    border-radius: 50%;
+    background: var(--color-white);
+    color: var(--color-black);
+    top: 8rem;
+    right: 6vw;
+    z-index: 5;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    height: 2rem;
+    width: 2rem;
+    cursor: pointer;
+}
+
 /* HEADER - CAROUSEL */
 .slides {
     margin-top: 3rem
@@ -598,6 +619,11 @@ footer small {
         color: var(--color-white);
     }
 
+    /* THEME SWITCH */
+    .theme__switch {
+        right: 2vw;
+    }
+    
     /* NEWS */
     .news__container {
         grid-template-columns: 1fr 1fr;

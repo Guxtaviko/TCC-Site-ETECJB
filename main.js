@@ -79,6 +79,7 @@ window.onload = () => {
                 break;
         }
     }
+    loadTableData(tableData)
 }
 
 const changeTheme = () => {

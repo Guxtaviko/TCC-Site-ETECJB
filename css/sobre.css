@@ -267,6 +267,7 @@ tbody tr:last-child{
     }
 
     .topic__img {
+        clip-path: none;
         width: 100%;
     }
     

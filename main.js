@@ -8,6 +8,19 @@ const menu = document.querySelector(".nav__menu");
 const openBtn = document.querySelector("#open-menu-btn");
 const closeBtn = document.querySelector("#close-menu-btn");
 
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1060) {
+        closeBtn.style.display = "none";
+        openBtn.style.display = "none";
+        menu.style.display = "flex";
+    } 
+    else {
+        closeBtn.style.display = "none"
+        openBtn.style.display = "inline-block";
+        menu.style.display = "none";
+    }
+})
+
 openBtn.addEventListener('click', () => {
     menu.style.display = "flex";
     closeBtn.style.display = "inline-block";

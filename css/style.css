@@ -20,9 +20,9 @@
     --color-primary-dark: #b00d15;
     --color-secondary: #4F74C9;
     --color-white: #fff;
-    --color-light: #C4C4C4;
+    --color-light: #bebebe;
     --color-black: #121212;
-    --color-bg: #F5F5F5;
+    --color-bg: #eeeeee;
 
     --container-width-lg: 80%;
     --container-width-md: 90%;
@@ -107,6 +107,10 @@ nav {
     z-index: 11;
 }
 
+nav .--current {
+    text-decoration: underline;
+}
+
 /* Navbar Styles on scroll */
 .window-scroll {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
@@ -141,7 +145,7 @@ nav button {
 }
 
 .nav__menu a {
-    font-size:  0.9rem;
+    font-size:  1rem;
     color: var(--color-primary);
     transition: var(--transition);
 }
@@ -175,10 +179,10 @@ nav button {
     border-radius: 50%;
     background: var(--color-white);
     color: var(--color-black);
-    top: 8rem;
+    bottom: 3rem;
     right: 6vw;
     z-index: 5;
-    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2);
     height: 2rem;
     width: 2rem;
     cursor: pointer;
@@ -186,8 +190,10 @@ nav button {
 
 /* HEADER - CAROUSEL */
 .slides {
-    margin-top: 3rem
+    margin-top: 5rem;
+    max-height: 40rem;
 }
+
 .swiper-button {
     color: var(--color-primary-dark);
     font-weight: 400;
@@ -208,57 +214,85 @@ nav button {
 }
 
 /* NEWS */
-.news__title {
-    background-color: var(--color-primary);
-    padding: 0.8rem;
-    border-radius: 0px 0px 20px 0px;
+.lastNews__title {
+    margin: 2rem 0;
     font-style: italic;
-    margin-bottom: 2rem;
+    position: relative;
+    border-bottom: solid 2px var(--color-primary);
 }
-.news__container {
+
+.lastNews__title > h1 {
+    display: inline-block;
+    padding: 0.6rem 3rem;
+    background-color: var(--color-primary);
+    position: relative;
+}
+
+.lastNews__title > h1::before{
+    content: "";
+    position: absolute;
+    left: 99%;
+    top: 0;
+    height: 100%;
+    width: 30px;
+    background: var(--color-primary);
+    clip-path: polygon(0 0, 20% 0, 100% 100%, 0% 100%);
+}
+
+.lastNews__container {
     display: grid;
     gap: 2rem;
     grid-template-columns: repeat(3, 1fr);
     margin-bottom: 2rem;
 }
 
-.notice {
+.lastNotice {
     background: var(--color-white);
     padding: 15px;
     border-radius: 10px;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.notice__title {
+.lastNotice__title {
     font-size: 1.3rem;
     margin-bottom: 7px;
 }
 
-.notice__text {
-    padding: 0.5rem 0px;
+.lastNotice__text {
+    margin: 0.5rem 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    -webkit-box-orient: vertical;
+
+    /* Non webkit browsers */
+    line-height: 18px;
+    height: calc(18px * 7);   
 }
 
-.notice__btn {
-    margin-top: 0.5rem;
+.lastNotice__btn {
+    margin-top: 1rem;
     border: 2px solid var(--color-primary);
-    background: var(--color-primary);
+    background: transparent;
     border-radius: 15px;
     padding: 7px 12px;
     text-align: center;
     font-size: 11pt;
     font-weight: bold;
+    cursor: pointer;
 }
 
-.notice__btn > a {
-    color: var(--color-white);
-}
-
-.notice__btn:hover {
-    background: transparent;
-}
-
-.notice__btn:hover > a{
+.lastNotice__btn > a {
     color: var(--color-primary);
+}
+
+.lastNotice__btn:hover {
+    background: var(--color-primary);
+}
+
+.lastNotice__btn:hover > a{
+    color: var(--color-white);
 }
 
 /* COURSES */
@@ -271,6 +305,10 @@ nav button {
 
 .courses__title {
     text-align: center;
+}
+
+.courses__title > h1 {
+    text-decoration: var(--color-primary) underline;
 }
 
 .courses__desc {
@@ -293,57 +331,84 @@ nav button {
 
 .course {
     background: var(--color-bg);
-    border-radius: 15px;
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.4);
 }
 
-.course__img {
-    border-radius: 15px 15px 0px 0px;
+.course__title > h5 {
+    font-size: 1.3rem;
 }
 
 .course__content {
     padding: 12px;
+    text-align: center;
+}
+
+.courses__left .course__content {
+    border-top: 3px solid var(--color-primary);
+}
+
+.courses__right .course__content {
+    border-top: 3px solid var(--color-secondary);
 }
 
 .course__desc {
-    margin: 5px 0;
+    margin: 15px 0;
     font-size: 11pt;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+
+    /* Non webkit browsers */
+    line-height: 18px;
+    height: calc(18px * 5); 
 }
 
-.course__btn {
-    margin-top: 0.5rem;
-    border-radius: 15px;
-    padding: 7px 12px;
+.course__btn{
+    margin-top: 2rem;
+    margin-bottom: 0.7rem;
     text-align: center;
-    font-size: 10pt;
+    font-size: 11pt;
     font-weight: bold;
 }
 
-.courses__left .course__btn {
-    background: var(--color-primary);
-    border: 2px solid var(--color-primary);
-}
-
-.courses__right .course__btn {
-    background: var(--color-secondary);
-    border: 2px solid var(--color-secondary);
-}
-
 .course__btn > a {
-    color: var(--color-white);
-}
-
-.course__btn:hover {
+    border-radius: 15px;
+    padding: 7px 3rem;
     background: transparent;
 }
 
-.courses__left .course__btn:hover > a{
+.courses__left .course__btn > a {
+    border: 2px solid var(--color-primary);
+}
+
+.courses__left .course__btn >a:hover {
+    background: var(--color-primary);
+}
+
+.courses__left .course__btn > a {
     color: var(--color-primary);
 }
 
-.courses__right .course__btn:hover > a{
+.courses__right .course__btn > a {
+    border: 2px solid var(--color-secondary);
+}
+
+.courses__right .course__btn >a:hover {
+    background: var(--color-secondary);
+}
+
+.courses__right .course__btn > a {
     color: var(--color-secondary);
 }
+
+.course__btn > a:hover {
+    color: var(--color-white);
+}
+
 
 /* TESTIMONIALS */
 .testimonials {
@@ -579,7 +644,8 @@ footer small {
 
     .nav__menu .uil {
         display: initial;
-        font-size: 14pt;
+        font-size: 18pt;
+        order: 2;
     }
 
     .nav__menu li {
@@ -623,9 +689,14 @@ footer small {
     .theme__switch {
         right: 2vw;
     }
+
+    /* HEADER */
+    .swiper-button {
+        display: none;
+    }
     
     /* NEWS */
-    .news__container {
+    .lastNews__container {
         grid-template-columns: 1fr 1fr;
         gap: 2rem;
     }
@@ -677,7 +748,7 @@ footer small {
     }
 
     /* NEWS */
-    .news__container {
+    .lastNews__container {
         grid-template-columns: 1fr;
         gap: 1rem;
     }

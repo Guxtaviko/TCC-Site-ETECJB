@@ -231,6 +231,7 @@ tbody tr:last-child{
 #tablePages {
     display: none;
     justify-content: center;
+    align-items: center;
     padding: 15px;
     gap: 15px;
 }
@@ -249,6 +250,12 @@ tbody tr:last-child{
     text-align: center;
     line-height: 18px;
     font-family: 'Montserrat', sans-serif;
+}
+
+.page-icon {
+    color: var(--color-primary);
+    padding: 7px;
+    cursor: pointer;
 }
 
 .page:hover {

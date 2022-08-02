@@ -92,7 +92,7 @@ window.onload = () => {
                 break;
         }
     }
-    loadTableData(tableData)
+    setTableData(equipeDocente);
 }
 
 const changeTheme = () => {
@@ -168,6 +168,8 @@ function reveal() {
 let sortDirection;
 let sortName = false;
 let sortRole = false;
+let start = 1;
+let initalPageQnt = 4;
 
 let equipeDocente = [
     { name: "ABRAÃO LUZ SILVEIRA", role: "Professor(a)" },
@@ -315,8 +317,9 @@ let i = 0;
 function setTableData(data) {
     tableData = data;
     i = 0;
-    sortName = false 
+    sortName = false; 
     sortRole = false;
+    start = 1;
     clearIcon();
     setCurrentTeam(data);
     loadTableData(tableData);
@@ -343,6 +346,7 @@ function loadTableData(tableData) {
     const tableBody = document.getElementById('tableData');
     const tablePages = document.getElementById('tablePages');
     const dataPerPage = 10;
+
     let dataHtml = '';
 
     for (i; i < tableData.length; i++) {
@@ -354,18 +358,64 @@ function loadTableData(tableData) {
     }
 
     // Draws pagination
+    console.log(start)
+    loadPagination(tablePages, dataPerPage, initalPageQnt, start)
+    
+    tableBody.innerHTML = dataHtml;
+}
+
+function loadPagination(tablePages, dataPerPage, displayPageQnt, startPG) {
     if (tableData.length > dataPerPage) {
         tablePages.style.display = "flex";
         tablePages.innerHTML = '';
         const pageQnt = Math.ceil(tableData.length / dataPerPage);
-        for (let j = 1; j <= pageQnt; j++) {
-            tablePages.innerHTML += `<div class="page">${j}</div>`
+        
+        if (pageQnt >= displayPageQnt) {
+            tablePages.innerHTML += `<i class="uil uil-angle-double-left page-icon prevPages"></i>`
+            for (startPG; startPG <= displayPageQnt; startPG++) {
+                tablePages.innerHTML += `<div class="page">${startPG}</div>`
+            }
+            tablePages.innerHTML += `<i class="uil uil-angle-double-right page-icon nextPages"></i>`
+
+            console.log(`Display Page Qnt: ${displayPageQnt} \nstart Page: ${startPG} \nPage Qnt: ${pageQnt} \nstart: ${start}`);
+
+            const prevPages = document.querySelector('.prevPages');
+            const nextPages = document.querySelector('.nextPages');
+    
+            prevPages.addEventListener('click', () => {
+                if (displayPageQnt > 4) {
+                    startPG -= 4;
+                    displayPageQnt = Math.ceil(displayPageQnt/4.0) * 4;
+                    displayPageQnt -= 4;
+                    start = displayPageQnt - 3;
+                    loadPagination(tablePages, dataPerPage, displayPageQnt, start); 
+                }
+            })
+    
+            nextPages.addEventListener('click', () => {
+                tablePages.innerHTML = '';
+                if (startPG > pageQnt) {
+                    startPG = (Math.ceil(pageQnt/4.0) * 4) - 3;
+                } else if (startPG + displayPageQnt < pageQnt) {
+                    displayPageQnt += 4;
+                } else {
+                    displayPageQnt = pageQnt
+                }
+                start = startPG;
+                loadPagination(tablePages, dataPerPage, displayPageQnt, start)
+            })
+
+        } else {
+            for (let j = 1; j <= pageQnt; j++) {
+                tablePages.innerHTML += `<div class="page">${j}</div>`
+            }
         }
 
         document.querySelectorAll('.page').forEach(page => {
             page.addEventListener('click', () => {
                 pageNumber = parseInt(page.innerHTML) - 1;
                 i = dataPerPage * pageNumber;
+                initalPageQnt = displayPageQnt;
                 loadTableData(tableData);
             })
             if ((parseInt(page.innerHTML) * dataPerPage - i) < dataPerPage && (parseInt(page.innerHTML) * dataPerPage - i) > 0) {
@@ -373,8 +423,6 @@ function loadTableData(tableData) {
             }
         })
     }
-
-    tableBody.innerHTML = dataHtml;
 }
 
 function sortColumn(columnName) {

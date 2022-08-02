@@ -21,6 +21,7 @@
     padding: 1rem 3.5rem;
     font-size: 2.7rem;
     background: var(--color-white);
+    margin-bottom: -2rem;
 }
 
 .courses__container--title {
@@ -50,20 +51,24 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.--integral > .course > .course__content {
+.course__img img {
+    height: 100%;
+}
+
+.--integral .course__content {
     border-left: 3px solid var(--color-primary);
 }
 
-.--parcial > .course > .course__content {
+.--parcial .course__content {
     border-left: 3px solid var(--color-secondary);
 }
 
 .course__content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    padding: 0.9rem;
+    padding: 1.2rem;
 }
 
 .course__title {
@@ -92,6 +97,91 @@
 }
 
 .course__btn > a {
-    padding: 0.3rem 1rem;
+    position: relative;
+    padding: 0.3rem 1.4rem;
+}
+
+.course__btn > a::before {
+    content: "Ver Mais";
+    color: rgba(0, 0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 0%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    transition: var(--transition);
+}
+
+.course__btn > a:hover {
+    color: var(--color-white);
+}
+
+.course__btn > a:hover::before {
+    width: 100%;
+    color: var(--color-white);
+}
+
+.--integral .course__btn > a{
+    color: var(--color-primary);
     border: 2px solid var(--color-primary);
+}
+
+.--integral .course__btn > a::before {
+    background: var(--color-primary);
+}
+
+.--parcial .course__btn > a{
+    color: var(--color-secondary);
+    border: 2px solid var(--color-secondary);
+}
+
+.--parcial .course__btn > a::before {
+    background: var(--color-secondary);
+}
+
+
+/* MEDIA QUERIES (TABLETS) */
+@media screen and (max-width: 1060px) {
+    /* COURSES */
+    .courses__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .courses__title > h1 {
+        font-size: 2.5rem;
+        letter-spacing: 6px;
+    }
+
+    .courses__container--title > h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    /* COURSES */
+    .courses__title > h1 {
+        padding: 0.9rem 2rem;
+        letter-spacing: 8px;
+    }
+
+    .course {
+        grid-template-columns: 1fr;
+    }
+
+    .--integral .course__content {
+        border-left: none;
+        border-top: 3px solid var(--color-primary);
+    }
+    
+    .--parcial .course__content {
+        border-left: none;
+        border-top: 3px solid var(--color-secondary);
+    }
+
+    .course__btn > a {
+        padding: 0.5rem 3rem;
+    }
 }

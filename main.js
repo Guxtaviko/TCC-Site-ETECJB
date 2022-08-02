@@ -320,6 +320,7 @@ function setTableData(data) {
     sortName = false; 
     sortRole = false;
     start = 1;
+    initalPageQnt = 4;
     clearIcon();
     setCurrentTeam(data);
     loadTableData(tableData);

@@ -319,6 +319,11 @@ tbody tr:last-child{
         transform: translateY(0);
         opacity: 1;
     }
+
+    /* TEAMS */
+    .team__selector {
+        justify-content: center;
+    }
 }
 
 /* MEDIA QUERIES (PHONES) */
@@ -327,6 +332,15 @@ tbody tr:last-child{
     .objectives__container {
         gap: 3rem;
         grid-template-columns: 1fr;
+    }
+
+    /* TEAMS */
+    .team {
+        font-size: 1.4rem;
+    }
+
+    table {
+        font-size: 0.8rem;
     }
 }
 

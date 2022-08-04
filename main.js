@@ -467,4 +467,25 @@ function clearIcon() {
     });
 }
 
+// Open/Close Overlay 
+const overlayBlur = document.querySelector('.overlay__blur');
+const closeOverlay = document.querySelector('.overlay__close')
+const overlay = document.querySelector('.overlay')
+const coursesBttns = document.querySelectorAll('.course__btn');
 
+coursesBttns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        overlayBlur.style.display = 'block';
+        overlay.style.display = 'flex';
+    })
+});
+
+closeOverlay.addEventListener('click', () => {
+    overlayBlur.style.display = 'none';
+    overlay.style.display = 'none';
+});
+
+overlayBlur.addEventListener('click', () => {
+    overlayBlur.style.display = 'none';
+    overlay.style.display = 'none';
+});

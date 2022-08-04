@@ -92,16 +92,13 @@
 .course__btn {
     text-align: center;
     margin-top: 1rem;
-    width: 100%;
-    font-weight: 600;
-}
-
-.course__btn > a {
     position: relative;
     padding: 0.3rem 1.4rem;
+    font-weight: 600;
+    cursor: pointer;
 }
 
-.course__btn > a::before {
+.course__btn::before {
     content: "Ver Mais";
     color: rgba(0, 0, 0, 0);
     display: flex;
@@ -115,33 +112,116 @@
     transition: var(--transition);
 }
 
-.course__btn > a:hover {
+.course__btn:hover {
     color: var(--color-white);
 }
 
-.course__btn > a:hover::before {
+.course__btn:hover::before {
     width: 100%;
     color: var(--color-white);
 }
 
-.--integral .course__btn > a{
+.--integral .course__btn{
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
 }
 
-.--integral .course__btn > a::before {
+.--integral .course__btn::before {
     background: var(--color-primary);
 }
 
-.--parcial .course__btn > a{
+.--parcial .course__btn {
     color: var(--color-secondary);
     border: 2px solid var(--color-secondary);
 }
 
-.--parcial .course__btn > a::before {
+.--parcial .course__btn::before {
     background: var(--color-secondary);
 }
 
+/* OVERLAY */
+.overlay__blur {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 2;
+    backdrop-filter: blur(5px);
+}
+
+.overlay{
+    display: none;
+    position: absolute;
+    max-width: 800px;
+    padding: 3rem 0;
+    top: 7rem;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    background: var(--color-white);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.overlay__close {
+    padding: 0.7rem;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: var(--color-primary);
+    background: none;
+    cursor: pointer;
+}
+
+.overlay__img {
+    max-width: 600px;
+    margin-inline: 3rem;
+    border: 3px solid var(--color-primary);
+}
+
+.overlay__title {
+    text-align: center;
+    color: var(--color-primary);
+    margin: 1rem 0;
+}
+
+.overlay__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 3rem;
+}
+
+.overlay__info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem;
+    column-gap: 4rem;
+    width: fit-content;
+    margin: 2rem 0;
+}
+
+.overlay__visits--grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.overlay__visits--grid > img {
+    transition: var(--transition);
+}
+
+.overlay__visits--grid > img:hover {
+    transform: scale(1.3);
+}
 
 /* MEDIA QUERIES (TABLETS) */
 @media screen and (max-width: 1060px) {
@@ -157,6 +237,19 @@
 
     .courses__container--title > h2 {
         font-size: 1.5rem;
+    }
+
+    /* MODAL */
+    .overlay__content {
+        padding-inline: 2rem;
+    }
+
+    .overlay__info {
+        column-gap: 3rem;
+    }
+
+    .overlay__visits--grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
@@ -183,5 +276,30 @@
 
     .course__btn > a {
         padding: 0.5rem 3rem;
+    }
+
+    /* MODAL */
+    .overlay__content {
+        padding-inline: 2rem;
+    }
+    
+    .overlay__info {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+        width: fit-content;
+    }
+
+    .overlay__visits {
+        width: 100%;
+    }
+
+    .overlay__visits--grid {
+        margin-top: 1rem;
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+
+    .overlay__visits--grid > img {
+        max-width: 250px;
     }
 }

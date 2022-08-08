@@ -475,6 +475,8 @@ const coursesBttns = document.querySelectorAll('.course__btn');
 
 coursesBttns.forEach(btn => {
     btn.addEventListener('click', () => {
+        document.body.scrollTop = 0; 
+        document.documentElement.scrollTop = 0; 
         overlayBlur.style.display = 'block';
         overlay.style.display = 'flex';
     })

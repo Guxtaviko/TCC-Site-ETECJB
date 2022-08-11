@@ -108,7 +108,7 @@ nav {
     z-index: 11;
 }
 
-nav .--current {
+.--current {
     text-decoration: underline;
 }
 

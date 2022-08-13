@@ -250,51 +250,108 @@ nav button {
 
 .lastNotice {
     background: var(--color-white);
-    padding: 15px;
-    border-radius: 10px;
+    overflow: hidden;
     box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .lastNotice__title {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    padding: 1rem 1rem 0 1rem;
     margin-bottom: 7px;
 }
 
+.lastNotice__img {
+    padding-inline: 1rem;
+}
+
 .lastNotice__text {
+    padding-inline: 1rem;
     margin: 0.5rem 0px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 7;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
 
     /* Non webkit browsers */
     line-height: 18px;
-    height: calc(18px * 7);   
+    height: calc(18px * 6);   
 }
 
 .lastNotice__btn {
-    margin-top: 1rem;
-    border: 2px solid var(--color-primary);
-    background: transparent;
-    border-radius: 15px;
-    padding: 7px 12px;
-    text-align: center;
+    border-top: 2px solid var(--color-primary);
+}
+
+.lastNotice__btn a {
+    transition: var(--transition);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: uppercase;
     font-size: 11pt;
     font-weight: bold;
-    cursor: pointer;
+    color: var(--color-black);
+    padding: 1rem;
 }
 
-.lastNotice__btn > a {
-    color: var(--color-primary);
+.lastNotice__btn i {
+    position: relative;
+    font-size: 18pt;
 }
 
-.lastNotice__btn:hover {
+.lastNotice__btn a:hover {
     background: var(--color-primary);
+    color: var(--color-white);
+    letter-spacing: 2px;
 }
 
-.lastNotice__btn:hover > a{
+.lastNotice__btn a:hover i{
+    animation: toRightBlink 0.4s linear;
+}
+
+.lastNews__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.lastNews__btn a {
+    padding: 1rem 3.5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border: 2px solid var(--color-primary);
+    background-image: linear-gradient(
+        var(--color-primary), var(--color-primary)
+    );
+    background-repeat: no-repeat;
+    background-size: 0%;
+    transition: var(--transition);
+}
+
+.lastNews__btn a:hover {
+    letter-spacing: 3px;
+    background-size: 100%;
     color: var(--color-white);
+}
+
+@keyframes toRightBlink {
+    0% {
+        left: 0px;
+        opacity: 1;
+    }
+    50% {
+        left: 10px;
+        opacity: 0;
+    }
+    75% {
+        left: -10px;
+        opacity: 0;
+    }
+    100% {
+        left: 0px;
+        opacity: 1;
+    }
 }
 
 /* featuredCOURSES */
@@ -824,6 +881,10 @@ footer small {
         gap: 1rem;
     }
 
+    .lastNews__btn a {
+        padding: 1rem 2.5rem;
+    }
+    
     /* COURSES */
     .featuredCourses__grid {
         place-items: center;

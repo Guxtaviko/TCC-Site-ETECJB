@@ -163,12 +163,17 @@
 
 .notice__cta i {
     font-size: 14pt;
+    position: relative;
 }
 
 .notice__cta a:hover {
     background: var(--color-primary);
     color: var(--color-white);
     letter-spacing: 1px;
+}
+
+.notice__cta a:hover i{
+    animation: toRightBlink 0.4s linear;
 }
 
 /* ASIDE */

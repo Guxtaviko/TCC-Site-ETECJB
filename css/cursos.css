@@ -91,52 +91,46 @@
 
 .course__btn {
     text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
     margin-top: 1rem;
     position: relative;
-    padding: 0.3rem 1.4rem;
-    font-weight: 600;
+    padding: 0.5rem 2rem;
     cursor: pointer;
-}
-
-.course__btn::before {
-    content: "Ver Mais";
-    color: rgba(0, 0, 0, 0);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    width: 0%;
-    height: 100%;
-    left: 0;
-    top: 0;
+    font-size: 11pt;
+    background-repeat: no-repeat;
+    background-size: 0%;
     transition: var(--transition);
 }
 
 .course__btn:hover {
-    color: var(--color-white);
-}
-
-.course__btn:hover::before {
-    width: 100%;
+    letter-spacing: 2px;
+    background-size: 100%;
     color: var(--color-white);
 }
 
 .--integral .course__btn{
+    background-image: linear-gradient(
+        var(--color-primary), var(--color-primary)
+    );
     color: var(--color-primary);
     border: 2px solid var(--color-primary);
 }
 
-.--integral .course__btn::before {
-    background: var(--color-primary);
+.--integral .course__btn:hover {
+    color: var(--color-white);
 }
 
 .--parcial .course__btn {
+    background-image: linear-gradient(
+        var(--color-secondary), var(--color-secondary)
+    );
     color: var(--color-secondary);
     border: 2px solid var(--color-secondary);
 }
 
-.--parcial .course__btn::before {
-    background: var(--color-secondary);
+.--parcial .course__btn:hover {
+    color: var(--color-white);
 }
 
 /* OVERLAY */

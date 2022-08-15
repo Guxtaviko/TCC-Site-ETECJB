@@ -404,6 +404,7 @@ nav button {
 
 .featuredCourse__title > h5 {
     font-size: 1.3rem;
+    text-align: center;
 }
 
 .featuredCourse__content {
@@ -412,7 +413,6 @@ nav button {
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    text-align: center;
 }
 
 .featuredCourses__left .featuredCourse__img {
@@ -429,12 +429,12 @@ nav button {
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
 
     /* Non webkit fallback */
     line-height: 18px;
-    height: calc(18px * 5); 
+    height: calc(18px * 6); 
 }
 
 .featuredCourse__btn{
@@ -446,10 +446,17 @@ nav button {
 }
 
 .featuredCourse__btn > a {
-    border-radius: 1rem;
+    position: relative;
+    top: 0;
+    text-transform: uppercase;
+    border-radius: 0.7rem;
     padding: 7px 2.7rem;
     background: transparent;
     transition: var(--transition);
+}
+
+.featuredCourse__btn > a:hover {
+    top: -5px;
 }
 
 .featuredCourses__left .featuredCourse__btn > a {
@@ -482,6 +489,7 @@ nav button {
 
 
 .featuredCourses__cta {
+    text-transform: uppercase;
     margin-top: 2.5rem;
     display: flex;
     justify-content: center;
@@ -496,6 +504,7 @@ nav button {
 
 .featuredCourses__cta > a:hover {
     transform: translateY(-5px);
+    letter-spacing: 2px;
 }
 
 .featuredCourses__left .featuredCourses__cta > a {

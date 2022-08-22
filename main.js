@@ -122,7 +122,7 @@ const secretBtn = document.getElementById("secret");
 const cmdText = document.getElementById("auto-type");
 const devs = document.querySelector(".secret__devs");
 
-var messageArray = [`C:\\Users\\2DS\\2022> <span class="cmd__cd">cd Desenvolvedores</span> \nC:\\Users\\2DS\\2022\\Desenvolvedores>`];
+var messageArray = [`C:\\Users\\3DS\\2022> <span class="cmd__cd">cd Desenvolvedores</span> \nC:\\Users\\3DS\\2022\\Desenvolvedores>`];
 var textPosition = 0;
 var speed = 80;
 
@@ -516,6 +516,8 @@ function coursesOverlay() {
     });
 }
 
-
+function openDirector() {
+    window.alert("uhuuul")
+}
 
 

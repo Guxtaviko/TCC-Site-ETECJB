@@ -53,7 +53,7 @@ const initialColors = {
 
 const darkMode = {
     colorBg: "#212121",
-    colorLight: "#414141",
+    colorLight: "#313131",
     colorWhite: "#121212",
     colorBlack: "#FFF"
 }
@@ -122,7 +122,7 @@ const secretBtn = document.getElementById("secret");
 const cmdText = document.getElementById("auto-type");
 const devs = document.querySelector(".secret__devs");
 
-var messageArray = [`C:\\Users\\3DS\\2022> <span class="cmd__cd">cd Desenvolvedores</span> \nC:\\Users\\3DS\\2022\\Desenvolvedores>`];
+var messageArray = [`C:\\Users\\2DS\\2022> <span class="cmd__cd">cd Desenvolvedores</span> \nC:\\Users\\2DS\\2022\\Desenvolvedores>`];
 var textPosition = 0;
 var speed = 80;
 
@@ -169,7 +169,7 @@ let sortDirection;
 let sortName = false;
 let sortRole = false;
 let start = 1;
-let initalPageQnt = 4;
+let initalPageQnt = 3;
 
 let equipeDocente = [
     { name: "ABRAÃO LUZ SILVEIRA", role: "Professor(a)" },
@@ -320,7 +320,7 @@ function setTableData(data) {
     sortName = false; 
     sortRole = false;
     start = 1;
-    initalPageQnt = 4;
+    initalPageQnt = 3;
     clearIcon();
     setCurrentTeam(data);
     loadTableData(tableData);
@@ -384,11 +384,11 @@ function loadPagination(tablePages, dataPerPage, displayPageQnt, startPG) {
             const nextPages = document.querySelector('.nextPages');
     
             prevPages.addEventListener('click', () => {
-                if (displayPageQnt > 4) {
-                    startPG -= 4;
-                    displayPageQnt = Math.ceil(displayPageQnt/4.0) * 4;
-                    displayPageQnt -= 4;
-                    start = displayPageQnt - 3;
+                if (displayPageQnt > 3) {
+                    startPG -= 3;
+                    displayPageQnt = Math.ceil(displayPageQnt/3.0) * 3;
+                    displayPageQnt -= 3;
+                    start = displayPageQnt - 2;
                     loadPagination(tablePages, dataPerPage, displayPageQnt, start); 
                 }
             })
@@ -396,9 +396,9 @@ function loadPagination(tablePages, dataPerPage, displayPageQnt, startPG) {
             nextPages.addEventListener('click', () => {
                 tablePages.innerHTML = '';
                 if (startPG > pageQnt) {
-                    startPG = (Math.ceil(pageQnt/4.0) * 4) - 3;
+                    startPG = (Math.ceil(pageQnt/3.0) * 3) - 2;
                 } else if (startPG + displayPageQnt < pageQnt) {
-                    displayPageQnt += 4;
+                    displayPageQnt += 3;
                 } else {
                     displayPageQnt = pageQnt
                 }
@@ -467,27 +467,55 @@ function clearIcon() {
     });
 }
 
-// Open/Close Overlay 
-const overlayBlur = document.querySelector('.overlay__blur');
-const closeOverlay = document.querySelector('.overlay__close')
-const overlay = document.querySelector('.overlay')
-const coursesBttns = document.querySelectorAll('.course__btn');
-
-coursesBttns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        document.body.scrollTop = 0; 
-        document.documentElement.scrollTop = 0; 
-        overlayBlur.style.display = 'block';
-        overlay.style.display = 'flex';
+// Scroll to Map
+function scrollMap() {
+    const scrollMapBtn = document.querySelector('.scroll__map');
+    const map = document.querySelector('.map');
+    scrollMapBtn.addEventListener('click', () => {
+        let mapBottom = map.getBoundingClientRect().bottom;
+        let viewportHeight = window.innerHeight;
+        document.body.scrollTop = mapBottom - viewportHeight;
+        document.documentElement.scrollTop = mapBottom - viewportHeight;
     })
-});
 
-closeOverlay.addEventListener('click', () => {
-    overlayBlur.style.display = 'none';
-    overlay.style.display = 'none';
-});
+}
 
-overlayBlur.addEventListener('click', () => {
-    overlayBlur.style.display = 'none';
-    overlay.style.display = 'none';
-});
+// Open/Close Overlay 
+function coursesOverlay() {
+    const overlayBlur = document.querySelector('.overlay__blur');
+    const closeOverlay = document.querySelector('.overlay__close')
+    const overlay = document.querySelector('.overlay')
+    const coursesBttns = document.querySelectorAll('.course__btn');
+
+    coursesBttns.forEach(btn => {
+        btn.addEventListener('click', (event) => {
+            const pressedBtn = event.target;
+            const courseType = pressedBtn.parentElement.parentElement.parentElement;
+            if(courseType.classList.contains('--parcial')){
+                overlay.classList.add('--parcial')
+            } else {
+                if (overlay.classList.contains('--parcial')) {
+                    overlay.classList.remove('--parcial')
+                }
+            }
+            document.body.scrollTop = 0; 
+            document.documentElement.scrollTop = 0; 
+            overlayBlur.style.display = 'block';
+            overlay.style.display = 'flex';
+        })
+    });
+
+    closeOverlay.addEventListener('click', () => {
+        overlayBlur.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+
+    overlayBlur.addEventListener('click', () => {
+        overlayBlur.style.display = 'none';
+        overlay.style.display = 'none';
+    });
+}
+
+
+
+

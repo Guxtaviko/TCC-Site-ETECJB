@@ -22,15 +22,14 @@
     <nav>
         <div class="nav__container">
             <div class="nav__title">
-                <img src="imgs/logo/jg-red.png " alt="Logo JB">
-                <h4><a href="index.html">ETEC João Belarmino</a></h4>
+                <a href="index.html"><img src="imgs/logo/jg-red.png " alt="Logo JB"></a>
             </div>
             <ul class="nav__menu">
                 <li><a href="index.html"><span><i class="uil uil-home"></i> <p>Início</p></span></a></li>
                 <li><a href="cursos.html" class="--current"><span><i class="uil uil-graduation-cap"></i> <p>Cursos</p></span></a></li>
                 <li><a href="noticias.html"><span><i class="uil uil-newspaper"></i> <p>Notícias</p></span></a></li>
                 <li><a href="diretoria.html"><span><i class="uil uil-university"></i> <p>Diretoria</p></span></a></li>
-                <li><a href="sobre.html"><span><i class="uil uil-info-circle"></i> <p>Sobre nós</p></span></a></li>
+                <li><a href="sobre.html"><span><i class="uil uil-info-circle"></i> <p>Sobre</p></span></a></li>
                 <li><a href="contato.html"><span><i class="uil uil-phone"></i> <p>Contato</p></span></a></li>
             </ul>
             <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
@@ -41,9 +40,9 @@
     <button class="theme__switch"><i class="uil uil-sun theme-icon"></i></button>
 
     <section class="courses">
+        <div class="courses__title"><h1>Nossos Cursos</h1></div>
         <div class="container courses__container">
-            <div class="courses__title"><h1>Nossos Cursos</h1></div>
-            <div class="courses__container--title --integral">
+            <div class="courses__container--title --integral" id="integral">
                 <h2>Técnicos + Ensino Médio</h2>
             </div>
             <div class="courses__grid --integral">
@@ -111,7 +110,7 @@
                 </div>
             </div>
 
-            <div class="courses__container--title --parcial">
+            <div class="courses__container--title --parcial" id="parcial">
                 <h2>Técnicos</h2>
             </div>
             <div class="courses__grid --parcial">
@@ -309,6 +308,9 @@
     </footer>
 
     <script src="main.js"></script>
+    <script>
+        coursesOverlay();
+    </script>
 
 </body>
 </html>

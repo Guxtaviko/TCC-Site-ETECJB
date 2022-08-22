@@ -114,25 +114,15 @@ nav {
 
 /* Navbar Styles on scroll */
 .window-scroll {
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
 }
 
-.nav__container h4>a {
-    color: var(--color-primary-dark);
-    padding: 0px 15px;
-    font-style: normal;
-    font-size: 20pt;
-}
-.nav__title {
-    display: flex;
-    align-items: center;
-}
 .nav__container {
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 3rem;
+    padding: 0 6rem;
 }
 
 nav button {
@@ -142,7 +132,15 @@ nav button {
 .nav__menu {
     display: flex;
     align-items: center;
-    gap: 4rem;
+    height: 100%;
+}
+
+.nav__menu li {
+    height: 100%;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .nav__menu a {

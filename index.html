@@ -21,15 +21,14 @@
     <nav>
         <div class="nav__container">
             <div class="nav__title">
-                <img src="imgs/logo/jg-red.png " alt="Logo JB">
-                <h4><a href="index.html">ETEC João Belarmino</a></h4>
+                <a href="index.html"><img src="imgs/logo/jg-red.png " alt="Logo JB"></a>
             </div>
             <ul class="nav__menu">
                 <li><a href="index.html" class="--current"><span><i class="uil uil-home"></i> <p>Início</p></span></a></li>
                 <li><a href="cursos.html"><span><i class="uil uil-graduation-cap"></i> <p>Cursos</p></span></a></li>
                 <li><a href="noticias.html"><span><i class="uil uil-newspaper"></i> <p>Notícias</p></span></a></li>
                 <li><a href="diretoria.html"><span><i class="uil uil-university"></i> <p>Diretoria</p></span></a></li>
-                <li><a href="sobre.html"><span><i class="uil uil-info-circle"></i> <p>Sobre nós</p></span></a></li>
+                <li><a href="sobre.html"><span><i class="uil uil-info-circle"></i> <p>Sobre</p></span></a></li>
                 <li><a href="contato.html"><span><i class="uil uil-phone"></i> <p>Contato</p></span></a></li>
             </ul>
             <button id="open-menu-btn"><i class="uil uil-bars"></i></button>
@@ -183,7 +182,7 @@
                     </div>
                 </div>
                 <div class="featuredCourses__cta">
-                    <a href="./cursos.html">Ver Todos</a>
+                    <a href="./cursos.html#integral">Ver Todos</a>
                 </div>
             </div>
             <div class="featuredCourses__right">
@@ -233,7 +232,7 @@
                     </div>
                 </div>
                 <div class="featuredCourses__cta">
-                    <a href="./cursos.html">Ver Todos</a>
+                    <a href="./cursos.html#parcial">Ver Todos</a>
                 </div>
             </div>
         </div>
@@ -463,7 +462,7 @@
     <script>
         var swiper = new Swiper(".mySwiper", {
           slidesPerView: 1,
-          spaceBetween: 30,
+          spaceBetween: 10,
           autoplay: {
           delay: 2500,
           disableOnInteraction: false,
@@ -480,16 +479,18 @@
         });
 
         var swiper = new Swiper(".mySwiper2", {
-            slidesPerView: 1,
+            slidesPerView: 1.1,
             spaceBetween: 30,
+            loop: true,
             pagination: {
             el: ".swiper-pagination",
             clickable: true,
             },
-            // When window width is >= 600px
+            
             breakpoints: {
-                600: {
-                    slidesPerView: 2
+                // When window width is >= 1060px
+                1060: {
+                    slidesPerView: 2.1
                 }
             }
         });

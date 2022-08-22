@@ -1,26 +1,18 @@
 /* NOTICE */
 .notice {
-    margin-top:8rem;
-    padding: 1rem 0;
+    margin-top:5rem;
+    padding-bottom: 1rem;
     background: var(--color-white);
     margin-bottom: 3rem;
 }
 
-.notice__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
 .notice__header {
     background: var(--color-primary);
-    background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
     color: var(--color-white);
-    border-radius: 1rem 1rem 0 0;
-    padding: 2rem;
-    padding-bottom: 1rem;
-    margin-top: -3rem;
+}
+
+.notice__header--container {
+    padding: 2rem 0;
 }
 
 .notice__title h1 {
@@ -47,11 +39,16 @@
     border-bottom: 1px solid var(--color-bg);
 }
 
-.notice__main {
+.notice__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     max-width: 1000px;
 }
 
 .notice__img {
+    width: 100%;
     margin: 2rem 0;
 }
 

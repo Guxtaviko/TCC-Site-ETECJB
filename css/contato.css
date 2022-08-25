@@ -7,6 +7,7 @@
 .contact__header {
     margin-top: 5rem;
     background: var(--color-primary);
+    background-image: var(--asfalt-bg);
     padding: 5rem 1rem;
     text-align: center;
     position: relative;

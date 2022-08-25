@@ -45,6 +45,7 @@ const switcher = document.querySelector(".theme__switch");
 const themeIcon = document.querySelector(".theme-icon");
 
 const initialColors = {
+    asfaltBg: getStyle(root, "--asfalt-bg"),
     colorBg: getStyle(root, "--color-bg"),
     colorLight: getStyle(root, "--color-light"),
     colorWhite: getStyle(root, "--color-white"),
@@ -52,6 +53,7 @@ const initialColors = {
 }
 
 const darkMode = {
+    asfaltBg: 'url("https://www.transparenttextures.com/patterns/asfalt-dark.png")',
     colorBg: "#212121",
     colorLight: "#313131",
     colorWhite: "#121212",
@@ -122,6 +124,7 @@ const secretBtn = document.getElementById("secret");
 const cmdText = document.getElementById("auto-type");
 const devs = document.querySelector(".secret__devs");
 
+var isCMDDisplayed = cmd.style.display == 'flex';
 var messageArray = [`C:\\Users\\3DS\\2022> <span class="cmd__cd">cd Desenvolvedores</span> \nC:\\Users\\3DS\\2022\\Desenvolvedores>`];
 var textPosition = 0;
 var speed = 80;
@@ -137,12 +140,13 @@ function typewriter() {
 }
 
 secretBtn.addEventListener('click', () => {
-    if (cmd.style.display == "none") {
+    if (isCMDDisplayed) {
+        cmd.style.display = "none";
+    } else {
         cmd.style.display = "flex";
         typewriter();
-    } else {
-        cmd.style.display = "none";
     }
+    isCMDDisplayed = !isCMDDisplayed;
 })
 
 // reveal history on scroll
@@ -353,13 +357,18 @@ function loadTableData(tableData) {
     for (i; i < tableData.length; i++) {
         var person = tableData[i];
         dataHtml += `<tr><td>${person.name}</td><td>${person.role}</td></tr>`;
+
+        if (i + 1 == tableData.length && tableData.length % dataPerPage != 0) {
+            for (let j = 1; j < (Math.ceil(tableData.length/dataPerPage) * dataPerPage) - i; j++) {
+                dataHtml += `<tr><td><p class="hidden">Gustavo Vieira da Silva</p></td><td><p class="hidden">Faz Tudo</p></td></tr>`;
+            }
+        }
         if ((i + 1) % dataPerPage == 0) {
             break;
         }
     }
 
     // Draws pagination
-    console.log(start)
     loadPagination(tablePages, dataPerPage, initalPageQnt, start)
     
     tableBody.innerHTML = dataHtml;
@@ -377,8 +386,6 @@ function loadPagination(tablePages, dataPerPage, displayPageQnt, startPG) {
                 tablePages.innerHTML += `<div class="page">${startPG}</div>`
             }
             tablePages.innerHTML += `<i class="uil uil-angle-double-right page-icon nextPages"></i>`
-
-            console.log(`Display Page Qnt: ${displayPageQnt} \nstart Page: ${startPG} \nPage Qnt: ${pageQnt} \nstart: ${start}`);
 
             const prevPages = document.querySelector('.prevPages');
             const nextPages = document.querySelector('.nextPages');
@@ -516,8 +523,45 @@ function coursesOverlay() {
     });
 }
 
+const directorMenu = document.querySelector('.director__menu')
+var isDirectorDisplayed = directorMenu.style.display == 'block'
+
 function openDirector() {
-    window.alert("uhuuul")
+    if (isDirectorDisplayed) {
+        directorMenu.style.display = 'none';
+    } else {
+        directorMenu.style.display = 'block';
+    }
+    isDirectorDisplayed = !isDirectorDisplayed
 }
 
+document.addEventListener('click', (e) => {
+    if(isDirectorDisplayed && !e.target.closest(".director__menu")){
+        directorMenu.style.display = 'none';
+        isDirectorDisplayed = false;
+    }
 
+    if(isCMDDisplayed && !e.target.closest(".secret__cmd") && !e.target.closest("#secret")){
+        cmd.style.display = 'none';
+        isCMDDisplayed = false;
+    }
+})
+
+// Open/Close Faq 
+function aboutFAQ() {
+    document.querySelectorAll('.faq').forEach(faq => {
+        faq.addEventListener('click', () => {
+            faqAnswer = faq.querySelector('.faq__answer');
+            faqIcon = faq.querySelector('.faq__icon')
+            if (faqAnswer.style.display == 'block') {
+                faqAnswer.style.display = 'none'
+                faqIcon.classList.add("uil-angle-right")
+                faqIcon.classList.remove("uil-angle-down")
+            } else {
+                faqAnswer.style.display = 'block'
+                faqIcon.classList.remove("uil-angle-right")
+                faqIcon.classList.add("uil-angle-down")
+            }
+        })
+    });
+}

@@ -25,6 +25,8 @@
     --color-black: #121212;
     --color-bg: #eeeeee;
 
+    --asfalt-bg: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+
     --container-width-lg: 80%;
     --container-width-md: 90%;
     --container-width-sm: 94%;
@@ -96,6 +98,24 @@ img {
     width: 100%;
     display: block;
     object-fit: cover;
+}
+
+/* SCROLL BAR */
+::-webkit-scrollbar{
+    width: 0.5rem;
+}
+
+::-webkit-scrollbar-track{
+    background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb{
+    border-radius: 0.2rem;
+    background-color: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb:hover{
+    background-color: var(--color-primary-dark);
 }
 
 /* NAVBAR */
@@ -175,20 +195,46 @@ nav button {
     position: absolute;
     bottom: 0;
     transform: translateY(100%);
+}
+
+@keyframes animateDirectorItems {
+    0% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.director__menu li {
+    position: relative;
+    opacity: 0;
+    background: var(--color-primary);
     animation: animateDirectorItems 0.4s linear forwards;
+    text-align: center;
+    padding: 0;
+    transform-origin: top;
+    transition: var(--transition);
+    box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.4);
+}
+
+.director__menu li:nth-last-child(1) {
+    animation-delay: 0.4s;
 }
 
 .director__menu a {
-    padding: 2rem;
-    background: var(--color-primary);
-    color: var(--color-white);
+    padding: 1.5rem;
     width: 100%;
-    text-align: center;
+    color: var(--color-white);
 }
 
-.director__menu a:hover {
-    color: var(--color-white);
+.director__menu li:hover {
     background: var(--color-primary-dark);
+}
+
+.director__menu li:hover a {
+    color: var(--color-white);
 }
 
 /* THEME SWITCH */
@@ -620,6 +666,7 @@ footer{
     padding-top: 5rem;
     font-size: 0.9rem;
     position: relative;
+    border-top: 2px solid var(--color-primary);
 }
 
 .footer__container {
@@ -771,35 +818,57 @@ footer small {
     .nav__menu {
         position: fixed;
         top: 5rem;
-        right: 3%;
-        height: fit-content;
-        width: 18rem;
+        right: 0;
+        width: 15rem;
+        height: 100vh;
+        background: var(--color-white);
         flex-direction: column;
         gap: 0;
         display: none;
+        animation: animateNavMenu 200ms linear forwards;
+        box-shadow: -1px 3px 4px rgba(0, 0, 0, 0.4);
     }
 
-    .nav__menu .uil {
-        display: initial;
-        font-size: 18pt;
-        order: 2;
-    }
-
-    .nav__menu li {
-        width: 100%;
-        height: 5.8rem;
-        animation: animateNavItems 0.4s linear forwards;
-        border-right: 0.4rem solid var(--color-primary);
-    }
-
-    @keyframes animateNavItems {
+    @keyframes animateNavMenu {
         0% {
             transform: translateX(100%);
         }
 
         100% {
-            transform: translateX(5%);
+            transform: translateX(0%);
         }
+    }
+
+    .nav__menu .uil {
+        display: initial;
+        font-size: 15pt;
+    }
+
+    .nav__menu li {
+        opacity: 0;
+        width: 100%;
+        height: 5rem;
+        animation: animateNavItems 400ms linear forwards;
+    }
+
+    .nav__menu li:nth-child(2) {
+        animation-delay: 150ms;
+    }
+
+    .nav__menu li:nth-child(3) {
+        animation-delay: 300ms;
+    }
+
+    .nav__menu li:nth-child(4) {
+        animation-delay: 450ms;
+    }
+
+    .nav__menu li:nth-child(5) {
+        animation-delay: 600ms;
+    }
+
+    .nav__menu li:nth-child(6) {
+        animation-delay: 750ms;
     }
 
     .nav__menu li a {
@@ -808,6 +877,19 @@ footer small {
         height: 100%;
         display: grid;
         place-items: center;
+    }
+
+    @keyframes animateNavItems {
+        0% {
+            transform: translateX(35%);
+        }
+        75% {
+            opacity: 0.5;
+        }
+        100% {
+            opacity: 1;
+            transform: translateX(0%);
+        }
     }
 
     .nav__menu span {
@@ -822,15 +904,45 @@ footer small {
         color: var(--color-white);
     }
 
-    #director__menu--btn {
-        display: block;
+    #director__menu--btn{
+        display: flex;
+        padding: 0;
+        flex-direction: column;
+        height: auto;
     }
 
+    #director__menu--btn > a {
+        height: 5rem;
+    }
+
+    #director__menu--btn li {
+        background: var(--color-primary);
+        animation: animateDirectorItems 0.2s linear forwards;
+    }
+    
     .director__menu {
-        display: block;
-        position: relative;
-        bottom: initial;
-        transform: translateY(0);
+        width: 100%;
+        display: none;
+        position: static;
+        transform: translateY(0%);
+    }
+    
+    #director__menu--btn li:nth-last-child(1) {
+        animation-delay: 200ms;
+    }
+    
+    .director__menu li > a {
+        padding: initial;
+        background: transparent;
+        
+    }
+    
+    .director__menu li:hover > a {
+        background: var(--color-primary-dark);
+    }
+    
+    .director__menu li:hover > a {
+        color: var(--color-white);
     }
 
     /* THEME SWITCH */
@@ -880,23 +992,6 @@ footer small {
     /* NAVBAR */
     .nav__container {
         padding: 0 1rem;
-    }
-
-    .nav__menu li {
-        width: 100%;
-        height: 5.8rem;
-        animation: animateNavItems 0.4s linear forwards;
-        border-right: 0.4rem solid var(--color-primary);
-    }
-
-    @keyframes animateNavItems {
-        0% {
-            transform: translateX(100%);
-        }
-
-        100% {
-            transform: translateX(2%);
-        }
     }
 
     /* NEWS */

@@ -9,7 +9,7 @@
     width: 100%;
     color: var(--color-black);
     background: var(--color-white);
-    border-bottom: 2px solid var(--color-black);
+    background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
 }
 
 .courses__title > h1 {

@@ -8,6 +8,7 @@
 
 .notice__header {
     background: var(--color-primary);
+    background-image: var(--asfalt-bg);
     color: var(--color-white);
 }
 

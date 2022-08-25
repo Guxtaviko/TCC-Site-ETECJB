@@ -6,7 +6,6 @@
 .courses__title {
     text-align: center;
     padding: 5rem 1rem;
-    width: 100%;
     color: var(--color-black);
     background: var(--color-white);
     background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");

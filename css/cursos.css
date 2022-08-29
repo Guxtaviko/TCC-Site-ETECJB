@@ -8,7 +8,7 @@
     padding: 5rem 1rem;
     color: var(--color-black);
     background: var(--color-white);
-    background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+    background-image: var(--shattered-bg);
 }
 
 .courses__title > h1 {

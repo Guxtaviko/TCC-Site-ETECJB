@@ -26,6 +26,7 @@
     --color-bg: #eeeeee;
 
     --asfalt-bg: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+    --shattered-bg: url("https://www.transparenttextures.com/patterns/shattered.png");
 
     --container-width-lg: 80%;
     --container-width-md: 90%;
@@ -447,7 +448,7 @@ nav button {
 .featuredCourses {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
     background: var(--color-white);
-    background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
+    background-image: var(--shattered-bg);
     padding: 2rem;
 }
 
@@ -473,10 +474,14 @@ nav button {
 }
 
 .featuredCourses__left .featuredCourses__title {
+    border-radius: 0.5rem;
+    color: var(--color-white);
     background: var(--color-primary);
 }
 
 .featuredCourses__right .featuredCourses__title {
+    border-radius: 0.5rem;
+    color: var(--color-white);
     background: var(--color-secondary);
 }
 
@@ -749,6 +754,7 @@ footer ul li a:hover {
 }
 
 .footer__copyright {
+    position: relative;
     background: var(--color-primary);
     color: var(--color-white);
     text-align: center;
@@ -763,19 +769,18 @@ footer small {
 
 /* SECRET */
 .secret__cmd {
+    text-align: start;
     background: black;
     width: 285px;
     color: white;
     position: absolute;
-    bottom: 3rem;
+    top: 0;
     left: 50%;
-    transform: translateX(-50%);
+    transform: translate(-50%, -100%);
     display: none;
     flex-direction: column;
     justify-content: center;
     padding: 1.4rem;
-    padding-bottom: 2.4rem;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 90%, 60% 90%, 50% 100%, 40% 90%, 0 90%);
 }
 
 .secret__cmd span {

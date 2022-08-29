@@ -46,6 +46,7 @@ const themeIcon = document.querySelector(".theme-icon");
 
 const initialColors = {
     asfaltBg: getStyle(root, "--asfalt-bg"),
+    shatteredBg: getStyle(root, "--shattered-bg"),
     colorBg: getStyle(root, "--color-bg"),
     colorLight: getStyle(root, "--color-light"),
     colorWhite: getStyle(root, "--color-white"),
@@ -54,6 +55,7 @@ const initialColors = {
 
 const darkMode = {
     asfaltBg: 'url("https://www.transparenttextures.com/patterns/asfalt-dark.png")',
+    shatteredBg: 'url("https://www.transparenttextures.com/patterns/shattered-dark.png")',
     colorBg: "#212121",
     colorLight: "#313131",
     colorWhite: "#121212",

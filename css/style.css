@@ -331,6 +331,17 @@ nav button {
 
 .lastNotice__img {
     padding-inline: 1rem;
+    position: relative;
+}
+
+.img__category {
+    position: absolute;
+    font-size: 0.8rem;
+    bottom: 0;
+    color: var(--color-white);
+    text-transform: uppercase;
+    background: var(--color-primary);
+    padding: 0.5rem 0.7rem;
 }
 
 .lastNotice__text {
@@ -345,6 +356,15 @@ nav button {
     /* Non webkit browsers */
     line-height: 18px;
     height: calc(18px * 6);   
+}
+
+.notice__info {
+    margin: 0.4rem 0;
+    padding-inline: 1rem;
+    color: var(--color-primary);
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-size: 10pt;
 }
 
 .lastNotice__btn {
@@ -431,16 +451,8 @@ nav button {
     padding: 2rem;
 }
 
-.featuredCourses__title {
+.featuredCourses > h1 {
     text-align: center;
-    margin-top: 1rem;
-}
-
-.featuredCourses__title > h3 {
-    height: 4rem;
-}
-
-.featuredCourses__desc {
     margin-top: 1rem;
 }
 
@@ -449,6 +461,23 @@ nav button {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2.5rem;
+}
+
+.featuredCourses__title {
+    text-transform: uppercase;
+}
+
+.featuredCourses__title > h3 {
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.featuredCourses__left .featuredCourses__title {
+    background: var(--color-primary);
+}
+
+.featuredCourses__right .featuredCourses__title {
+    background: var(--color-secondary);
 }
 
 .featuredCourses__grid {
@@ -468,8 +497,15 @@ nav button {
     max-width: 400px;
 }
 
+.featuredCourse__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .featuredCourse__title > h5 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     text-align: center;
 }
 
@@ -598,6 +634,7 @@ nav button {
     overflow-x: hidden;
     position: relative;
     margin-top: 5rem;
+    margin-bottom: 2rem;
 }
 
 .testimonials > h1 {

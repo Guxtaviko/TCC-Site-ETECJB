@@ -101,15 +101,6 @@
     height: 100%;
 }
 
-.img__category {
-    position: absolute;
-    font-size: 0.8rem;
-    bottom: 0;
-    color: var(--color-white);
-    text-transform: uppercase;
-    background: var(--color-primary);
-    padding: 0.5rem 0.7rem;
-}
 
 .notice__content {
     padding-inline: 1rem;
@@ -134,15 +125,6 @@
     /* Non webkit browsers */
     line-height: 18px;
     height: calc(18px * 5);  
-}
-
-.notice__info {
-    margin: 0.4rem 0;
-    padding-inline: 1rem;
-    color: var(--color-primary);
-    font-family: 'Montserrat', sans-serif;
-    font-style: italic;
-    font-size: 10pt;
 }
 
 .notice__cta {

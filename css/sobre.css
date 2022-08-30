@@ -401,7 +401,7 @@ tbody tr:last-child{
 }
 
 .faq__question h2 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
 }
 
 .faq__answer {
@@ -412,6 +412,15 @@ tbody tr:last-child{
     transform-origin: top;
     color: var(--color-white);
     animation: animateFaq 400ms linear forwards ;
+}
+
+.faq__answer a {
+    color: var(--color-white);
+    text-decoration: underline;
+}
+
+.faq__answer a:hover {
+    color: var(--color-primary-dark);
 }
 
 @keyframes animateFaq {

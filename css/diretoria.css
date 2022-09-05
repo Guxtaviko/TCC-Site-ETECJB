@@ -1,7 +1,27 @@
+/* ACADEMY HEADER */
+.academy{
+    margin-top: 5rem;
+    background: var(--color-primary);
+    background-image: var(--asfalt-bg);
+    color: var(--color-white);
+}
+
+.academy__container{
+    padding: 5rem 0;
+    text-align: center;
+}
+
+.academy__title h1{
+    font-size: 2.4rem;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
 /* SERVICES */
 .services{
+    margin: 3.5rem 0;
+    box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
     position: relative;
-    margin-top: 8rem;
     padding-top: 3rem;
     padding-bottom: 3rem;
     display: flex;
@@ -17,13 +37,11 @@
     height: 100%;
     left: 0;
     top: 0;
-    background: var(--color-primary);
-    background-image: var(--asfalt-bg);
-    clip-path: polygon(0 10%, 100% 0, 100% 90%, 0 100%);
+    background: var(--color-white);
 }
 
 .services__container {
-    color: var(--color-white);
+    color: var(--color-black);
     display: grid;
     grid-template-columns: 2fr 3fr;
     gap: 2rem;
@@ -49,12 +67,12 @@
 .services__grid {
     padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
 }
 
 .service {
-    background: var(--color-white);
+    background: var(--color-primary);
     box-shadow: 0px 2px 0.5rem rgba(0, 0, 0, 0.3);
     border-radius: 1rem;
     padding: 2rem 1rem;
@@ -62,7 +80,7 @@
 }
 
 .service:hover {
-    box-shadow: 0px 3px 0.75rem var(--color-bg);
+    box-shadow: 0px 0px 1rem var(--color-primary-dark);
     transform: scale(1.05);
 }
 
@@ -72,13 +90,66 @@
 
 .service i {
     font-size: 28pt;
-    color: var(--color-primary);
+    color: var(--color-white);
 }
 
 .service__desc > h4 {
     margin-top: 0.5rem;
     font-size: 1rem;
+    color: var(--color-white);
+}
+
+/* NSA */
+.nsa {
+    margin-bottom: 3.5rem;
+}
+
+.nsa__title {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.nsa__title h1 {
+    font-size: 2.5rem;
+    text-transform: uppercase;
+}
+
+.nsa__options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.nsa__card {
+    background-image: linear-gradient(180deg, var(--color-white) 50%, var(--color-primary) 50%);
+    background-size: auto 200%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    box-shadow: 2px 2px 0.5rem rgba(0, 0, 0, 0.3);
+    background-position-y: 2%;
+    transition: var(--transition);
     color: var(--color-black);
+}
+
+.nsa__card:hover {
+    background-position-y: 100%;
+    color: var(--color-white);
+}
+
+.nsa__card:hover .nsa__image img {
+    filter: drop-shadow(0px 0px 0.5rem var(--color-white));
+}
+
+.nsa__image {
+    width: 100%;
+}
+
+.nsa__text {
+    padding: 2rem 1rem;
 }
 
 @media screen and (max-width: 1060px) {
@@ -96,5 +167,9 @@
     /* SERVICES */
     .services__container{
         grid-template-columns: 1fr;
+    }
+    
+    .services__grid {
+        padding: 0;
     }
 }

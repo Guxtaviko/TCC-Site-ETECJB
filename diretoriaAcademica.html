@@ -138,13 +138,19 @@
 
     <section class="nsa">
         <div class="nsa__container container"> 
-            <div class="nsa__options">
+            <div class="nsa__grid">
+                <div class="nsa__title">
+                    <div class="nsa__title--content">
+                        <h1>NSA</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nesciunt tempora, beatae mollitia aliquam ea recusandae! Facere libero quas tempora iusto.</p>
+                    </div>
+                </div>
                 <div class="nsa__card">
                     <div class="nsa__image">
                         <img src="http://assets.lwsite.com.br/uploads/widget_image/image/691/784/691784/nsaonline.png" alt="NSA">
                     </div>
                     <div class="nsa__text">
-                        <h2>Acesso ao NSA</h2>
+                        <h2>Acesso ao NSA Online</h2>
                     </div>
                 </div>
                 <div class="nsa__card">
@@ -155,18 +161,40 @@
                         <h2>Gerar/Recuperar Senha</h2>
                     </div>
                 </div>
-                <div class="nsa__title">
-                    <div class="nsa__title--content">
-                        <h1>NSA</h1>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores nesciunt tempora, beatae mollitia aliquam ea recusandae! Facere libero quas tempora iusto.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    
-
+    <section class="apm">
+        <div class="apm__title"><h1>PARCEIROS APM</h1></div>
+        <div class="apm__container container">
+            <div class="swiper apmSwiper">
+                <div class="swiper-wrapper">
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img1.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img2.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img3.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img4.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img5.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img6.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img7.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img1.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img2.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img3.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img4.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img5.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img6.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img7.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img1.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img2.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img3.png" alt=""></div>
+                  <div class="swiper-slide apm-slide"><img src="./imgs/slide-pics/img4.png" alt=""></div>
+                </div>
+                <div class="swiper-button-next apm-button" id="apm-next"></div>
+                <div class="swiper-button-prev apm-button" id="apm-prev"></div>
+              </div>
+        </div>
+    </section>
+  
     <footer>
         <div class="container footer__container">
             <div class="footer__1">
@@ -272,6 +300,43 @@
         </div>
     </footer>
 
+      <!-- Swiper JS -->
+      <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+  
+      <!-- Initialize Swiper -->
+      <script>
+        var swiper = new Swiper(".apmSwiper", {
+          slidesPerView: 2,
+          grid: {
+            rows: 2,
+          },
+          spaceBetween: 1,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+
+          breakpoints: {
+            1060: {
+                slidesPerView: 4,
+                grid: {
+                    rows: 2,
+                },
+                spaceBetween: 5,
+            },
+
+            600: {
+                slidesPerView: 3,
+                grid: {
+                    rows: 2,
+                },
+                spaceBetween: 3,
+            }
+          }
+
+        });
+      </script>
+    
     <script src="main.js"></script>
 
 </body>

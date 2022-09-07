@@ -126,7 +126,7 @@ nav {
     height: 5rem;
     position: fixed;
     top: 0;
-    z-index: 11;
+    z-index: 20;
 }
 
 .--current {
@@ -252,7 +252,7 @@ nav button {
     color: var(--color-black);
     bottom: 3rem;
     right: 6vw;
-    z-index: 5;
+    z-index: 12;
     box-shadow: 0px 4px 3px rgba(0, 0, 0, 0.2);
     height: 2rem;
     width: 2rem;

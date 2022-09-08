@@ -1,17 +1,17 @@
-/* ACADEMY HEADER */
-.academy{
+/* HEADER */
+.directory{
     margin-top: 5rem;
     background: var(--color-primary);
     background-image: var(--asfalt-bg);
     color: var(--color-white);
 }
 
-.academy__container{
+.directory__container{
     padding: 5rem 0;
     text-align: center;
 }
 
-.academy__title h1{
+.directory__title h1{
     font-size: 2.4rem;
     text-transform: uppercase;
     letter-spacing: 4px;
@@ -19,24 +19,12 @@
 
 /* SERVICES */
 .services{
-    margin: 3.5rem 0;
+    margin-bottom: 3.5rem;
     box-shadow: 0px 0px 10px rgb(0 0 0 / 20%);
-    position: relative;
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    padding: 3rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.services::before {
-    z-index: -1;
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
     background: var(--color-white);
 }
 
@@ -57,7 +45,6 @@
 
 .services__info--title > h2{
     text-transform: uppercase;
-    letter-spacing: 5px;
 }
 
 .services__info--text {
@@ -69,6 +56,10 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 1rem;
+}
+
+.services__grid.--servicesDir {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .service {
@@ -99,29 +90,38 @@
     color: var(--color-white);
 }
 
-/* NSA */
-.nsa {
+/* info */
+.info {
     margin-bottom: 3.5rem;
 }
 
-.nsa__title {
-    display: grid;
-    place-items: center;
-    text-align: center;
-}
-
-.nsa__title h1 {
-    font-size: 2.5rem;
-    text-transform: uppercase;
-}
-
-.nsa__grid {
+.info__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2.5rem;
 }
 
-.nsa__card {
+.info__title {
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+
+.info__title h2 {
+    text-transform: uppercase;
+}
+
+.info__title p {
+    margin-bottom: 0.5rem;
+}
+
+.info__content a:hover {
+    transition: var(--transition);
+    color: var(--color-primary-dark);
+}
+
+
+.info__card {
     background-image: linear-gradient(180deg, var(--color-white) 50%, var(--color-primary) 50%);
     background-size: auto 200%;
     display: flex;
@@ -133,25 +133,26 @@
     background-position-y: 2%;
     transition: var(--transition);
     color: var(--color-black);
+    cursor: pointer;
 }
 
-.nsa__card:hover {
+.info__card:hover {
     background-position-y: 100%;
     color: var(--color-white);
 }
 
-.nsa__image {
+.info__image {
     flex: 1;
     width: 100%;
 }
 
-.nsa__text {
+.info__text {
     flex: 1;
     padding: 2rem 1rem;
     text-transform: uppercase;
 }
 
-.nsa__text > h2 {
+.info__text > h2 {
     font-size: 1.7rem;
 }
 
@@ -214,25 +215,25 @@
 @media screen and (max-width: 1060px) {
     /* SERVICES */
     .services__grid{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr !important;
     }
 
     .service {
         padding: 1rem;
     }
 
-    /* NSA */
-    .nsa__grid {
-        grid-template-columns: 1fr 1fr;
+    /* INFO */
+    .info__grid {
+        grid-template-columns: 1fr 1fr !important;
         gap: 1rem;
         row-gap: 2rem;
     }
 
-    .nsa__title {
+    .info__title {
         grid-column: span 2;
     }
 
-    .nsa__text h2 {
+    .info__text h2 {
         font-size: 1.3rem;
     }
 
@@ -245,7 +246,7 @@
 @media screen and (max-width: 600px) {
     /* SERVICES */
     .services__container{
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
     }
     
     .services__grid {
@@ -260,16 +261,16 @@
         font-size: 0.9rem;
     }
 
-    /* NSA */
-    .nsa__grid {
+    /* info */
+    .info__grid {
         grid-template-columns: 1fr;
     }
 
-    .nsa__title {
+    .info__title {
         grid-column: auto;
     }
 
-    .nsa__card {
+    .info__card {
         max-width: 400px;
         position: relative;
         top: 0;

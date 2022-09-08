@@ -45,10 +45,22 @@
 
     <button class="theme__switch"><i class="uil uil-sun theme-icon"></i></button>
 
+    <section class="courses__title"><h1>Nossos Cursos</h1></section>
+
+    <section class="search__bar">
+        <form action="" class="container search__bar--container">
+            <div>
+                <i class="uil uil-search"></i>
+                <input type="search" name="" placeholder="Curso">
+            </div>
+            <button class="search__btn" type="submit">IR</button>
+        </form>
+    </section>
+
     <section class="courses">
-        <div class="courses__title"><h1>Nossos Cursos</h1></div>
         <div class="container courses__container">
             <div class="courses__container--title --integral" id="integral">
+                <hr class="courses__scroll" id="integralCourses">
                 <h2>Técnicos + Ensino Médio</h2>
             </div>
             <div class="courses__grid --integral">
@@ -117,6 +129,7 @@
             </div>
 
             <div class="courses__container--title --parcial" id="parcial">
+                <hr class="courses__scroll" id="parcialCourses">
                 <h2>Técnicos</h2>
             </div>
             <div class="courses__grid --parcial">
@@ -174,36 +187,50 @@
         </div>
     </section>
 
-    <div class="overlay__blur"></div>
-    <section class="container overlay">
-            <button class="overlay__close"><i class="uil uil-multiply"></i></button>
-            <div class="overlay__img">
-                <img src="./imgs/slide-pics/img3.png">
-            </div>
-            <div class="overlay__content">
-                <div class="overlay__title">
-                    <h1>NOME CURSO</h1>
-                </div>
-                <div class="overlay__desc">
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo reprehenderit quis officiis commodi deleniti vitae eveniet, enim amet nobis magni iure ea sapiente odio praesentium, quia eius quasi ad doloribus quas dolor iusto beatae facilis. Dolor quod quia magnam provident.
-                </div>
-                <div class="overlay__info">
-                    <span class="overlay__duration"><i class="uil uil-clock"></i> 100hrs</span>
-                    <span class="overlay__vacancies"><i class="uil uil-users-alt"></i> 40</span>
-                    <span class="overlay__period"><i class="uil uil-calendar-alt"></i> Noturno</span>
-                    <span class="overlay__curriculum"><a href="#"><i class="uil uil-diary"></i> Matriz Curricular</a></span>
-                    <span class="overlay__coordinator"><i class="uil uil-user-square"></i> Nome Coordenador</span>
-                    <span class="overlay__coordinator--email"><i class="uil uil-envelope"></i> coordenador@email.com</span>
-                </div>
-                <div class="overlay__visits">
-                    <h2>Visitas Técnicas</h2>
-                    <div class="overlay__visits--grid">
-                        <img src="./imgs/slide-pics/img2.png">
-                        <img src="./imgs/slide-pics/img2.png">
-                        <img src="./imgs/slide-pics/img2.png">
+    <div class="modal__blur"></div>
+
+    <section class="swiper modalSwiper container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide ">
+                <div class="modal">
+                    <button class="modal__close"><i class="uil uil-multiply"></i></button>
+                    <div class="modal__img">
+                        <img src="./imgs/slide-pics/img3.png">
+                    </div>
+                    <div class="modal__content">
+                        <div class="modal__title">
+                            <h1>NOME CURSO</h1>
+                        </div>
+                        <div class="modal__desc">
+                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quo reprehenderit quis officiis commodi deleniti vitae eveniet, enim amet nobis magni iure ea sapiente odio praesentium, quia eius quasi ad doloribus quas dolor iusto beatae facilis. Dolor quod quia magnam provident.
+                        </div>
+                        <div class="modal__info">
+                            <span class="modal__duration"><i class="uil uil-clock"></i> 100hrs</span>
+                            <span class="modal__vacancies"><i class="uil uil-users-alt"></i> 40</span>
+                            <span class="modal__period"><i class="uil uil-calendar-alt"></i> Noturno</span>
+                            <span class="modal__curriculum"><a href="#"><i class="uil uil-diary"></i> Matriz Curricular</a></span>
+                            <span class="modal__coordinator"><i class="uil uil-user-square"></i> Nome Coordenador</span>
+                            <span class="modal__coordinator--email"><i class="uil uil-envelope"></i> coordenador@email.com</span>
+                        </div>
+                        <div class="modal__visits">
+                            <h2>Visitas Técnicas</h2>
+                            <div class="visists__container">
+                                <div class="swiper visitsSwiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide"><img src="./imgs/slide-pics/img1.png"></div>
+                                        <div class="swiper-slide"><img src="./imgs/slide-pics/img2.png"></div>
+                                        <div class="swiper-slide"><img src="./imgs/slide-pics/img3.png"></div>
+                                        <div class="swiper-slide"><img src="./imgs/slide-pics/img4.png"></div>
+                                    </div>
+                                    <div class="swiper-pagination"></div>
+                                  </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </div>
         </div>
+    <div class="swiper-scrollbar"></div>
     </section>
 
     <footer>
@@ -311,9 +338,43 @@
         </div>
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var modalSwiper = new Swiper(".modalSwiper", {
+        direction: "vertical",
+        slidesPerView: "auto",
+        freeMode: false,
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+        mousewheel: true,
+      });
+
+      var visitsSwiper = new Swiper(".visitsSwiper", {
+        slidesPerView: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+                1060: {
+                    slidesPerView: 3,
+                },
+
+                600: {
+                    slidesPerView: 2,
+                }
+            }
+      });
+
+    </script>
+
     <script src="main.js"></script>
     <script>
-        coursesOverlay();
+        coursesModal();
     </script>
 
 </body>

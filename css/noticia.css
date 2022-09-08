@@ -127,12 +127,6 @@
     background: var(--color-primary);
 }
 
-.moreNews__container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-}
-
 .news {
     margin-top: 1rem;
     display: grid;

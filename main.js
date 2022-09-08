@@ -480,20 +480,20 @@ function clearIcon() {
 function scrollMap() {
     const scrollMapBtn = document.querySelector('.scroll__map');
     const map = document.querySelector('.map');
+    let mapBottom = map.getBoundingClientRect().bottom;
+    let viewportHeight = window.innerHeight;
     scrollMapBtn.addEventListener('click', () => {
-        let mapBottom = map.getBoundingClientRect().bottom;
-        let viewportHeight = window.innerHeight;
         document.body.scrollTop = mapBottom - viewportHeight;
         document.documentElement.scrollTop = mapBottom - viewportHeight;
     })
 
 }
 
-// Open/Close Overlay 
-function coursesOverlay() {
-    const overlayBlur = document.querySelector('.overlay__blur');
-    const closeOverlay = document.querySelector('.overlay__close')
-    const overlay = document.querySelector('.overlay')
+// Open/Close Modal 
+function coursesModal() {
+    const modalBlur = document.querySelector('.modal__blur');
+    const closeModal = document.querySelector('.modal__close')
+    const modal = document.querySelector('.modalSwiper')
     const coursesBttns = document.querySelectorAll('.course__btn');
 
     coursesBttns.forEach(btn => {
@@ -501,27 +501,25 @@ function coursesOverlay() {
             const pressedBtn = event.target;
             const courseType = pressedBtn.parentElement.parentElement.parentElement;
             if(courseType.classList.contains('--parcial')){
-                overlay.classList.add('--parcial')
+                modal.classList.add('--parcial')
             } else {
-                if (overlay.classList.contains('--parcial')) {
-                    overlay.classList.remove('--parcial')
+                if (modal.classList.contains('--parcial')) {
+                    modal.classList.remove('--parcial')
                 }
             }
-            document.body.scrollTop = 0; 
-            document.documentElement.scrollTop = 0; 
-            overlayBlur.style.display = 'block';
-            overlay.style.display = 'flex';
+            modalBlur.style.display = 'block';
+            modal.style.display = 'flex';
         })
     });
 
-    closeOverlay.addEventListener('click', () => {
-        overlayBlur.style.display = 'none';
-        overlay.style.display = 'none';
+    closeModal.addEventListener('click', () => {
+        modalBlur.style.display = 'none';
+        modal.style.display = 'none';
     });
 
-    overlayBlur.addEventListener('click', () => {
-        overlayBlur.style.display = 'none';
-        overlay.style.display = 'none';
+    modalBlur.addEventListener('click', () => {
+        modalBlur.style.display = 'none';
+        modal.style.display = 'none';
     });
 }
 

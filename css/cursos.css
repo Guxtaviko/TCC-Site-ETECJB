@@ -1,9 +1,6 @@
-/* COURSES */
-.courses {
-    margin: 5rem 0;
-}
-
+/* COURSES TITLE*/
 .courses__title {
+    margin-top: 5rem;
     text-align: center;
     padding: 5rem 1rem;
     color: var(--color-black);
@@ -17,6 +14,16 @@
     text-transform: uppercase;
     display: inline-block;
     font-size: 2.7rem;
+}
+
+/* COURSES */
+.courses {
+    margin-bottom: 4rem;
+}
+
+.courses__scroll {
+    position: relative;
+    transform: translateY(-6rem);
 }
 
 .courses__grid {
@@ -134,8 +141,13 @@
     color: var(--color-white);
 }
 
-/* OVERLAY */
-.overlay__blur {
+/* MODAL */
+
+.modalSwiper .swiper-slide {
+    height: auto;
+}
+
+.modal__blur {
     display: none;
     position: fixed;
     top: 0;
@@ -143,28 +155,32 @@
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    z-index: 2;
+    z-index: 20;
     backdrop-filter: blur(5px);
 }
 
-.overlay{
+.modalSwiper{
+    height: calc(100vh - 2rem);
     display: none;
-    position: absolute;
+    position: fixed;
+    top: 1rem;
     max-width: 800px;
-    padding: 3rem 0;
-    top: 7rem;
     left: 50%;
     transform: translateX(-50%);
-    margin: 0;
+    margin-inline: auto;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     background: var(--color-white);
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    z-index: 3;
+    z-index: 30;
 }
 
-.overlay__close {
+.modal {
+    padding: 2rem;
+}
+
+.modal__close {
     padding: 0.7rem;
     font-size: 1.2rem;
     position: absolute;
@@ -176,53 +192,56 @@
     transition: var(--transition);
 }
 
-.overlay__close:hover {
+.modal__close:hover {
     font-size: 1.3rem;
     opacity: 0.5;
 }
 
-.overlay a:hover {
+.modal a:hover {
     transition: var(--transition);
     letter-spacing: 1px;
 }
 
-.overlay__img {
+.modal__img {
     max-width: 600px;
-    margin-inline: 3rem;
+    margin: auto;
     border: 3px solid var(--color-primary);
 }
 
-.overlay__title {
+.modal__title {
     text-align: center;
     color: var(--color-primary);
     margin: 1rem 0;
 }
 
-.overlay.--parcial .overlay__title {
+.modalSwiper.--parcial .modal__title {
     color: var(--color-secondary);
 }
 
-.overlay.--parcial .overlay__img {
+.modalSwiper.--parcial .modal__img {
     border: 3px solid var(--color-secondary);
 }
 
-.overlay.--parcial a {
+.modalSwiper.--parcial a {
     color: var(--color-secondary);
 }
 
-.overlay.--parcial .overlay__close {
+.modalSwiper.--parcial .modal__close {
     color: var(--color-secondary);
 }
 
-.overlay__content {
+.modal__content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-inline: 3rem;
 }
 
-.overlay__info {
+.modal__desc {
+    text-align: center;
+}
+
+.modal__info {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.5rem;
@@ -231,18 +250,20 @@
     margin: 2rem 0;
 }
 
-.overlay__visits--grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+.visitsSwiper .swiper-slide {
+    width: calc(100%/3) !important;
 }
 
-.overlay__visits--grid > img {
-    transition: var(--transition);
+.visitsSwiper .swiper-wrapper {
+    margin-bottom: 2rem;
 }
 
-.overlay__visits--grid > img:hover {
-    transform: scale(1.1);
+.modalSwiper.--parcial .swiper-pagination-bullet:hover {
+    background: var(--color-secondary);
+}
+
+.modalSwiper.--parcial .swiper-pagination-bullet-active {
+    background: var(--color-secondary);
 }
 
 /* MEDIA QUERIES (TABLETS) */
@@ -262,16 +283,16 @@
     }
 
     /* MODAL */
-    .overlay__content {
+    .modal__content {
         padding-inline: 2rem;
     }
 
-    .overlay__info {
+    .modal__info {
         column-gap: 3rem;
     }
 
-    .overlay__visits--grid {
-        grid-template-columns: 1fr 1fr;
+    .visitsSwiper .swiper-slide {
+        width: calc(100%/2) !important;
     }
 }
 
@@ -313,27 +334,18 @@
     }
 
     /* MODAL */
-    .overlay__content {
+    .modal__content {
         padding-inline: 2rem;
     }
     
-    .overlay__info {
+    .modal__info {
         grid-template-columns: 1fr;
         gap: 0.5rem;
         width: fit-content;
     }
 
-    .overlay__visits {
-        width: 100%;
+    .visitsSwiper .swiper-slide {
+        width: 100% !important;
     }
 
-    .overlay__visits--grid {
-        margin-top: 1rem;
-        grid-template-columns: 1fr;
-        place-items: center;
-    }
-
-    .overlay__visits--grid > img {
-        max-width: 250px;
-    }
 }

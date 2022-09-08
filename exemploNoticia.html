@@ -88,42 +88,82 @@
             <h1>Veja Também</h1>
         </div>
         <div class="moreNews__container container">
-                <div class="news">
-                    <a href="#">
-                        <div class="news__img">
-                            <img src="./imgs/slide-pics/img4.png">
-                            <span class="category">Categoria</span>
-                        </div>
-                    </a>
-                    <div class="news__desc">
-                        <a href="">
-                            <div class="news__title">
-                                <h1>Titulo Noticia</h1>
+            <div class="swiper moreNewsSwiper">
+                <div class="swiper-wrapper">
+                    <div class="news swiper-slide">
+                        <a href="#">
+                            <div class="news__img">
+                                <img src="./imgs/slide-pics/img4.png">
+                                <span class="category">Categoria</span>
                             </div>
                         </a>
-                        <div class="news__text">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum fugit quos maxime laudantium itaque, pariatur, quas, in dolor provident libero sunt modi suscipit eaque officia. Itaque quas asperiores quisquam ipsum architecto dolore animi et natus voluptatum aut, iusto, dolores quam.</p>
+                        <div class="news__desc">
+                            <a href="">
+                                <div class="news__title">
+                                    <h1>Titulo Noticia</h1>
+                                </div>
+                            </a>
+                            <div class="news__text">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum fugit quos maxime laudantium itaque, pariatur, quas, in dolor provident libero sunt modi suscipit eaque officia. Itaque quas asperiores quisquam ipsum architecto dolore animi et natus voluptatum aut, iusto, dolores quam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news swiper-slide">
+                        <a href="#">
+                            <div class="news__img">
+                                <img src="./imgs/slide-pics/img4.png">
+                                <span class="category">Categoria</span>
+                            </div>
+                        </a>
+                        <div class="news__desc">
+                            <a href="">
+                                <div class="news__title">
+                                    <h1>Titulo Noticia</h1>
+                                </div>
+                            </a>
+                            <div class="news__text">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum fugit quos maxime laudantium itaque, pariatur, quas, in dolor provident libero sunt modi suscipit eaque officia. Itaque quas asperiores quisquam ipsum architecto dolore animi et natus voluptatum aut, iusto, dolores quam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news swiper-slide">
+                        <a href="#">
+                            <div class="news__img">
+                                <img src="./imgs/slide-pics/img4.png">
+                                <span class="category">Categoria</span>
+                            </div>
+                        </a>
+                        <div class="news__desc">
+                            <a href="">
+                                <div class="news__title">
+                                    <h1>Titulo Noticia</h1>
+                                </div>
+                            </a>
+                            <div class="news__text">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum fugit quos maxime laudantium itaque, pariatur, quas, in dolor provident libero sunt modi suscipit eaque officia. Itaque quas asperiores quisquam ipsum architecto dolore animi et natus voluptatum aut, iusto, dolores quam.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news swiper-slide">
+                        <a href="#">
+                            <div class="news__img">
+                                <img src="./imgs/slide-pics/img4.png">
+                                <span class="category">Categoria</span>
+                            </div>
+                        </a>
+                        <div class="news__desc">
+                            <a href="">
+                                <div class="news__title">
+                                    <h1>Titulo Noticia</h1>
+                                </div>
+                            </a>
+                            <div class="news__text">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum fugit quos maxime laudantium itaque, pariatur, quas, in dolor provident libero sunt modi suscipit eaque officia. Itaque quas asperiores quisquam ipsum architecto dolore animi et natus voluptatum aut, iusto, dolores quam.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="news">
-                    <a href="#">
-                        <div class="news__img">
-                            <img src="./imgs/slide-pics/img4.png">
-                            <span class="category">Categoria</span>
-                        </div>
-                    </a>
-                    <div class="news__desc">
-                        <a href="">
-                            <div class="news__title">
-                                <h1>Titulo Noticia</h1>
-                            </div>
-                        </a>
-                        <div class="news__text">
-                            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Illum fugit quos maxime laudantium itaque, pariatur, quas, in dolor provident libero sunt modi suscipit eaque officia. Itaque quas asperiores quisquam ipsum architecto dolore animi et natus voluptatum aut, iusto, dolores quam.</p>
-                        </div>
-                    </div>
-                </div>
+            </div>
         </div>
         <hr class="container">
     </section>
@@ -234,6 +274,24 @@
     </footer>
 
     <script src="main.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".moreNewsSwiper", {
+            slidesPerView: 1.1,
+            spaceBetween: 15,
+            loop: true,
+            breakpoints: {
+                // When window width is >= 1060px
+                600: {
+                    slidesPerView: 2.1,
+                    spaceBetween: 24,
+                }
+            }
+        });
+    </script>
 
 </body>
 </html>

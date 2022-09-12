@@ -177,7 +177,7 @@
 }
 
 .modal {
-    padding: 2rem;
+    padding: 3rem 2rem 2rem;
 }
 
 .modal__close {
@@ -283,10 +283,6 @@
     }
 
     /* MODAL */
-    .modal__content {
-        padding-inline: 2rem;
-    }
-
     .modal__info {
         column-gap: 3rem;
     }
@@ -331,11 +327,6 @@
 
     .course__btn > a {
         padding: 0.5rem 3rem;
-    }
-
-    /* MODAL */
-    .modal__content {
-        padding-inline: 2rem;
     }
     
     .modal__info {

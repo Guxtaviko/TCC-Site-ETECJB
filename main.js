@@ -96,7 +96,6 @@ window.onload = () => {
                 break;
         }
     }
-    setTableData(equipeDocente);
 }
 
 const changeTheme = () => {
@@ -111,7 +110,7 @@ const changeTheme = () => {
         themeIcon.classList.add('uil-sun');
         changeColors(initialColors);
         localStorage.setItem('icon', 'uil-sun');
-        localStorage.setItem('theme', 'inital');
+        localStorage.setItem('theme', 'initial');
     }
 }
 
@@ -406,7 +405,7 @@ function loadPagination(tablePages, dataPerPage, displayPageQnt, startPG) {
                 tablePages.innerHTML = '';
                 if (startPG > pageQnt) {
                     startPG = (Math.ceil(pageQnt/3.0) * 3) - 2;
-                } else if (startPG + displayPageQnt < pageQnt) {
+                } else if (startPG + displayPageQnt <= pageQnt || startPG + 3 == pageQnt) {
                     displayPageQnt += 3;
                 } else {
                     displayPageQnt = pageQnt

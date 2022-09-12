@@ -149,10 +149,21 @@ img {
     margin-left:  0.7rem;
     padding: 0.5rem 0;
     width: 100%;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--color-black);
 }
 
 .search__bar input::placeholder {
     color: var(--color-black);
+    font-weight: normal;
+    opacity: 0.6;
+}
+
+[type="search"]::-webkit-search-cancel-button,
+[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .search__btn {
@@ -180,7 +191,7 @@ nav {
 }
 
 .--current {
-    text-decoration: underline;
+    color: var(--color-primary);
 }
 
 /* Navbar Styles on scroll */
@@ -393,6 +404,12 @@ nav button {
     text-transform: uppercase;
     background: var(--color-primary);
     padding: 0.5rem 0.7rem;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.img__category:hover {
+    background: var(--color-primary-dark);
 }
 
 .lastNotice__text {

@@ -229,10 +229,6 @@
     cursor: pointer;
 }
 
-.team__selector .--current {
-    text-decoration: underline var(--color-primary);
-}
-
 table {
     border-spacing: 0;
     width: 100%;
@@ -432,6 +428,170 @@ tbody tr:last-child{
     }
 }
 
+/* LIBRARY */
+.library {
+    padding: 5rem 0;
+}
+
+.library > h1 {
+    text-align: center;
+}
+
+.library__desc {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--color-white);
+    margin-top: 1.5rem;
+    gap: 2rem;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.library__img {
+    flex: 1;
+    overflow: hidden;
+    border-radius: 1rem;
+    position: relative;
+}
+
+.library__img::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-primary);
+    opacity: 0.5;
+}
+
+.library__img > img {
+    height: 100%;
+}
+
+.library__text {
+    flex: 1.5;
+}
+
+.library__text h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+}
+
+.library__text p {
+    font-size: 0.96rem;
+    text-align: justify;
+}
+
+.library__btn {
+    cursor: pointer;
+    position: relative;
+    background: var(--color-primary);
+    border-radius: 1rem;
+    padding: 0.75rem 1.25rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: var(--color-white);
+    margin-top: 1rem;
+    transition: var(--transition);
+}
+
+.library__btn:hover {
+    transform: translateX(1rem);
+    background: var(--color-primary-dark);
+}
+
+.library__desc:nth-child(1) {
+    margin-left: 2rem;
+}
+
+.library__img:nth-child(1) {
+    margin-left: -4rem;
+}
+
+.library__desc:nth-child(2) {
+    margin-right: 2rem;
+}
+
+.library__img:nth-child(2) {
+    margin-right: -4rem;
+}
+
+.library__info {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.library__regiment {
+    background: var(--color-white);
+    padding: 2rem;
+    box-shadow: 0px 0px 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+.library__list li{
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.library__teams {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.library__content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    max-width: 270px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.4);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.library__content > * {
+    z-index: 2;
+}
+
+.library__content::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 0%;
+    height: 0%;
+    background: var(--color-primary-dark);
+    transition: var(--transition);
+}
+
+.library__content:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.library__teams h2 {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin: 0.5rem 0;
+}
+
+.library__teams i {
+    font-size: 72pt;
+}
 
 /* MEDIA QUERIES (TABLETS) */
 @media screen and (max-width: 1060px) {
@@ -521,6 +681,45 @@ tbody tr:last-child{
     .faqs__container {
         column-gap: 2rem;
     }
+
+    /* LIBRARY */
+    .library__desc {
+        flex-direction: column;
+    }
+
+    .library__desc:nth-child(1) {
+        margin-left: 0;
+    }
+    
+    .library__img:nth-child(1) {
+        margin-left: 0;
+    }
+    
+    .library__desc:nth-child(2) {
+        margin-right: 0;
+    }
+    
+    .library__img:nth-child(2) {
+        order: -1;
+        margin-right: 0;
+    }
+
+    .library__desc {
+        margin-top: 4rem;
+        gap: 1rem;
+    }
+
+    .library__img {
+        margin-top: -4rem;
+    }
+
+    .library__info {
+        grid-template-columns: 1fr;
+    }
+
+    .library__regiment {
+        grid-row: 2;
+    }
 }
 
 /* MEDIA QUERIES (PHONES) */
@@ -542,6 +741,10 @@ tbody tr:last-child{
         font-size: 1.4rem;
     }
 
+    .team__selector {
+        gap: 1rem;
+    }
+
     table {
         font-size: 0.8rem;
     }
@@ -557,6 +760,15 @@ tbody tr:last-child{
 
     .faqs__container::after {
         display: none;
+    }
+
+    /* LIBRARY */
+    .library__content {
+        border-radius: 0;
+    }
+
+    .library__content::before {
+        border-radius: 0;
     }
 }
 

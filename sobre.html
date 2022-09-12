@@ -282,6 +282,23 @@
         </div>
     </section>
 
+    <section class="swiper librarySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+          <div class="swiper-slide"><div class="slide-img"><img src="./imgs/slide-pics/img2.png"></div></div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+    </section>
+
     <footer>
         <div class="container footer__container">
             <div class="footer__1">
@@ -387,10 +404,27 @@
         </div>
     </footer>
 
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
     <script src="main.js"></script>
     <script>
         aboutFAQ()
         setTableData(equipeDocente);
+        librarySwiper()
+        var swiper = new Swiper(".librarySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            },
+            navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+            },
+        });
     </script>
 </body>
 

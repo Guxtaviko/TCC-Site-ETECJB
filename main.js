@@ -564,3 +564,17 @@ function aboutFAQ() {
         })
     });
 }
+
+function librarySwiper() {
+    const librarySwiper = document.querySelector(".librarySwiper")
+    document.querySelectorAll(".library__btn").forEach(btn => {
+        btn.addEventListener('click', () => {
+            librarySwiper.style.display = "block"
+        })
+    });
+    librarySwiper.addEventListener('click', (e) => {
+        if (e.target.classList.contains('swiper-slide-active')) {
+            librarySwiper.style.display = "none"
+        }
+    })
+}

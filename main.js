@@ -578,3 +578,32 @@ function librarySwiper() {
         }
     })
 }
+
+function loginForm() {
+    const inputs = document.querySelectorAll(".login__input")
+    inputs.forEach(input => {
+        const inputContainer = input.parentElement;
+        input.addEventListener('focusin', () => {
+            inputContainer.classList.add('activeInput')
+        })
+        input.addEventListener('focusout', () => {
+            if (input.value == '') {
+                inputContainer.classList.remove('activeInput')
+            }
+        })
+    })
+
+    const showPassBtn = document.querySelector(".show-password")
+    const passwordInput = document.getElementsByName('password')[0]
+    showPassBtn.addEventListener('click', () => {
+        if (passwordInput.type === 'password') {
+            showPassBtn.classList.remove('uil-eye')
+            showPassBtn.classList.add('uil-eye-slash')
+            passwordInput.type = 'text';
+        } else {
+            showPassBtn.classList.remove('uil-eye-slash')
+            showPassBtn.classList.add('uil-eye')
+            passwordInput.type = 'password';
+        }
+    })
+}

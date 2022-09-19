@@ -1,0 +1,33 @@
+/* NAV */
+.adminNav__container {
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.adminNav__logo img {
+    width: 50px;
+    height: 41.41px;
+}
+
+.adminNav__info strong {
+    color: var(--color-primary);
+}
+
+.adminNav__signOut a {
+    display: inline-block;
+    position: relative;
+    transition: var(--transition);
+    text-transform: uppercase;
+}
+
+.adminNav__signOut a:hover {
+    color: var(--color-primary-dark);
+    transform: translateX(0.5rem);
+}
+
+/* MAIN */
+.admin {
+    margin-top: 5rem;
+}

@@ -82,3 +82,46 @@ const changeTheme = () => {
 switcher.addEventListener('click', () => {
     changeTheme();
 })
+
+const adminBtn = document.querySelector('.adminMenu__btn');
+const adminMenu = document.querySelector('.admin__menu');
+
+adminBtn.addEventListener('click', () => {
+    if (adminBtn.classList.contains('activeMenu__btn')) {
+        adminBtn.classList.remove('activeMenu__btn');
+        adminMenu.style.transform = 'translateX(-100%)';
+    } else {
+        adminMenu.style.transform = 'translateX(0)';
+        adminBtn.classList.add('activeMenu__btn');
+    }
+})
+
+window.addEventListener('resize', () => {
+    if (window.innerWidth > 1060) {
+        adminMenu.style.transform = 'translateX(0)';
+    } else {
+        adminMenu.style.transform = 'translateX(-100%)';
+    }
+})
+
+const confirmationModal = document.querySelector('.confirmation');
+const closeModal = document.querySelector('.confirmation__close');
+const cancelModal = document.querySelector('.confirmation__cancel');
+const deleteBtns = document.querySelectorAll('.uil-trash-alt');
+deleteBtns.forEach(btn => {
+    btn.parentElement.addEventListener('click', () => {
+        if (confirmationModal.style.display == 'block') {
+            confirmationModal.style.display = 'none'
+        } else {
+            confirmationModal.style.display = 'block'
+        }
+    })
+});
+
+closeModal.addEventListener('click', () => {
+    confirmationModal.style.display = 'none';
+})
+
+cancelModal.addEventListener('click', () => {
+    confirmationModal.style.display = 'none';
+})

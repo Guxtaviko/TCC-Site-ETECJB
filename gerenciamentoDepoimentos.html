@@ -39,13 +39,13 @@
 
     <main class="admin">
         <section class="admin__menu">
-            <a href="./dashboard.html" class="admin__item current__item" >
+            <a href="./dashboard.html" class="admin__item" >
                 <span><i class="uil uil-newspaper"></i> Notícias</span>
             </a>
             <a href="./gerenciamentoCursos.html" class="admin__item">
                 <span><i class="uil uil-graduation-cap"></i> Cursos</span>
             </a>
-            <a href="./gerenciamentoDepoimentos.html" class="admin__item" >
+            <a href="./gerenciamentoDepoimentos.html" class="admin__item current__item" >
                 <span><i class="uil uil-award"></i> Depoimentos</span>
             </a>
             <a href="./gerenciamentoEquipes.html" class="admin__item">
@@ -58,41 +58,41 @@
                 <span><i class="uil uil-bullseye"></i>Extremo Secreto</span>
             </a>
         </section>
-
         <button class="adminMenu__btn"><i class="uil uil-arrow-right"></i></button>
-        
         <section class="admin__container container">
             <section class="search__bar admin__search">
                 <form action="" class="container search__bar--container">
                     <div>
                         <i class="uil uil-search"></i>
-                        <input type="search" name="" placeholder="Notícia">
+                        <input type="search" name="" placeholder="Depoimento">
                     </div>
                     <button class="search__btn" type="submit">IR</button>
                 </form>
             </section>
             <div class="admin__content">
                 <div class="admin__header">
-                    <h1>Notícias</h1>
-                    <a href="formNoticia.html" class="admin__add">
-                        <i class="uil uil-plus"></i> Nova Notícia 
+                    <h1>Depoimentos</h1>
+                    <a href="formDepoimento.html" class="admin__add">
+                        <i class="uil uil-plus"></i> Novo Depoimento 
                     </a>
                 </div>
-                <table class="admin__table">
+                <table class="admin__table bigger__table">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Título</th>
-                            <th>Categoria</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Frase</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Notícia 1</td>
+                            <td>Depoimento 1</td>
+                            <td>Cargo 1</td>
                             <td>
-                                Categoria
+                                Lorem, ipsum dolor.
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -103,9 +103,10 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Notícia 2</td>
+                            <td>Depoimento 2</td>
+                            <td>Cargo 2</td>
                             <td>
-                                Categoria
+                                Lorem, ipsum dolor.
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -116,9 +117,10 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Notícia 3</td>
+                            <td>Depoimento 3</td>
+                            <td>Cargo 3</td>
                             <td>
-                                Categoria
+                                Lorem, ipsum dolor.
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -129,9 +131,10 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Notícia 4</td>
+                            <td>Depoimento 4</td>
+                            <td>Cargo 4</td>
                             <td>
-                                Categoria
+                                Lorem, ipsum dolor.
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -142,9 +145,10 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Notícia 5</td>
+                            <td>Depoimento 5</td>
+                            <td>Cargo 5</td>
                             <td>
-                                Categoria
+                                Lorem, ipsum dolor.
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -175,7 +179,7 @@
                 <i class="uil uil-times-circle"></i>
             </button>
             <i class="uil uil-exclamation-octagon"></i>
-            <h1>Excluir <strong>Notícia</strong></h1>
+            <h1>Excluir <strong>Depoimento</strong></h1>
         </div>
         <div class="confirmation__body">
             <h2>Aviso: Essa ação não pode ser desfeita</h2>

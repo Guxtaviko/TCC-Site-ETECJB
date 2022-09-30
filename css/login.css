@@ -97,6 +97,10 @@
     transition: var(--transition);
 }
 
+.login__card a {
+    color: var(--color-white);
+}
+
 .login__btn:hover {
     background: var(--color-primary-dark);
 }

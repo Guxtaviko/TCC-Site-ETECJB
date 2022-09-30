@@ -39,10 +39,10 @@
 
     <main class="admin">
         <section class="admin__menu">
-            <a href="./dashboard.html" class="admin__item current__item" >
+            <a href="./dashboard.html" class="admin__item" >
                 <span><i class="uil uil-newspaper"></i> Notícias</span>
             </a>
-            <a href="./gerenciamentoCursos.html" class="admin__item">
+            <a href="./gerenciamentoCursos.html" class="admin__item current__item">
                 <span><i class="uil uil-graduation-cap"></i> Cursos</span>
             </a>
             <a href="./gerenciamentoDepoimentos.html" class="admin__item" >
@@ -58,41 +58,39 @@
                 <span><i class="uil uil-bullseye"></i>Extremo Secreto</span>
             </a>
         </section>
-
         <button class="adminMenu__btn"><i class="uil uil-arrow-right"></i></button>
-        
         <section class="admin__container container">
             <section class="search__bar admin__search">
                 <form action="" class="container search__bar--container">
                     <div>
                         <i class="uil uil-search"></i>
-                        <input type="search" name="" placeholder="Notícia">
+                        <input type="search" name="" placeholder="Curso">
                     </div>
                     <button class="search__btn" type="submit">IR</button>
                 </form>
             </section>
             <div class="admin__content">
                 <div class="admin__header">
-                    <h1>Notícias</h1>
-                    <a href="formNoticia.html" class="admin__add">
-                        <i class="uil uil-plus"></i> Nova Notícia 
+                    <h1>Cursos</h1>
+                    <a href="formCurso.html" class="admin__add">
+                        <i class="uil uil-plus"></i> Novo Curso 
                     </a>
                 </div>
                 <table class="admin__table">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Título</th>
-                            <th>Categoria</th>
+                            <th>Nome</th>
+                            <th>Período</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>Notícia 1</td>
+                            <td>Curso 1</td>
                             <td>
-                                Categoria
+                                Integral
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -103,9 +101,9 @@
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Notícia 2</td>
+                            <td>Curso 2</td>
                             <td>
-                                Categoria
+                                Integral
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -116,9 +114,9 @@
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Notícia 3</td>
+                            <td>Curso 3</td>
                             <td>
-                                Categoria
+                                Integral
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -129,9 +127,9 @@
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Notícia 4</td>
+                            <td>Curso 4</td>
                             <td>
-                                Categoria
+                                Parcial
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -142,9 +140,9 @@
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Notícia 5</td>
+                            <td>Curso 5</td>
                             <td>
-                                Categoria
+                                Parcial
                             </td>
                             <td>
                                 <div class="admin__actions">
@@ -175,7 +173,7 @@
                 <i class="uil uil-times-circle"></i>
             </button>
             <i class="uil uil-exclamation-octagon"></i>
-            <h1>Excluir <strong>Notícia</strong></h1>
+            <h1>Excluir <strong>Curso</strong></h1>
         </div>
         <div class="confirmation__body">
             <h2>Aviso: Essa ação não pode ser desfeita</h2>

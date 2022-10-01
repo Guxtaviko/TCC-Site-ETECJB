@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Dashboard | Funcionários</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../partials/admin/admin-nav') %> 
+
+    <%- include('../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../partials/admin/admin-menu', {current: 'funcionario'}) %> 
+
+        <section class="admin__container container">
+
+            <%- include('../components/admin/admin-search-bar', {item: 'Funcionário'}) %> 
+
+            <div class="admin__content">
+                <div class="admin__header">
+                    <h1>Funcionários</h1>
+                    <a href="/admin/funcionario" class="admin__add">
+                        <i class="uil uil-plus"></i> Novo Funcionário
+                    </a>
+                </div>
+                <table class="admin__table bigger__table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Equipe</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% for( let i = 1; i <= 5; i++ ) { %>
+                            <tr>
+                                <td><%- i %></td>
+                                <td><%- `Pessoa ${i}` %></td>
+                                <td>Lorem, ipsum dolor.</td>
+                                <td>Equipe Docente</td>
+                                <td>
+                                    <div class="admin__actions">
+                                        <button><i class="uil uil-pen"></i> Editar</button>
+                                        <button><i class="uil uil-trash-alt"></i> Excluir</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% } %>
+                    </tbody>
+                </table>
+                <div class="admin__info">
+                    <span class="admin__qnt">Exibindo <strong>5</strong> de <strong>69</strong></span>
+                    <div class="admin__pagination">
+                        <i class="uil uil-angle-left"></i>
+                        <div class="admin__page current-page">1</div>
+                        <div class="admin__page">2</div>
+                        <div class="admin__page">3</div>
+                        <i class="uil uil-angle-right"></i>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../components/admin/confirmation', {item: 'Funcionário'}) %> 
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

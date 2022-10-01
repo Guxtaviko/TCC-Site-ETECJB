@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC João Belarmino</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+    <%- include('./partials/nav') %> 
+
+    <%- include('./components/theme-switcher') %> 
+
+    <header class="slides swiper carousel">
+        <div class="swiper-wrapper slides__container">
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img1.png">
+                </div>
+            </article>
+
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img2.png">
+                </div>
+            </article>
+
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img3.png">
+                </div>
+            </article>
+
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img4.png">
+                </div>
+            </article>
+
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img5.png">
+                </div>
+            </article>
+
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img6.png">
+                </div>
+            </article>
+
+            <article class="slide swiper-slide">
+                <div class="slide-image">
+                    <img src="./imgs/slide-pics/img7.png">
+                </div>
+            </article>
+        </div>
+        <div class="swiper-button-next swiper-button"></div>
+        <div class="swiper-button-prev swiper-button"></div>
+        <div class="swiper-pagination"></div>
+    </header>
+
+    <section class="lastNews container">
+        <div class="lastNews__title">
+            <h1 class="color--white">Últimas notícias</h1>
+        </div>
+        <div class="lastNews__container">
+            <% for( let i = 0; i < 3; i++ ) { %>
+                <%- include('./components/news/last-notice') %> 
+            <% } %>
+        </div>
+        <div class="lastNews__btn"><a href="./noticias.html">Todas As Notícias</a></div>
+    </section>
+
+    <section class="featuredCourses">
+            <h1>Conheça Nossos Cursos</h1>
+        <div class="featuredCourses__container container">
+            <div class="featuredCourses__left">
+                <div class="featuredCourses__title ">
+                    <h3>Técnicos + Ensino Médio</h3>
+                </div>
+                <div class="featuredCourses__grid">
+                    <% for( let i = 0; i < 4; i++ ) { %>
+                    <%- include('./components/courses/featured-course') %> 
+                    <% } %>
+                </div>
+                <div class="featuredCourses__cta">
+                    <a href="./cursos.html#integralCourses">Ver Todos</a>
+                </div>
+            </div>
+            <div class="featuredCourses__right">
+                <div class="featuredCourses__title">
+                    <h3>Técnicos</h3>
+                </div>
+                <div class="featuredCourses__grid">
+                    <% for( let i = 0; i < 4; i++ ) { %>
+                    <%- include('./components/courses/featured-course') %> 
+                    <% } %>
+                </div>
+                <div class="featuredCourses__cta">
+                    <a href="./cursos.html#parcialCourses">Ver Todos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container testimonials swiper">
+        <h1>Depoimento dos Ex-Alunos</h1>
+        <div class="swiper-wrapper testimonials__container">
+            <% for( let i = 0; i < 6; i++ ) { %>
+            <%- include('components/testimonial') %> 
+            <% } %>
+        </div>
+        <div class="swiper-pagination"></div>
+    </section>
+
+    <%- include('./partials/footer') %> 
+
+    <script src="/js/main.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper-->
+    <script>
+        var swiper = new Swiper(".carousel", {
+          slidesPerView: 1,
+          spaceBetween: 10,
+          autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+          },
+          loop: true,
+          pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+          },
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+        });
+
+        var swiper = new Swiper(".testimonials ", {
+            slidesPerView: 1.1,
+            spaceBetween: 30,
+            loop: true,
+            pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            },
+            
+            breakpoints: {
+                // When window width is >= 1060px
+                1060: {
+                    slidesPerView: 2.1
+                }
+            }
+        });
+
+    </script>
+
+</body>
+</html>

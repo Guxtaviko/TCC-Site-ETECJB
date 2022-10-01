@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Notícias</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/news.css">
+</head>
+<body>
+    <%- include('./partials/nav') %> 
+
+    <%- include('./components/theme-switcher') %>
+
+    <section class="recent">
+        <div class="container recent__container">
+            <% for( let i = 0; i < 3; i++ ) { %>
+            <%- include('./components/news/recent-notice') %> 
+            <% } %>         
+        </div>
+    </section>
+
+    <%- include('./components/search-bar', {item: 'Notícia'}) %>
+
+    <main class="main__container container">
+        <section class="news">
+            <% for( let i = 0; i < 9; i++ ) { %>
+            <%- include('./components/news/notice') %> 
+            <% } %>
+        </section>
+
+        <aside>
+            <div class="featured">
+                <div class="featured__title">
+                    <h3>Mais Lidas</h3>
+                </div>
+                <div class="featured__list">
+                    <% for( let i = 1; i <= 5; i++ ) { %>
+                        <div class="featured__notice">
+                            <h1> <%- i %>  </h1> <h4><a href="exemploNoticia.html">Lorem ipsum dolor sit amet consectetur.</a></h4>
+                        </div>
+                    <% } %> 
+                </div>
+            </div>
+
+            <div class="categories">
+                <div class="categories__title">
+                    <h3>Categorias</h3>
+                </div>
+                <div class="categories__container">
+                    <div class="category">Lorem.</div>
+                    <div class="category">Dolor?</div>
+                    <div class="category">Atque!</div>
+                    <div class="category">Delectus.</div>
+                    <div class="category">Saepe?</div>
+                    <div class="category">Lorem.</div>
+                    <div class="category">Eum!</div>
+                    <div class="category">Dolor.</div>
+                </div>
+            </div>
+
+        </aside>
+    </main>
+
+    <%- include('./partials/footer') %> 
+
+    <script src="/js/main.js"></script>
+
+</body>
+</html>

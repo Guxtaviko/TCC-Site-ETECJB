@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Curso</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../../partials/admin/admin-nav') %> 
+
+    <%- include('../../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../../partials/admin/admin-menu', {current: 'curso'}) %>
+        
+        <section class="admin__container container">
+            <div class="admin__content">
+                <div class="admin__header"><h1>Curso</h1></div>
+                <form class="admin__form">
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="id">Id</label>
+                            <input type="text" disabled value="1" name="id" id="id">
+                        </div>
+                        <div class="form__section">
+                            <label for="">Tipo</label>
+                            <div class="form__radio">
+                                <div class="radio__option">
+                                    <input type="radio" name="type" id="integral" value="inegral">
+                                    <label for="integral">Integral</label>
+                                </div>
+                                <div class="radio__option">
+                                    <input type="radio" name="type" id="parcial" value="parcial">
+                                    <label for="parcial">Parcial</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form__section">
+                        <label for="name">Nome</label>
+                        <input type="text" name="name" id="name">
+                    </div>
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="workload">Carga Horária</label>
+                            <input type="number" name="workload" id="workload">
+                        </div>
+                        <div class="form__section">
+                            <label for="vacancies">Vagas</label>
+                            <input type="number" name="vacancies" id="vacancies">
+                        </div>
+                        <div class="form__section">
+                            <label for="period">Turno</label>
+                            <select name="period" id="period">
+                                <option value="1">Matutino</option>
+                                <option value="2">Vespertino</option>
+                                <option value="3">Integral</option>
+                                <option value="4">Noturno</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="image">Imagem de Capa</label>
+                            <input type="file" name="image" id="image">
+                        </div>
+                        <div class="form__section">
+                            <label for="matriz">Matriz curricular</label>
+                            <input type="file" name="matriz" id="matriz">
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="coordinator">Coordenador</label>
+                            <input type="text" name="coordinator" id="coordinator">
+                        </div>
+                        <div class="form__section">
+                            <label for="email">Email Coordenador</label>
+                            <input type="email" name="email" id="email">
+                        </div>
+                    </div>
+                    <div class="form__section">
+                        <label for="description">Descrição</label>
+                        <textarea name="description" id="description" cols="50" rows="4"></textarea>
+                    </div>
+                    <div class="form__group form__actions">
+                        <button type="reset" class="form__clear">Limpar</button>
+                        <button type="submit" class="form__send">Enviar</button>
+                    </div>
+                </form>
+                <div class="admin__info">
+                    <a href="/admin/cursos" class="admin__back">Voltar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

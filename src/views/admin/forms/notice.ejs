@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Notícia</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../../partials/admin/admin-nav') %> 
+
+    <%- include('../../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../../partials/admin/admin-menu', {current: 'noticia'}) %>
+        
+        <section class="admin__container container">
+            <div class="admin__content">
+                <div class="admin__header"><h1>Notícia</h1></div>
+                <form class="admin__form">
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="id">Id</label>
+                            <input type="text" disabled value="1" name="id" id="id">
+                        </div>
+                        <div class="form__section">
+                            <label for="date">Data</label>
+                            <input type="date" name="date" id="date">
+                        </div>
+                    </div>
+                    <div class="form__section">
+                        <label for="title">Título</label>
+                        <input type="text" name="title" id="title">
+                    </div>
+                    <div class="form__section">
+                        <label for="subtitle">Subtítulo</label>
+                        <input type="text" name="subtitle" id="subtitle">
+                    </div>
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="image">Imagem de Capa</label>
+                            <input type="file" name="image" id="image">
+                        </div>
+                        <div class="form__section">
+                            <label for="category">Categoria</label>
+                            <select name="category" id="category">
+                                <option value="1">Evento</option>
+                                <option value="2">Aviso</option>
+                                <option value="3">Informação</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form__section">
+                        <label for="body">Corpo</label>
+                        <textarea name="body" id="body" cols="50" rows="8"></textarea>
+                    </div>
+                    <div class="form__group form__actions">
+                        <button type="reset" class="form__clear">Limpar</button>
+                        <button type="submit" class="form__send">Enviar</button>
+                    </div>
+                </form>
+                <div class="admin__info">
+                    <a href="/admin/dashboard" class="admin__back">Voltar</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Login</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <%- include('./partials/nav') %> 
+
+    <%- include('./components/theme-switcher') %>
+
+    <section class="login">
+        <div class="login__container container">
+            <div class="login__card">
+                <h1>LOGIN</h1>
+                <form action="" class="login__form">
+                    <div class="form__section">
+                        <div class="input__container">
+                            <i class="uil uil-user"></i>
+                            <input type="text" class="login__input" name="username" autocomplete="off">
+                        </div>
+                        <label for="username" class="login__label"><i class="uil uil-clock-two"></i> Usuário</label>
+                    </div>
+                    <div class="form__section">
+                        <div class="input__container">
+                            <i class="uil uil-lock"></i>
+                            <input type="password" class="login__input" name="password" autocomplete="off">
+                            <i class="uil uil-eye show-password"></i>
+                        </div>
+                        <label for="username" class="login__label"><i class="uil uil-clock-two"></i> Senha</label>
+                    </div>
+                    <button class="login__btn"><a href="./admin/dashboard">Entrar</a></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <%- include('./partials/footer') %> 
+
+    <script src="/js/main.js"></script>
+    <script>
+        loginForm();
+    </script>
+
+</body>
+</html>

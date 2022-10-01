@@ -1,0 +1,22 @@
+<section class="admin__menu">
+    <a href="/admin/dashboard" class="admin__item <% if (current == 'noticia') { %> current__item <% } %>">
+        <span><i class="uil uil-newspaper"></i> Notícias</span>
+    </a>
+    <a href="/admin/cursos" class="admin__item <% if (current == 'curso') { %> current__item <% } %>">
+        <span><i class="uil uil-graduation-cap"></i> Cursos</span>
+    </a>
+    <a href="/admin/depoimentos" class="admin__item <% if (current == 'depoimento') { %> current__item <% } %>">
+        <span><i class="uil uil-award"></i> Depoimentos</span>
+    </a>
+    <a href="/admin/funcionarios" class="admin__item <% if (current == 'funcionario') { %> current__item <% } %>">
+        <span><i class="uil uil-university"></i> Funcionários</span>
+    </a>
+    <a href="/admin/usuarios" class="admin__item <% if (current == 'usuario') { %> current__item <% } %> ">
+        <span><i class="uil uil-users-alt"></i> Usuários</span>
+    </a>
+    <a href="" class="admin__item hidden__item">
+        <span><i class="uil uil-bullseye"></i>Extremo Secreto</span>
+    </a>
+</section>
+
+<button class="adminMenu__btn"><i class="uil uil-arrow-right"></i></button>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Funcionário</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../../partials/admin/admin-nav') %> 
+
+    <%- include('../../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../../partials/admin/admin-menu', {current: 'funcionario'}) %>
+        
+        <section class="admin__container container">
+            <div class="admin__content">
+                <div class="admin__header"><h1>Funcionário</h1></div>
+                <form class="admin__form">
+                    <div class="form__group">
+                        <div class="form__section" style="flex-grow: 0;">
+                            <label for="id">Id</label>
+                            <input type="text" readonly value="1" name="id" id="id">
+                        </div>
+                        <div class="form__section">
+                            <label for="name">Nome</label>
+                            <input type="name" name="name" id="name">
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="team">Equipe</label>
+                            <select name="team" id="team">
+                                <option value="1">Equipe Docente</option>
+                                <option value="2">Equipe Escolar</option>
+                                <option value="3">Conselho Escolar</option>
+                            </select>
+                        </div>
+                        <div class="form__section">
+                            <label for="role">Cargo</label>
+                            <input type="text" name="role" id="role">
+                        </div>
+                    </div>
+                    <div class="form__group form__actions">
+                        <button type="reset" class="form__clear">Limpar</button>
+                        <button type="submit" class="form__send">Enviar</button>
+                    </div>
+                </form>
+                <div class="admin__info">
+                    <a href="/admin/funcionarios" class="admin__back">Voltar</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="admin.js"></script>
+</body>
+</html>

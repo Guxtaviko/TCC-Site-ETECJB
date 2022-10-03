@@ -217,6 +217,14 @@
     font-family: 'Montserrat', sans-serif;
 }
 
+.admin__back{
+    transition: var(--transition);
+}
+
+.admin__back:hover {
+    color: var(--color-primary-dark);
+}
+
 .admin__qnt {
     font-size: 0.85rem;
 }

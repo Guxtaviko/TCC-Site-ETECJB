@@ -27,7 +27,7 @@
         <div class="login__container container">
             <div class="login__card">
                 <h1>LOGIN</h1>
-                <form action="" class="login__form">
+                <form action="/login" method="POST" class="login__form">
                     <div class="form__section">
                         <div class="input__container">
                             <i class="uil uil-user"></i>
@@ -35,6 +35,9 @@
                         </div>
                         <label for="username" class="login__label"><i class="uil uil-clock-two"></i> Usuário</label>
                     </div>
+                    <% if (error == 'NotFound') { %>
+                        <div class="form__error"><i class="uil uil-exclamation-triangle"></i> Usuário não encontrado!</div>
+                    <% } %>
                     <div class="form__section">
                         <div class="input__container">
                             <i class="uil uil-lock"></i>
@@ -43,6 +46,9 @@
                         </div>
                         <label for="username" class="login__label"><i class="uil uil-clock-two"></i> Senha</label>
                     </div>
+                    <% if (error == 'WrongPwd') { %>
+                        <div class="form__error"><i class="uil uil-exclamation-triangle"></i> Senha Incorreta!</div>
+                    <% } %>
                     <button class="login__btn"><a href="./admin/dashboard">Entrar</a></button>
                 </form>
             </div>

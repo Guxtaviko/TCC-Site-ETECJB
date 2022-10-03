@@ -756,6 +756,14 @@ nav button {
     color: var(--color-primary);
 }
 
+/* FORM ERROR */
+.form__error {
+    color: var(--color-primary-dark);
+    padding: 0.25rem;
+    background: rgba(255, 0, 0, 0.1);
+}
+
+
 /* FOOTER */
 footer{
     background: var(--color-white);
@@ -801,10 +809,32 @@ footer ul li a:hover {
     text-decoration: underline;
 }
 
+.footer__3 {
+    display: flex;
+    flex-direction: column;
+}
+
 .footer__3 > div {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
+}
+
+.footer__admin {
+    margin-top: auto;
+    font-weight: bold;
+}
+
+.footer__admin i {
+    font-size: 1.1rem;
+}
+
+.footer__admin a {
+    transition: var(--transition);
+}
+
+.footer__admin a:hover {
+    color: var(--color-primary-dark);
 }
 
 .footer__copyright {

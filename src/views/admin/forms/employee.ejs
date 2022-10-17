@@ -43,9 +43,8 @@
                             <input type="text" readonly value="<%- employee.id ?? '' %> " name="id" id="id">
                         </div>
                         <div class="form__section">
-                            <% if (typeof empty != 'undefined' && empty.includes('employee_name')) { %>
-                                <%- include('../../components/admin/required-field', { msg: null }) %> 
-                            <% } %>
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'employee_name' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'employee_name' , msg: 'Esse campo deve conter apenas letras' }) %>  
                             <label for="employee_name">Nome</label>
                             <input type="text" name="employee_name" id="employee_name" value="<%- employee.employee_name ?? '' %> ">
                         </div>
@@ -66,9 +65,8 @@
                             </select>
                         </div>
                         <div class="form__section">
-                            <% if (typeof empty != 'undefined' && empty.includes('employee_role')) { %>
-                                <%- include('../../components/admin/required-field', { msg: null }) %> 
-                            <% } %>
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'employee_role' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'employee_role' , msg: 'Esse campo deve conter apenas letras' }) %> 
                             <label for="employee_role">Cargo</label>
                             <input type="text" name="employee_role" id="employee_role" value="<%- employee.employee_role ?? '' %>">
                         </div>

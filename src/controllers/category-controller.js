@@ -17,6 +17,16 @@ const getAll = async (req, res) => {
 
 const createNew = async (req, res) => {
     const {category_name, category_desc} = req.body
+
+    if (await Category.findOne({where: {
+        category_name: category_name
+    }})) return res.render('admin/forms/category', {
+        category: {},
+        errors: {
+            exists: ['category_name']
+        }
+    })
+
     Category.create({category_name, category_desc})
     res.redirect('/admin/categorias')
 }

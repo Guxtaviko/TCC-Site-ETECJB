@@ -6,7 +6,9 @@ const validateInputs = (optionals, item) => {
         
         if(invalidFields.length != 0) return res.render(`admin/forms/${item}`, {
             [item]: {},
-            empty: Object.keys(Object.fromEntries(invalidFields))
+            errors: {
+                empty: Object.keys(Object.fromEntries(invalidFields))
+            }
         })
         next()
     }

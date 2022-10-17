@@ -1,1 +1,3 @@
-<div class="form__error"><i class="uil uil-exclamation-triangle"></i><%- msg ?? 'Campo Obrigatório' %> </div>
+<% if (errors[check] != undefined && errors[check].includes(field)) { %>
+    <div class="form__error"><i class="uil uil-exclamation-triangle"></i><%- msg ?? 'Campo Obrigatório' %> </div>
+<% } %>

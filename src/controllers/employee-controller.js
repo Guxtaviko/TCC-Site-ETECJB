@@ -33,7 +33,10 @@ const createNew = async (req, res) => {
 const edit = async (req, res) => {
     const { id } = req.params;
     const employee = await Employee.findByPk(id)
-    res.render('admin/forms/employee', {employee: employee})
+    res.render('admin/forms/employee', {
+        employee: employee,
+        errors: {}
+    })
 }
 
 const update = async (req, res) => {

@@ -43,11 +43,14 @@
                             <input type="text" readonly value="<%- category.id ?? '' %>" name="id" id="id"> 
                         </div>
                         <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'category_name' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'exists', field: 'category_name' , msg: 'Categoria já existe' }) %> 
                             <label for="category_name">Nome</label>
                             <input type="text" name="category_name" id="category_name" value="<%- category.category_name ?? '' %> ">
                         </div>
                     </div>
                     <div class="form__section">
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'category_desc' , msg: null }) %> 
                         <label for="category_desc">Descrição</label>
                         <input type="text" name="category_desc" id="category_desc" value="<%- category.category_desc ?? '' %> ">
                     </div>

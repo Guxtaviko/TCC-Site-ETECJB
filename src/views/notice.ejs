@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Sobre</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/notice.css">
+</head>
+<body>
+    <%- include('./partials/nav') %> 
+
+    <%- include('./components/theme-switcher') %>
+
+    <section class="notice">
+        <div class="notice__header">
+            <div class="notice__header--container container">
+                <div class="notice__title">
+                    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, voluptas.</h1>
+                </div>
+                <div class="notice__subtitle">
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia eos porro accusamus corrupti eveniet, consequatur molestiae quaerat pariatur earum, ipsa fugit? Praesentium optio alias natus non nobis doloremque debitis iste.</p>
+                </div>
+                <div class="notice__info">
+                    <span><strong>Nome do Autor &bull;</strong> 24/10/2018</span>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="notice__container container">
+                <div class="notice__img">
+                    <img src="/imgs/slide-pics/img6.png">
+                    <em class="--desc">Descrição da Imagem</em>
+                </div>
+                <div class="notice__text">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores at architecto inventore eligendi expedita iste laborum minima recusandae. Porro totam doloribus fuga tenetur nihil amet numquam, saepe aliquam illo quasi inventore recusandae. Fugiat quisquam sapiente odit, ea modi minima labore dolorem, ipsam, pariatur nihil beatae earum nemo ab facilis asperiores!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis officia earum quae, voluptatum perferendis id natus. Iure accusantium sunt ad, voluptatibus mollitia accusamus saepe commodi exercitationem sed vitae quos. Ipsam ratione error quidem ipsum assumenda ex? Dolorem quaerat provident ea pariatur dolores cum quasi illo aliquam laborum est! Architecto autem, quibusdam dolorem eaque quo, dolor ea, ex non incidunt voluptas ipsa. Hic voluptatem inventore accusantium atque, eaque deleniti quia vitae?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam totam suscipit soluta mollitia! Dicta alias possimus neque architecto at dignissimos cumque perspiciatis id repudiandae iusto. Quos architecto culpa accusantium quibusdam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur, mollitia enim unde porro ullam ex magnam voluptate. Numquam eum provident amet esse doloribus ea aliquam ut. Ipsum officia, voluptatibus nihil beatae dignissimos, iure aliquam cupiditate reiciendis saepe repellendus magni quo nesciunt minima! Laboriosam, sunt, odit temporibus natus iusto in reprehenderit repellendus voluptas illum hic distinctio obcaecati doloremque qui rerum!</p>
+
+                    <h2>Tópico</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores at architecto inventore eligendi expedita iste laborum minima recusandae. Porro totam doloribus fuga tenetur nihil amet numquam, saepe aliquam illo quasi inventore recusandae. Fugiat quisquam sapiente odit, ea modi minima labore dolorem, ipsam, pariatur nihil beatae earum nemo ab facilis asperiores!</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis officia earum quae, voluptatum perferendis id natus. Iure accusantium sunt ad, voluptatibus mollitia accusamus saepe commodi exercitationem sed vitae quos. Ipsam ratione error quidem ipsum assumenda ex? Dolorem quaerat provident ea pariatur dolores cum quasi illo aliquam laborum est! Architecto autem, quibusdam dolorem eaque quo, dolor ea, ex non incidunt voluptas ipsa. Hic voluptatem inventore accusantium atque, eaque deleniti quia vitae?</p>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam totam suscipit soluta mollitia! Dicta alias possimus neque architecto at dignissimos cumque perspiciatis id repudiandae iusto. Quos architecto culpa accusantium quibusdam.</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur, mollitia enim unde porro ullam ex magnam voluptate. Numquam eum provident amet esse doloribus ea aliquam ut. Ipsum officia, voluptatibus nihil beatae dignissimos, iure aliquam cupiditate reiciendis saepe repellendus magni quo nesciunt minima! Laboriosam, sunt, odit temporibus natus iusto in reprehenderit repellendus voluptas illum hic distinctio obcaecati doloremque qui rerum!</p>
+                </div>
+                <div class="notice__categories">
+                    <span class="notice__category"><a href="#">Categoria</a></span>
+                </div>
+        </div>
+    </section>
+
+    <section class="moreNews">
+        <div class="moreNews__title container">
+            <h1>Veja Também</h1>
+        </div>
+        <div class="moreNews__container container">
+            <div class="swiper moreNewsSwiper">
+                <div class="swiper-wrapper">
+                    <% for( let i = 0; i < 4; i++ ) { %>
+                    <%- include('./components/news/more-notice') %> 
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <hr class="container">
+    </section>
+
+    <%- include('./partials/footer') %> 
+
+    <script src="/js/main.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".moreNewsSwiper", {
+            slidesPerView: 1.1,
+            spaceBetween: 15,
+            loop: true,
+            breakpoints: {
+                // When window width is >= 1060px
+                600: {
+                    slidesPerView: 2.1,
+                    spaceBetween: 24,
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

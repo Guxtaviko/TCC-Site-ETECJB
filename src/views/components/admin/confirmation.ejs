@@ -9,12 +9,14 @@
     <div class="confirmation__body">
         <h2>Aviso: Essa ação não pode ser desfeita</h2>
         <div class="confirmation__list">
-            <p class="confirmation__item">Este conteúdo será removido do site</p>
-            <p class="confirmation__item">Você não terá mais acesso a ele</p>
-            <p class="confirmation__item">Não ficará salva nenhuma informação referente a isso</p>
+            <p class="confirmation__item"><%- item %> será removido(a) de todo o site</p>
+            <p class="confirmation__item">Não haverá mais nenhum acesso a essa informação</p>
+            <p class="confirmation__item">Nenhuma informação ficará contida no site</p>
         </div>
         <div class="confirmation__btns">
-            <button class="confirmation__delete">Excluir</button>
+            <form method="POST" action="" id="confirmDelete">
+                <button class="confirmation__delete" type="submit">Excluir</button>
+            </form>
             <button class="confirmation__cancel">Cancelar</button>
         </div>
     </div>

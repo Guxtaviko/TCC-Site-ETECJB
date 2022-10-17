@@ -119,6 +119,29 @@
     width: 100%;
 }
 
+.admin__links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}
+
+.admin__links a {
+    font-size: 1.15rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--color-black);
+}
+
+.admin__links a:hover {
+    color: var(--color-primary-dark);
+}
+
+.admin__links a.active__link {
+    color: var(--color-primary);
+}
+
 .admin__header {
     width: 100%;
     display: flex;
@@ -175,13 +198,24 @@
     background: var(--color-light);
 }
 
+.bigger__table td{
+    font-size: 0.9rem;
+}
+
+.admin__empty {
+    font-size: 1.15rem !important;
+    padding: 1rem !important;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
 .admin__actions {
     display: flex;
     justify-content: center;
     gap: 1rem;
 }
 
-.admin__actions button {
+.admin__actions a, .admin__actions button {
     padding: 0.25rem 0.5rem;
     background: transparent;
     cursor: pointer;
@@ -192,7 +226,7 @@
     transition: var(--transition);
 }
 
-.admin__actions button:nth-child(1){
+.admin__actions a{
     color: var(--color-secondary);
     border: 1px solid var(--color-secondary);
 }
@@ -202,8 +236,9 @@
     color: var(--color-white);
 }
 
-.admin__actions button:nth-child(1):hover{
+.admin__actions a:hover{
     background: var(--color-secondary);
+    color: var(--color-white);
 }
 
 .admin__info {
@@ -236,6 +271,14 @@
     gap: 0.5rem;
 }
 
+.admin__pagination .first {
+    margin-right: -1rem;
+}
+
+.admin__pagination .last {
+    margin-left: -1rem;
+}
+
 .admin__pagination i {
     color: var(--color-primary);
     font-size: 1.3rem;
@@ -266,6 +309,10 @@
 
 .current-page {
     background: var(--color-primary);
+    color: var(--color-white);
+}
+
+.current-page a {
     color: var(--color-white);
 }
 
@@ -307,13 +354,14 @@
 }
 
 .confirmation__header > i {
-    font-size: 3rem;
+    font-size: 3.5rem;
 }
 
 .confirmation__header h1 {
-    font-size: 2.1rem;
+    font-size: 2rem;
     margin-top: 1rem;
     font-weight: normal;
+    text-transform: uppercase;
 }
 
 .confirmation__body {
@@ -345,7 +393,6 @@
     font-size: 0.95rem;
     text-transform: uppercase;
     padding: 0.75rem;
-    width: 40%;
     border-radius: 0.25rem;
     text-align: center;
     border: 1px solid;
@@ -353,7 +400,12 @@
     transition: var(--transition);
 }
 
+.confirmation__btns > * {
+    width: 40%;
+}
+
 .confirmation__btns .confirmation__delete {
+    width: 100%;
     background: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-white);
@@ -380,7 +432,7 @@
     margin-top: -1rem;
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 1.5rem;
 }
 
 .form__group{
@@ -397,6 +449,7 @@
 .form__section{
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .form__section label {
@@ -448,6 +501,34 @@
 .form__radio {
     display: flex;
     gap: 1rem;
+}
+
+.form__error {
+    font-size: 0.95rem;
+    color: white;
+    padding: 0.25rem 0.5rem;
+    background: rgb(255, 50, 50);
+    border-radius: 0.25rem;
+    position: absolute;
+    left: 0;
+    top: 100%;
+}
+
+.form__error::before {
+    border-radius: 1px;
+    width: 12px;
+    height: 12px;
+    background: rgb(255, 50, 50);
+    position: absolute;
+    content: '';
+    top: -6px;
+    left: 12px;
+    clip-path: polygon(0 0, 100% 0%, 50% 50%, 0% 100%);
+    transform: rotate(45deg);
+}
+
+.form__error ~ input {
+    border: 1px solid rgb(255, 50, 50);
 }
 
 @keyframes shakeBtn {
@@ -605,6 +686,11 @@
     .bigger__table thead th:nth-child(4),
     .bigger__table tbody td:nth-child(4) {
         display: none;
+    }
+
+    .admin__info {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 
     /* CONFIRMATION */

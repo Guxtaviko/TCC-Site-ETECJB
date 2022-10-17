@@ -1,6 +1,9 @@
 <section class="admin__menu">
-    <a href="/admin/dashboard" class="admin__item <% if (current == 'noticia') { %> current__item <% } %>">
+    <a href="/admin/noticias" class="admin__item <% if (current == 'noticia') { %> current__item <% } %>">
         <span><i class="uil uil-newspaper"></i> Notícias</span>
+    </a>
+    <a href="/admin/categorias" class="admin__item <% if (current == 'categoria') { %> current__item <% } %>">
+        <span><i class="uil uil-brightness-empty"></i> Categorias</span>
     </a>
     <a href="/admin/cursos" class="admin__item <% if (current == 'curso') { %> current__item <% } %>">
         <span><i class="uil uil-graduation-cap"></i> Cursos</span>

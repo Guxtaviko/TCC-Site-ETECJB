@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ETEC JB | Usuário</title>
+    <title>ETEC JB | Categoria</title>
 
     <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
 
@@ -26,29 +26,30 @@
 
     <main class="admin">
 
-        <%- include('../../partials/admin/admin-menu', {current: 'usuario'}) %>
+        <%- include('../../partials/admin/admin-menu', {current: 'categoria'}) %>
         
         <section class="admin__container container">
             <div class="admin__content">
-                <div class="admin__header"><h1>Novo Usuário</h1></div>
-                <form class="admin__form" action="/admin/usuario/novo" method="POST">
-                    <div class="form__section">
-                        <label for="username">Nome de Usuário</label>
-                        <input type="text" name="username" id="username">
-                    </div>
-                    <div class="form__section">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email">
-                    </div>
-                    <div class="form__group">
-                        <div class="form__section">
-                            <label for="password">Senha</label>
-                            <input type="password" name="password" id="password">
+                <% if (category.id !== undefined) { %>
+                    <div class="admin__header"><h1>Editar <%- category.category_name %> </h1></div>
+                    <form method="POST" action="/admin/categoria/<%- category.id %>?_method=PUT " class="admin__form">
+                <% } else {%>  
+                    <div class="admin__header"><h1>Nova Categoria</h1></div>
+                    <form class="admin__form" action="/admin/categoria/novo" method="POST">
+                <% } %> 
+                    <div class="form__group" >
+                        <div class="form__section" style="flex-grow: 0;">
+                            <label for="id">Id</label>
+                            <input type="text" readonly value="<%- category.id ?? '' %>" name="id" id="id"> 
                         </div>
                         <div class="form__section">
-                            <label for="repeatPwd">Repetir Senha</label>
-                            <input type="password" name="repeatPwd" id="repeatPwd">
+                            <label for="category_name">Nome</label>
+                            <input type="text" name="category_name" id="category_name" value="<%- category.category_name ?? '' %> ">
                         </div>
+                    </div>
+                    <div class="form__section">
+                        <label for="category_desc">Descrição</label>
+                        <input type="text" name="category_desc" id="category_desc" value="<%- category.category_desc ?? '' %> ">
                     </div>
                     <div class="form__group form__actions">
                         <button type="reset" class="form__clear">Limpar</button>
@@ -56,11 +57,10 @@
                     </div>
                 </form>
                 <div class="admin__info">
-                    <a href="/admin/usuarios" class="admin__back">Voltar</a>
+                    <a href="/admin/categorias" class="admin__back">Voltar</a>
                 </div>
             </div>
         </section>
-        
 
     </main>
 

@@ -30,30 +30,47 @@
         
         <section class="admin__container container">
             <div class="admin__content">
-                <div class="admin__header"><h1>Funcionário</h1></div>
-                <form class="admin__form">
+                <% if (employee.id !== undefined) { %>
+                    <div class="admin__header"><h1>Editar <%- employee.employee_name %> </h1></div>
+                    <form class="admin__form" method="POST" action="/admin/funcionario/<%- employee.id %>?_method=PUT">
+                <% } else {%>   
+                    <div class="admin__header"><h1>Novo Funcionário</h1></div>
+                    <form class="admin__form" action="/admin/funcionario/novo" method="POST">
+                <% } %> 
                     <div class="form__group">
                         <div class="form__section" style="flex-grow: 0;">
                             <label for="id">Id</label>
-                            <input type="text" readonly value="1" name="id" id="id">
+                            <input type="text" readonly value="<%- employee.id ?? '' %> " name="id" id="id">
                         </div>
                         <div class="form__section">
-                            <label for="name">Nome</label>
-                            <input type="name" name="name" id="name">
+                            <% if (typeof empty != 'undefined' && empty.includes('employee_name')) { %>
+                                <div class="form__error"><i class="uil uil-exclamation-triangle"></i> Campo Obrigatório</div>
+                            <% } %>
+                            <label for="employee_name">Nome</label>
+                            <input type="text" name="employee_name" id="employee_name" value="<%- employee.employee_name ?? '' %> ">
                         </div>
                     </div>
                     <div class="form__group">
                         <div class="form__section">
-                            <label for="team">Equipe</label>
-                            <select name="team" id="team">
-                                <option value="1">Equipe Docente</option>
-                                <option value="2">Equipe Escolar</option>
-                                <option value="3">Conselho Escolar</option>
+                            <label for="employee_team">Equipe</label>
+                            <select name="employee_team" id="employee_team" >
+                                <% if (employee.employee_team !== undefined) { %>
+                                    <option value="EQUIPE DOCENTE" <%= employee.employee_team == 'EQUIPE DOCENTE' ? 'selected' : '' %> >EQUIPE DOCENTE</option>
+                                    <option value="EQUIPE ESCOLAR" <%= employee.employee_team == 'EQUIPE ESCOLAR' ? 'selected' : '' %> >EQUIPE ESCOLAR</option>
+                                    <option value="CONSELHO ESCOLAR" <%= employee.employee_team == 'CONSELHO ESCOLAR' ? 'selected' : '' %> >CONSELHO ESCOLAR</option>
+                                <% } else {%>
+                                    <option value="EQUIPE DOCENTE">EQUIPE DOCENTE</option>
+                                    <option value="EQUIPE ESCOLAR">EQUIPE ESCOLAR</option>
+                                    <option value="CONSELHO ESCOLAR">CONSELHO ESCOLAR</option>
+                                <% } %> 
                             </select>
                         </div>
                         <div class="form__section">
-                            <label for="role">Cargo</label>
-                            <input type="text" name="role" id="role">
+                            <% if (typeof empty != 'undefined' && empty.includes('employee_role')) { %>
+                                <div class="form__error"><i class="uil uil-exclamation-triangle"></i> Campo Obrigatório</div>
+                            <% } %>
+                            <label for="employee_role">Cargo</label>
+                            <input type="text" name="employee_role" id="employee_role" value="<%- employee.employee_role ?? '' %>">
                         </div>
                     </div>
                     <div class="form__group form__actions">

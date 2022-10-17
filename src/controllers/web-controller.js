@@ -10,7 +10,7 @@ const loginUser = async (req, res) => {
     // Checks if user exists
     if(!user) return res.render('login', {error: 'NotFound'})
     // Check if password is correct
-    if(await bcrypt.compare(password, user.password)) return res.redirect('/admin/dashboard')
+    if(await bcrypt.compare(password, user.password)) return res.redirect('/admin/noticias')
     return res.render('login', {error: 'WrongPwd'})
 }
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>ETEC JB | Dashboard | Usuários</title>
+    <title>ETEC JB | Dashboard | Categorias</title>
 
     <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
 
@@ -26,44 +26,45 @@
 
     <main class="admin">
 
-        <%- include('../partials/admin/admin-menu', {current: 'usuario'}) %> 
+        <%- include('../partials/admin/admin-menu', {current: 'categoria'}) %> 
 
         <section class="admin__container container">
 
-            <%- include('../components/admin/admin-search-bar', {item: 'Usuário'}) %> 
+            <%- include('../components/admin/admin-search-bar', {item: 'Categoria'}) %> 
 
             <div class="admin__content">
                 <div class="admin__header">
-                    <h1>Usuários</h1>
-                    <a href="/admin/usuario/novo" class="admin__add">
-                        <i class="uil uil-plus"></i> Novo Usuário 
+                    <h1>Categorias</h1>
+                    <a href="/admin/categoria/novo" class="admin__add">
+                        <i class="uil uil-plus"></i> Nova Categoria 
                     </a>
                 </div>
                 <table class="admin__table">
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nome</th>
-                            <th>Email</th>
+                            <th>Categoria</th>
+                            <th>Descrição</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% if (users.length < 1) { %>
+                        <% if (categories.length < 1) { %>
                             <tr>
                                 <td colspan="5" class="admin__empty">
-                                    Nenhum Usuário Encontrado
+                                    Nenhuma Categoria Encontrada
                                 </td>
                             </tr>
-                        <% } %> 
-                        <% users.forEach(user => { %>
+                        <% } %>  
+                        <% categories.forEach(category => { %>
                             <tr>
-                                <td><%- user.id %></td>
-                                <td><%- user.username %></td>
-                                <td><%- user.email %></td>
+                                <td><%- category.id %></td>
+                                <td><%- category.category_name %></td>
+                                <td><%- category.category_desc %></td>
                                 <td>
                                     <div class="admin__actions">
-                                        <button class="deleteBtn" data-element="usuario" data-element-id="<%-user.id%>"><i class="uil uil-trash-alt"></i> Excluir</button>
+                                        <a href="/admin/categoria/editar/<%- category.id%> "><i class="uil uil-pen"></i> Editar</a>
+                                        <button class="deleteBtn" data-element="categoria" data-element-id="<%-category.id%>"><i class="uil uil-trash-alt"></i> Excluir</button>
                                     </div>
                                 </td>
                             </tr>
@@ -71,17 +72,17 @@
                     </tbody>
                 </table>
                 <% if (typeof search != 'undefined') { %>
-                    <%- include('../partials/admin/admin-info', {url: `/admin/usuario/busca?name=${search}&`}) %> 
-                <% } else {%>  
-                    <%- include('../partials/admin/admin-info', {url: '/admin/usuarios?'}) %>
-                <% } %>  
+                    <%- include('../partials/admin/admin-info', {url: `/admin/categoria/busca?name=${search}&`}) %> 
+                <% } else {%>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/categorias?`}) %> 
+                <% } %>
             </div>
 
         </section>
 
     </main>
 
-    <%- include('../components/admin/confirmation', {item: 'Usuário'}) %> 
+    <%- include('../components/admin/confirmation', {item: 'Categoria'}) %> 
 
     <script src="/js/admin.js"></script>
     <script>

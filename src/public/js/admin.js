@@ -104,24 +104,26 @@ window.addEventListener('resize', () => {
     }
 })
 
-const confirmationModal = document.querySelector('.confirmation');
-const closeModal = document.querySelector('.confirmation__close');
-const cancelModal = document.querySelector('.confirmation__cancel');
-const deleteBtns = document.querySelectorAll('.uil-trash-alt');
-deleteBtns.forEach(btn => {
-    btn.parentElement.addEventListener('click', () => {
-        if (confirmationModal.style.display == 'block') {
-            confirmationModal.style.display = 'none'
-        } else {
+const confirmation = () => {
+    const confirmationModal = document.querySelector('.confirmation');
+    const closeModal = document.querySelector('.confirmation__close');
+    const cancelModal = document.querySelector('.confirmation__cancel');
+    const form = document.getElementById('confirmDelete')
+    const deleteBtns = document.querySelectorAll('.deleteBtn');
+    deleteBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
             confirmationModal.style.display = 'block'
-        }
+            console.log(form.action)
+            form.action = `/admin/${btn.getAttribute('data-element')}/${btn.getAttribute('data-element-id')}?_method=DELETE`
+            console.log(form.action)
+        })
+    });
+    
+    closeModal.addEventListener('click', () => {
+        confirmationModal.style.display = 'none';
     })
-});
-
-closeModal.addEventListener('click', () => {
-    confirmationModal.style.display = 'none';
-})
-
-cancelModal.addEventListener('click', () => {
-    confirmationModal.style.display = 'none';
-})
+    
+    cancelModal.addEventListener('click', () => {
+        confirmationModal.style.display = 'none';
+    })
+}

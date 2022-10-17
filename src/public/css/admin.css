@@ -37,10 +37,11 @@
     margin-top: 5rem;
     display: grid;
     grid-template-columns: max-content auto;
+    min-height: calc(100vh - 5rem);
 }
 
 .admin__menu {
-    height: calc(100vh - 6rem);
+    height: calc(100% - 1rem);
     padding-top: 1rem;
     width: fit-content;
     background: var(--color-white);
@@ -98,20 +99,22 @@
 .admin__container {
     position: relative;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 5rem);
+    padding: 2rem 0;
+    gap: 2.5rem;
 }
 
 .admin__search {
-    position: absolute;
-    top: 1rem;
-    left: 50%;
-    transform: translateX(-52%);
     width: 60%;
+    margin: 0;
 }
 
 .admin__search form {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     width: 100%;
 }
 
@@ -123,7 +126,6 @@
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: -1rem;
     margin-bottom: 1rem;
 }
 
@@ -147,7 +149,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .admin__header h1 {
@@ -216,7 +218,7 @@
 }
 
 .admin__actions a, .admin__actions button {
-    padding: 0.25rem 0.5rem;
+    padding: 0.25rem 0.35rem;
     background: transparent;
     cursor: pointer;
     font-size: 0.9rem;
@@ -224,6 +226,8 @@
     font-weight: 700;
     border: 1px solid var(--color-primary);
     transition: var(--transition);
+    display: flex;
+    gap: 0.15rem;
 }
 
 .admin__actions a{
@@ -432,7 +436,7 @@
     margin-top: -1rem;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.75rem;
 }
 
 .form__group{
@@ -462,6 +466,10 @@
     background: var(--color-white);
     padding: 0.5rem;
     border: 1px solid var(--color-black);
+}
+
+.form__actions {
+    margin-top: 0.5rem;
 }
 
 .form__actions button{
@@ -511,7 +519,7 @@
     border-radius: 0.25rem;
     position: absolute;
     left: 0;
-    top: 100%;
+    top: calc(100% + 0.1rem);
 }
 
 .form__error::before {
@@ -557,7 +565,7 @@
 
     /* ADMIN MENU */
     .admin__menu {
-        position: absolute;
+        position: fixed;
         display: flex;
         z-index: 14;
         left: 0;
@@ -569,7 +577,7 @@
     .adminMenu__btn {
         z-index: 13;
         display: block;
-        position: absolute;
+        position: fixed;
         bottom: 3rem;
         left: 0rem;
         background: var(--color-primary);
@@ -652,9 +660,6 @@
 @media screen and (max-width: 600px) {
     /* SEARCH */
     .admin__search {
-        top: 1rem;
-        left: 50%;
-        transform: translateX(-54%);
         width: 90%;
     }    
 

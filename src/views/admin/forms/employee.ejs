@@ -44,7 +44,7 @@
                         </div>
                         <div class="form__section">
                             <% if (typeof empty != 'undefined' && empty.includes('employee_name')) { %>
-                                <div class="form__error"><i class="uil uil-exclamation-triangle"></i> Campo Obrigatório</div>
+                                <%- include('../../components/admin/required-field', { msg: null }) %> 
                             <% } %>
                             <label for="employee_name">Nome</label>
                             <input type="text" name="employee_name" id="employee_name" value="<%- employee.employee_name ?? '' %> ">
@@ -67,7 +67,7 @@
                         </div>
                         <div class="form__section">
                             <% if (typeof empty != 'undefined' && empty.includes('employee_role')) { %>
-                                <div class="form__error"><i class="uil uil-exclamation-triangle"></i> Campo Obrigatório</div>
+                                <%- include('../../components/admin/required-field', { msg: null }) %> 
                             <% } %>
                             <label for="employee_role">Cargo</label>
                             <input type="text" name="employee_role" id="employee_role" value="<%- employee.employee_role ?? '' %>">

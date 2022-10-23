@@ -53,15 +53,9 @@
                         <div class="form__section">
                             <label for="employee_team">Equipe</label>
                             <select name="employee_team" id="employee_team" >
-                                <% if (employee.employee_team !== undefined) { %>
-                                    <option value="EQUIPE DOCENTE" <%= employee.employee_team == 'EQUIPE DOCENTE' ? 'selected' : '' %> >EQUIPE DOCENTE</option>
-                                    <option value="EQUIPE ESCOLAR" <%= employee.employee_team == 'EQUIPE ESCOLAR' ? 'selected' : '' %> >EQUIPE ESCOLAR</option>
-                                    <option value="CONSELHO ESCOLAR" <%= employee.employee_team == 'CONSELHO ESCOLAR' ? 'selected' : '' %> >CONSELHO ESCOLAR</option>
-                                <% } else {%>
-                                    <option value="EQUIPE DOCENTE">EQUIPE DOCENTE</option>
-                                    <option value="EQUIPE ESCOLAR">EQUIPE ESCOLAR</option>
-                                    <option value="CONSELHO ESCOLAR">CONSELHO ESCOLAR</option>
-                                <% } %> 
+                                <option value="EQUIPE DOCENTE" <%= employee.employee_team == 'EQUIPE DOCENTE' ? 'selected' : '' %> >EQUIPE DOCENTE</option>
+                                <option value="EQUIPE ESCOLAR" <%= employee.employee_team == 'EQUIPE ESCOLAR' ? 'selected' : '' %> >EQUIPE ESCOLAR</option>
+                                <option value="CONSELHO ESCOLAR" <%= employee.employee_team == 'CONSELHO ESCOLAR' ? 'selected' : '' %> >CONSELHO ESCOLAR</option>
                             </select>
                         </div>
                         <div class="form__section">

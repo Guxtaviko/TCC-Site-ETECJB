@@ -535,7 +535,7 @@
     transform: rotate(45deg);
 }
 
-.form__error ~ input {
+.form__error ~ input, .form__error ~ textarea {
     border: 1px solid rgb(255, 50, 50);
 }
 

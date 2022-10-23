@@ -44,7 +44,7 @@
                         </div>
                         <div class="form__section">
                             <%- include('../../components/admin/required-field', { check: 'empty', field: 'category_name' , msg: null }) %>
-                            <%- include('../../components/admin/required-field', { check: 'exists', field: 'category_name' , msg: 'Categoria já existe' }) %> 
+                            <%- include('../../components/admin/required-field', { check: 'existing', field: 'category_name' , msg: 'Categoria já existe' }) %> 
                             <label for="category_name">Nome</label>
                             <input type="text" name="category_name" id="category_name" value="<%- category.category_name ?? '' %> ">
                         </div>

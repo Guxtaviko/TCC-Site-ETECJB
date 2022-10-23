@@ -1,3 +1,6 @@
 node_modules
 .env
 test
+
+src/public/uploads/courses/curricula/*
+src/public/uploads/courses/imgs/*

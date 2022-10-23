@@ -16,14 +16,18 @@ const getAll = async (req, res) => {
 }
 
 const createNew = async (req, res) => {
-    const {category_name, category_desc} = req.body
+    let {category_name, category_desc} = req.body
 
-    if (await Category.findOne({where: {
+    category_name = category_name.trim()
+    category_name = category_name[0].toUpperCase() + category_name.slice(1).toLowerCase();
+
+    const matchingName = await Category.findOne({where: {
         category_name: category_name
-    }})) return res.render('admin/forms/category', {
+    }})
+    if (matchingName) return res.render('admin/forms/category', {
         category: {},
         errors: {
-            exists: ['category_name']
+            existing: ['category_name']
         }
     })
 
@@ -34,7 +38,10 @@ const createNew = async (req, res) => {
 const edit = async (req, res) => {
     const { id } = req.params;
     const category = await Category.findByPk(id)
-    res.render('admin/forms/category', {category: category})
+    res.render('admin/forms/category', {
+        category: category,
+        errors: {}
+    })
 }
 
 const update = async (req, res) => {

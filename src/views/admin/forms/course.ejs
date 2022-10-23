@@ -30,73 +30,92 @@
         
         <section class="admin__container container">
             <div class="admin__content">
-                <div class="admin__header"><h1>Curso</h1></div>
-                <form class="admin__form">
+                <% if (course.id !== undefined) { %>
+                    <div class="admin__header"><h1>Editar <%- course.course_name %> </h1></div>
+                    <form method="POST" action="/admin/curso/<%- course.id %>?_method=PUT " class="admin__form">
+                <% } else {%>  
+                    <div class="admin__header"><h1>Novo Curso</h1></div>
+                    <form enctype="multipart/form-data" class="admin__form" action="/admin/curso/novo" method="POST">
+                <% } %> 
                     <div class="form__group">
                         <div class="form__section">
                             <label for="id">Id</label>
-                            <input type="text" disabled value="1" name="id" id="id">
+                            <input type="text" readonly value=" <%- course.id ?? '' %> " name="id" id="id">
                         </div>
                         <div class="form__section">
-                            <label for="">Tipo</label>
+                            <label for="course_period">Tipo</label>
                             <div class="form__radio">
                                 <div class="radio__option">
-                                    <input type="radio" name="type" id="integral" value="inegral">
+                                    <input checked type="radio" name="course_period" id="integral" value="Integral">
                                     <label for="integral">Integral</label>
                                 </div>
                                 <div class="radio__option">
-                                    <input type="radio" name="type" id="parcial" value="parcial">
+                                    <input 
+                                    <% if (course.course_period == 'parcial') { %> checked <% } %> 
+                                    type="radio" name="course_period" id="parcial" value="Parcial">
                                     <label for="parcial">Parcial</label>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="form__section">
-                        <label for="name">Nome</label>
-                        <input type="text" name="name" id="name">
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_name' , msg: null }) %>
+                        <label for="course_name">Nome</label>
+                        <input value=" <%- course.course_name ?? '' %> " type="text" name="course_name" id="course_name">
                     </div>
                     <div class="form__group">
                         <div class="form__section">
-                            <label for="workload">Carga Horária</label>
-                            <input type="number" name="workload" id="workload">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_workload' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'course_workload' , msg: 'Deve conter apenas números' }) %>
+                            <label for="course_workload">Carga Horária</label>
+                            <input value=" <%- course.course_workload ?? '' %> " type="text" name="course_workload" id="course_workload">
                         </div>
                         <div class="form__section">
-                            <label for="vacancies">Vagas</label>
-                            <input type="number" name="vacancies" id="vacancies">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_vacancies' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'course_vacancies' , msg: 'Deve conter apenas números' }) %>
+                            <label for="course_vacancies">Vagas</label>
+                            <input value=" <%- course.course_vacancies ?? '' %> " type="text" name="course_vacancies" id="course_vacancies">
                         </div>
                         <div class="form__section">
-                            <label for="period">Turno</label>
-                            <select name="period" id="period">
-                                <option value="1">Matutino</option>
-                                <option value="2">Vespertino</option>
-                                <option value="3">Integral</option>
-                                <option value="4">Noturno</option>
+                            <label for="course_shift">Turno</label>
+                            <select name="course_shift" id="course_shift">
+                                <option value="Matutino" <%= course.course_shift == 'Matutino' ? 'selected' : '' %> >Matutino</option>
+                                <option value="Vespertino" <%= course.course_shift == 'Vespertino' ? 'selected' : '' %> >Vespertino</option>
+                                <option value="Integral" <%= course.course_shift == 'Integral' ? 'selected' : '' %> >Integral</option>
+                                <option value="Noturno" <%= course.course_shift == 'Noturno' ? 'selected' : '' %> >Noturno</option>
                             </select>
                         </div>
                     </div>
+                    <% if (course.id === undefined) { %> 
+                        <div class="form__group">
+                            <div class="form__section">
+                                <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_img' , msg: 'Imagem Obrigatória' }) %>
+                                <label for="course_img">Imagem de Capa</label>
+                                <input type="file" name="course_img" id="course_img">
+                            </div>
+                            <div class="form__section">
+                                <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_curriculum' , msg: 'PDF Obrigatório' }) %>
+                                <label for="course_curriculum">Matriz curricular</label>
+                                <input type="file" name="course_curriculum" id="course_curriculum">
+                            </div>
+                        </div>
+                    <% } %> 
                     <div class="form__group">
                         <div class="form__section">
-                            <label for="image">Imagem de Capa</label>
-                            <input type="file" name="image" id="image">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_coordinator' , msg: null }) %>
+                            <label for="course_coordinator">Coordenador</label>
+                            <input value=" <%- course.course_coordinator ?? '' %> " type="text" name="course_coordinator" id="course_coordinator">
                         </div>
                         <div class="form__section">
-                            <label for="matriz">Matriz curricular</label>
-                            <input type="file" name="matriz" id="matriz">
-                        </div>
-                    </div>
-                    <div class="form__group">
-                        <div class="form__section">
-                            <label for="coordinator">Coordenador</label>
-                            <input type="text" name="coordinator" id="coordinator">
-                        </div>
-                        <div class="form__section">
-                            <label for="email">Email Coordenador</label>
-                            <input type="email" name="email" id="email">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_email' , msg: null }) %>
+                            <label for="course_email">Email Coordenador</label>
+                            <input value=" <%- course.course_email ?? '' %> " type="email" name="course_email" id="course_email">
                         </div>
                     </div>
                     <div class="form__section">
-                        <label for="description">Descrição</label>
-                        <textarea name="description" id="description" cols="50" rows="4"></textarea>
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'course_desc' , msg: null }) %>
+                        <label for="course_desc">Descrição</label>
+                        <textarea value=" <%- course.course_desc ?? '' %> " name="course_desc" id="course_desc" cols="50" rows="4"></textarea>
                     </div>
                     <div class="form__group form__actions">
                         <button type="reset" class="form__clear">Limpar</button>

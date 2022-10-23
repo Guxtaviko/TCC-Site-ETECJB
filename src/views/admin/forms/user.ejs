@@ -34,22 +34,26 @@
                 <form class="admin__form" action="/admin/usuario/novo" method="POST">
                     <div class="form__section">
                         <%- include('../../components/admin/required-field', { check: 'empty', field: 'username' , msg: null }) %>
+                        <%- include('../../components/admin/required-field', { check: 'existing', field: 'username' , msg: 'Nome de Usuário já em uso' }) %>
                         <label for="username">Nome de Usuário</label>
                         <input type="text" name="username" id="username">
                     </div>
                     <div class="form__section">
                         <%- include('../../components/admin/required-field', { check: 'empty', field: 'email' , msg: null }) %>
+                        <%- include('../../components/admin/required-field', { check: 'existing', field: 'email' , msg: 'Email já em uso' }) %>
                         <label for="email">Email</label>
                         <input type="email" name="email" id="email">
                     </div>
                     <div class="form__group">
                         <div class="form__section">
                             <%- include('../../components/admin/required-field', { check: 'empty', field: 'password' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'matches', field: 'password' , msg: 'As senhas devem ser iguais' }) %>
                             <label for="password">Senha</label>
                             <input type="password" name="password" id="password">
                         </div>
                         <div class="form__section">
                             <%- include('../../components/admin/required-field', { check: 'empty', field: 'repeatPwd' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'matches', field: 'repeatPwd' , msg: 'As senhas devem ser iguais' }) %>
                             <label for="repeatPwd">Repetir Senha</label>
                             <input type="password" name="repeatPwd" id="repeatPwd">
                         </div>

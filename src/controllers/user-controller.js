@@ -2,6 +2,7 @@ const Sequelize = require('sequelize');
 const connection = require('../database/database')
 const User = require('../models/user')(connection, Sequelize)
 const pagination = require('../helpers/pagination');
+const bcrypt = require('bcrypt')
 
 const getAll = async (req, res) => {
     let page = parseInt(req.query.page);
@@ -17,8 +18,46 @@ const getAll = async (req, res) => {
 }
 
 const createNew = async (req, res) => {
-    const {username, email, password} = req.body
-    User.create({username, email, password})
+    const salt = await bcrypt.genSalt(12)
+    let {username, email, password, repeatPwd} = req.body
+    username = username.trim()
+    email = email.trim()
+
+    const matchingUsername = await User.findOne({
+        where: {
+            username: username
+        }
+    })
+
+    const matchingEmail = await User.findOne({
+        where: {
+            email: email
+        }
+    })
+
+    if (matchingUsername) return res.render('admin/forms/user', {
+        user: {},
+        errors: {
+            existing: ['username']
+        }
+    })
+
+    if (matchingEmail) return res.render('admin/forms/user', {
+        user: {},
+        errors: {
+            existing: ['email']
+        }
+    })
+
+    if (password != repeatPwd) return res.render('admin/forms/user', {
+        user: {},
+        errors: {
+            matches: ['password', 'repeatPwd']
+        }
+    })
+
+    hashedPwd = await bcrypt.hash(password, salt)
+    User.create({username, email, password: hashedPwd})
     res.redirect('/admin/usuarios')
 }
 

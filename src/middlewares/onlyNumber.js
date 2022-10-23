@@ -1,10 +1,9 @@
 const deleteUpload = require('../helpers/deleteUpload')
 
-const onlyLetter = (optionals, item) => {
+const onlyNumber = (fields, item) => {
     return (req, res, next) => {
-        const fields = Object.entries(req.body)
-        const onlyLetterFields = fields.filter(([key, _]) => !optionals.includes(key))
-        const invalidFields = onlyLetterFields.filter(([_, value]) => !/^[a-zA-Z\u00C0-\u00FF'\s]+$/.test(value))
+        const onlyNumberFields = Object.entries(req.body).filter(([key, _]) => fields.includes(key))
+        const invalidFields = onlyNumberFields.filter(([_, value]) => !/^[0-9]*$/.test(value.trim()))
 
         if(invalidFields.length != 0) {
             deleteUpload(req)
@@ -20,4 +19,4 @@ const onlyLetter = (optionals, item) => {
     }
 }
 
-module.exports = onlyLetter
+module.exports = onlyNumber

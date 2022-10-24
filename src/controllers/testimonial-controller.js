@@ -3,6 +3,8 @@ const connection = require('../database/database')
 const Testimonial = require('../models/testimonial')(connection, Sequelize)
 const pagination = require('../helpers/pagination')
 
+const fs = require('fs')
+
 const getAll = async (req, res) => {
     let page = parseInt(req.query.page);
     if(isNaN(page)) page = 1

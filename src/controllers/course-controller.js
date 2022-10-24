@@ -102,6 +102,15 @@ const update = async (req, res) => {
 
 const destroy = async (req, res) => {
     const { id } = req.params;
+    const course = await Course.findByPk(id)
+
+    fs.unlink('src/public/uploads/courses/imgs/' + course.course_img, (err) => {
+        if (err) throw(err)
+    })
+    fs.unlink('src/public/uploads/courses/curricula/' + course.course_curriculum, (err) => {
+        if (err) throw(err)
+    })
+
     await Course.destroy({where: {id: id} })
     res.redirect('/admin/cursos')
 }

@@ -130,5 +130,11 @@
     </main>
 
     <script src="/js/admin.js"></script>
+    <% if (course.course_desc !== undefined) { %>
+    <script>
+        const textarea = document.querySelector('textarea')
+        textarea.value = '<%= course.course_desc %>'
+    </script>
+    <% } %>
 </body>
 </html>

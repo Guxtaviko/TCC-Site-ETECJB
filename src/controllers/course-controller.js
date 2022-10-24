@@ -70,7 +70,7 @@ const edit = async (req, res) => {
 
 const update = async (req, res) => {
     const { id } = req.params;
-    const {
+    let {
         course_name, 
         course_desc, 
         course_workload,
@@ -80,6 +80,11 @@ const update = async (req, res) => {
         course_email,
         course_shift 
     } = req.body
+
+    course_name = course_name.trim()
+    course_desc = course_desc.trim()
+    course_coordinator = course_coordinator.trim()
+    course_email = course_email.trim()
 
     Course.update(
         { course_name, 

@@ -30,35 +30,50 @@
         
         <section class="admin__container container">
             <div class="admin__content">
-                <div class="admin__header"><h1>Depoimento</h1></div>
-                <form class="admin__form">
+                <% if (testimonial.id !== undefined) { %>
+                    <div class="admin__header">
+                        <h1>Editar Depoimento de <%- testimonial.testimonial_author %></h1>
+                    </div>
+                    <form method="POST" action="/admin/depoimento/<%- testimonial.id %>?_method=PUT" class="admin__form">
+                <% } else {%>
+                    <div class="admin__header"><h1>Novo Depoimento</h1></div>
+                    <form enctype="multipart/form-data" class="admin__form" action="/admin/depoimento/novo" method="POST">
+                <% } %> 
                     <div class="form__group">
                         <div class="form__section">
                             <label for="id">Id</label>
-                            <input type="text" readonly value="1" name="id" id="id">
+                            <input type="text" readonly value="<%- testimonial.id ?? '' %> " name="id" id="id">
                         </div>
                         <div class="form__section">
-                            <label for="date">Data</label>
-                            <input type="date" name="date" id="date">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'testimonial_year' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'testimonial_year' , msg: 'Deve conter apenas números' }) %>
+                            <label for="testimonial_year">Ano</label>
+                            <input type="text" name="testimonial_year" id="testimonial_year" maxlength="4" value="<%- testimonial.testimonial_year ?? '' %> ">
                         </div>
                     </div>
                     <div class="form__section">
-                        <label for="author">Autor</label>
-                        <input type="text" name="author" id="author">
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'testimonial_author' , msg: null }) %>
+                        <label for="testimonial_author">Autor</label>
+                        <input type="text" name="testimonial_author" id="testimonial_author" value="<%- testimonial.testimonial_author ?? '' %> ">
                     </div>
                     <div class="form__group">
+                    <% if (testimonial.id === undefined) { %>
                         <div class="form__section">
-                            <label for="image">Imagem do Autor</label>
-                            <input type="file" name="image" id="image">
+                            <%- include('../../components/admin/required-field', { check: 'wrong', field: 'testimonial_img' , msg: 'Deve ser uma imagem' }) %>
+                            <label for="testimonial_img">Imagem do Autor</label>
+                            <input type="file" name="testimonial_img" id="testimonial_img">
                         </div>
+                    <% } %>
                         <div class="form__section">
-                            <label for="role">Cargo</label>
-                            <input type="text" name="role" id="role">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'testimonial_role' , msg: null }) %>
+                            <label for="testimonial_role">Cargo</label>
+                            <input type="text" name="testimonial_role" id="testimonial_role" value="<%- testimonial.testimonial_role ?? '' %> ">
                         </div>
                     </div>
                     <div class="form__section">
-                        <label for="phrase">Corpo</label>
-                        <textarea name="phrase" id="phrase" cols="50" rows="3"></textarea>
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'testimonial_body' , msg: null }) %>
+                        <label for="testimonial_body">Depoimento</label>
+                        <textarea name="testimonial_body" id="testimonial_body" cols="50" rows="3"></textarea>
                     </div>
                     <div class="form__group form__actions">
                         <button type="reset" class="form__clear">Limpar</button>
@@ -74,5 +89,11 @@
     </main>
 
     <script src="/js/admin.js"></script>
+    <% if (testimonial.testimonial_body !== undefined) { %>
+        <script>
+            const textarea = document.querySelector('textarea')
+            textarea.value = '<%= testimonial.testimonial_body %>'
+        </script>
+        <% } %>
 </body>
 </html>

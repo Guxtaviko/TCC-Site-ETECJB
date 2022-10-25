@@ -19,7 +19,7 @@ const getAll = async (req, res) => {
         page: page, 
         pageQnt: result.quantity, 
         team: team
-    })
+    }) 
 }
 
 const createNew = async (req, res) => {

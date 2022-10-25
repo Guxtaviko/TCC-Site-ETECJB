@@ -39,44 +39,60 @@
                         <i class="uil uil-plus"></i> Nova Notícia 
                     </a>
                 </div>
-                <table class="admin__table">
+                <div class="admin__links">
+                    <% categories.forEach(category => { %>
+                        <a 
+                        href="<%- `/admin/noticias?cat=${category.id}` %>" 
+                        <% if (cat == category.id) { %> class="active__link" <% } %> >
+                        <%- category.category_name %>  </a>
+                    <% }) %>
+                </div>
+                <table class="admin__table bigger__table">
                     <thead>
                         <tr>
                             <th>Id</th>
                             <th>Título</th>
                             <th>Categoria</th>
+                            <th>Autor</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <% for( let i = 1; i <= 5; i++ ) { %>
+                        <% if (news.length < 1) { %>
                             <tr>
-                                <td><%- i %></td>
-                                <td><%- `Notícia ${i}` %> </td>
-                                <td>Categoria</td>
-                                <td>
-                                    <div class="admin__actions">
-                                        <button><i class="uil uil-pen"></i> Editar</button>
-                                        <button><i class="uil uil-trash-alt"></i> Excluir</button>
-                                    </div>
+                                <td colspan="5" class="admin__empty">
+                                    Nenhuma Notícia Encontrada
                                 </td>
                             </tr>
                         <% } %>
+                        <% news.forEach(notice => { %> 
+                            <tr>
+                                <td> <%- notice.id %>  </td>
+                                <td> <%- notice.notice_title %>  </td>
+                                <td> <%- notice.Category.category_name %>  </td>
+                                <td> <%- notice.notice_author %> </td>
+                                <td>
+                                    <div class="admin__actions">
+                                        <a href="/admin/noticia/editar/<%- notice.id %> ">
+                                            <i class="uil uil-pen"></i> Editar
+                                        </a>
+                                        <button class="deleteBtn"
+                                        data-element="noticia" data-element-id="<%- notice.id %> ">
+                                            <i class="uil uil-trash-alt"></i> Excluir
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %> 
                     </tbody>
                 </table>
-                <div class="admin__info">
-                    <span class="admin__qnt">Exibindo <strong>5</strong> de <strong>69</strong></span>
-                    <div class="admin__pagination">
-                        <i class="uil uil-angle-left"></i>
-                        <div class="admin__page current-page">1</div>
-                        <div class="admin__page">2</div>
-                        <div class="admin__page">3</div>
-                        <i class="uil uil-angle-right"></i>
-                    </div>
-                </div>
+                <% if (typeof search != 'undefined') { %>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/noticia/busca?name=${search}&`}) %> 
+                <% } else {%>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/noticias?cat=${cat}`}) %> 
+                <% } %>
             </div>
         </section>
-
     </main>
 
     <%- include('../components/admin/confirmation', {item: 'Notícia'}) %> 

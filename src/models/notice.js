@@ -22,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
     notice_subtitle: DataTypes.STRING,
     notice_body: DataTypes.TEXT,
     notice_img: DataTypes.STRING,
-    notice_categoryId: DataTypes.INTEGER
+    notice_categoryId: DataTypes.INTEGER,
+    notice_author: DataTypes.STRING,
+    notice_date: DataTypes.DATEONLY
   }, {
     sequelize,
     tableName: 'news',

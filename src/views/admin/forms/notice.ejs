@@ -30,43 +30,66 @@
         
         <section class="admin__container container">
             <div class="admin__content">
-                <div class="admin__header"><h1>Notícia</h1></div>
-                <form class="admin__form">
+                <% if (notice.id !== undefined) { %>
+                    <div class="admin__header">
+                        <h1>Editar <%- notice.notice_title %> </h1>
+                    </div>
+                    <form method="POST" action="/admin/noticia/<%- notice.id %>?_method=PUT">
+                <% } else {%>
+                    <div class="admin__header">
+                        <h1>Nova Notícia</h1>
+                    </div>
+                    <form enctype="multipart/form-data" method="POST" action="/admin/noticia/novo" class="admin__form">
+                <% } %>   
                     <div class="form__group">
                         <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'notice_title' , msg: null }) %>
+                            <label for="notice_title">Título</label>
+                            <input type="text" name="notice_title" id="notice_title" value=" <%- notice.notice_title ?? '' %> ">
+                        </div>
+                        <div class="form__section" style="flex-grow: 0;">
                             <label for="id">Id</label>
-                            <input type="text" disabled value="1" name="id" id="id">
+                            <input type="text" readonly value=" <%- notice.id ?? '' %> " name="id" id="id">
                         </div>
-                        <div class="form__section">
-                            <label for="date">Data</label>
-                            <input type="date" name="date" id="date">
-                        </div>
-                    </div>
-                    <div class="form__section">
-                        <label for="title">Título</label>
-                        <input type="text" name="title" id="title">
                     </div>
                     <div class="form__group">
                         <div class="form__section">
-                            <label for="subtitle">Subtítulo</label>
-                            <input type="text" name="subtitle" id="subtitle">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'notice_subtitle' , msg: null }) %>
+                            <label for="notice_subtitle">Subtítulo</label>
+                            <input type="text" name="notice_subtitle" id="notice_subtitle" value=" <%- notice.notice_subtitle ?? '' %> ">
                         </div>
                         <div class="form__section" style="flex-grow: 0">
-                            <label for="category">Categoria</label>
-                            <select name="category" id="category">
-                                <option value="1">Evento</option>
-                                <option value="2">Aviso</option>
-                                <option value="3">Informação</option>
+                            <label for="notice_categoryId">Categoria</label>
+                            <select name="notice_categoryId" id="notice_categoryId">
+                                <% categories.forEach(category => { %>
+                                 <option value="<%- category.id %>" <%= notice.notice_categoryId == category.id ? 'selected' : '' %>  ><%- category.category_name %> </option>
+                                <% }) %>
                             </select>
                         </div>
                     </div>
-                    <div class="form__section">
-                        <label for="image">Imagem de Capa</label>
-                        <input type="file" name="image" id="image">
+                    <div class="form__group">
+                        <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'notice_author' , msg: null }) %>
+                            <label for="notice_author">Autor</label>
+                            <input type="text" name="notice_author" id="notice_author" value=" <%- notice.notice_author ?? '' %> ">
+                        </div>
+                        <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'notice_date' , msg: null }) %>
+                            <label for="notice_date">Data</label>
+                            <input type="date" name="notice_date" id="notice_date" value=" <%- notice.notice_date ?? '' %> ">
+                        </div>
                     </div>
+                    <% if (notice.id === undefined) { %>
+                        <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'notice_img' , msg: 'Imagem Obrigatória' }) %>
+                            <label for="notice_img">Imagem de Capa</label>
+                            <input type="file" name="notice_img" id="notice_img">
+                        </div>
+                    <% } %>
                     <div class="form__section">
-                        <label for="body">Corpo</label>
-                        <textarea name="body" id="body" cols="50" rows="8"></textarea>
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'notice_body' , msg: null }) %>
+                        <label for="notice_body">Corpo</label>
+                        <textarea name="notice_body" id="notice_body" cols="50" rows="8"></textarea>
                     </div>
                     <div class="form__group form__actions">
                         <button type="reset" class="form__clear">Limpar</button>
@@ -74,12 +97,24 @@
                     </div>
                 </form>
                 <div class="admin__info">
-                    <a href="/admin/dashboard" class="admin__back">Voltar</a>
+                    <a href="/admin/noticias" class="admin__back">Voltar</a>
                 </div>
             </div>
         </section>
     </main>
 
     <script src="/js/admin.js"></script>
+    <% if (notice.notice_body !== undefined) { %>
+        <script>
+            const textarea = document.querySelector('textarea')
+            textarea.value = '<%= notice.notice_body %>'
+        </script>
+    <% } %>
+    <% if (notice.notice_date !== undefined) { %>
+        <script>
+            const dateInput = document.querySelector('input[type="date"]')
+            dateInput.value = '<%= notice.notice_date %>'
+        </script>
+    <% } %>
 </body>
 </html>

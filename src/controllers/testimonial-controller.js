@@ -94,6 +94,11 @@ const update = async (req, res) => {
 
 const destroy = async (req, res) => {
     const { id } = req.params
+    const testimonial = await Testimonial.findByPk(id)
+
+    if(testimonial.testimonial_img != null) fs.unlink('src/public/uploads/testimonials/' + testimonial.testimonial_img, (err) => {
+        if (err) throw(err)
+    })
 
     await Testimonial.destroy({where: {id: id} })
     res.redirect('/admin/depoimentos')

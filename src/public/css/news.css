@@ -82,6 +82,7 @@
 .news {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    height: fit-content;
     gap: 1.5rem;
 }
 
@@ -94,10 +95,11 @@
 
 .notice__img {
     position: relative;
+    width: 100%;
+    aspect-ratio: 8/5;
 }
 
 .notice__img > img {
-    width: 100%;
     height: 100%;
 }
 

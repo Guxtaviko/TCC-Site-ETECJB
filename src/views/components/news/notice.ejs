@@ -1,20 +1,20 @@
 <div class="notice">
     <div class="notice__img">
-        <img src="./imgs/slide-pics/img5.png">
-        <span class="img__category">Categoria</span>
+        <img src="/uploads/news/<%= notice.notice_img %> ">
+        <span class="img__category"><%= notice.Category.category_name %> </span>
     </div>  
     <div class="notice__content">
-        <div class="notice__title"><h3>Titulo Notícia</h3></div>
+        <div class="notice__title"><h3><%= notice.notice_title %> </h3></div>
         <div class="notice__text">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat numquam voluptatem eligendi, quos minus assumenda ratione, natus debitis, sapiente cumque architecto libero doloribus dolorem! Sed fugit repellat ea nostrum quia tenetur corporis beatae provident suscipit! Quidem laudantium reiciendis et in.
+                <%= notice.notice_subtitle %>
             </p>
         </div>
     </div>
     <div class="notice__info">
-        Nome Autor &bull; 05/07/2005
+        <%= notice.notice_author %>  &bull; <%= notice.notice_date %> 
     </div>
     <div class="notice__cta">
-        <a href="/noticia/titulo">Continuar Lendo <i class="uil uil-arrow-right"></i> </a>
+        <a href="/noticia/<%= notice.notice_title.split(' ').join('_') %> ">Continuar Lendo <i class="uil uil-arrow-right"></i> </a>
     </div>
 </div>

@@ -1,14 +1,14 @@
 <div class="recent__notice">
     <div class="recent__img">
-        <img src="./imgs/slide-pics/img3.png">
+        <img src="./uploads/news/<%= notice.notice_img %> ">
     </div>
     <div class="recent__content">
         <div class="recent__title">
-            <h2><a href="/noticia/titulo">Titulo Notícia</a></h2>
+            <h2><a href="/noticia/<%= notice.notice_title.split(' ').join('_') %> "><%= notice.notice_title %> </a></h2>
         </div>
         <div class="recent__desc">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi beatae et amet dicta debitis pariatur eaque blanditiis obcaecati deleniti, quasi, dolores ipsam perspiciatis veniam molestiae explicabo possimus, optio exercitationem doloremque?
+                <%= notice.notice_subtitle %> 
             </p>
         </div>
     </div>

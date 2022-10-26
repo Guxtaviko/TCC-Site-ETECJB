@@ -27,33 +27,24 @@
         <div class="notice__header">
             <div class="notice__header--container container">
                 <div class="notice__title">
-                    <h1>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, voluptas.</h1>
+                    <h1><%= notice.notice_title %> </h1>
                 </div>
                 <div class="notice__subtitle">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia eos porro accusamus corrupti eveniet, consequatur molestiae quaerat pariatur earum, ipsa fugit? Praesentium optio alias natus non nobis doloremque debitis iste.</p>
+                    <p><%= notice.notice_subtitle %></p>
                 </div>
                 <div class="notice__info">
-                    <span><strong>Nome do Autor &bull;</strong> 24/10/2018</span>
+                    <span><strong><%= notice.notice_author %> &bull;</strong> <%= notice.notice_date %></span>
                 </div>
                 <hr>
             </div>
         </div>
         <div class="notice__container container">
                 <div class="notice__img">
-                    <img src="/imgs/slide-pics/img6.png">
+                    <img src="/uploads/news/<%= notice.notice_img %>">
                     <em class="--desc">Descrição da Imagem</em>
                 </div>
                 <div class="notice__text">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores at architecto inventore eligendi expedita iste laborum minima recusandae. Porro totam doloribus fuga tenetur nihil amet numquam, saepe aliquam illo quasi inventore recusandae. Fugiat quisquam sapiente odit, ea modi minima labore dolorem, ipsam, pariatur nihil beatae earum nemo ab facilis asperiores!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis officia earum quae, voluptatum perferendis id natus. Iure accusantium sunt ad, voluptatibus mollitia accusamus saepe commodi exercitationem sed vitae quos. Ipsam ratione error quidem ipsum assumenda ex? Dolorem quaerat provident ea pariatur dolores cum quasi illo aliquam laborum est! Architecto autem, quibusdam dolorem eaque quo, dolor ea, ex non incidunt voluptas ipsa. Hic voluptatem inventore accusantium atque, eaque deleniti quia vitae?</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam totam suscipit soluta mollitia! Dicta alias possimus neque architecto at dignissimos cumque perspiciatis id repudiandae iusto. Quos architecto culpa accusantium quibusdam.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur, mollitia enim unde porro ullam ex magnam voluptate. Numquam eum provident amet esse doloribus ea aliquam ut. Ipsum officia, voluptatibus nihil beatae dignissimos, iure aliquam cupiditate reiciendis saepe repellendus magni quo nesciunt minima! Laboriosam, sunt, odit temporibus natus iusto in reprehenderit repellendus voluptas illum hic distinctio obcaecati doloremque qui rerum!</p>
-
-                    <h2>Tópico</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores at architecto inventore eligendi expedita iste laborum minima recusandae. Porro totam doloribus fuga tenetur nihil amet numquam, saepe aliquam illo quasi inventore recusandae. Fugiat quisquam sapiente odit, ea modi minima labore dolorem, ipsam, pariatur nihil beatae earum nemo ab facilis asperiores!</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis officia earum quae, voluptatum perferendis id natus. Iure accusantium sunt ad, voluptatibus mollitia accusamus saepe commodi exercitationem sed vitae quos. Ipsam ratione error quidem ipsum assumenda ex? Dolorem quaerat provident ea pariatur dolores cum quasi illo aliquam laborum est! Architecto autem, quibusdam dolorem eaque quo, dolor ea, ex non incidunt voluptas ipsa. Hic voluptatem inventore accusantium atque, eaque deleniti quia vitae?</p>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ullam totam suscipit soluta mollitia! Dicta alias possimus neque architecto at dignissimos cumque perspiciatis id repudiandae iusto. Quos architecto culpa accusantium quibusdam.</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus aspernatur, mollitia enim unde porro ullam ex magnam voluptate. Numquam eum provident amet esse doloribus ea aliquam ut. Ipsum officia, voluptatibus nihil beatae dignissimos, iure aliquam cupiditate reiciendis saepe repellendus magni quo nesciunt minima! Laboriosam, sunt, odit temporibus natus iusto in reprehenderit repellendus voluptas illum hic distinctio obcaecati doloremque qui rerum!</p>
+                    <p><%= notice.notice_body %></p>
                 </div>
                 <div class="notice__categories">
                     <span class="notice__category"><a href="#">Categoria</a></span>

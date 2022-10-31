@@ -87,6 +87,8 @@
 }
 
 .notice {
+    display: flex;
+    flex-direction: column;
     border-radius: 8px;
     background: var(--color-white);
     overflow: hidden;
@@ -96,7 +98,8 @@
 .notice__img {
     position: relative;
     width: 100%;
-    aspect-ratio: 8/5;
+    aspect-ratio: 3/2;
+    overflow: hidden;
 }
 
 .notice__img > img {
@@ -106,6 +109,7 @@
 
 .notice__content {
     padding-inline: 1rem;
+    margin-bottom: auto;
 }
 
 .notice__title {
@@ -225,12 +229,15 @@ aside h3 {
 .category {
     font-size: 0.9rem;
     font-weight: 500;
-    color: var(--color-white);
     text-transform: uppercase;
     background: var(--color-primary);
     padding: 0.5rem 0.7rem;
     cursor: pointer;
     transition: var(--transition);
+}
+
+.category a {
+    color: var(--color-white);
 }
 
 .category:hover {

@@ -380,12 +380,15 @@ nav button {
     position: absolute;
     font-size: 0.8rem;
     bottom: 0;
-    color: var(--color-white);
     text-transform: uppercase;
     background: var(--color-primary);
     padding: 0.5rem 0.7rem;
     transition: var(--transition);
     cursor: pointer;
+}
+
+.img__category a {
+    color: var(--color-white);
 }
 
 .img__category:hover {

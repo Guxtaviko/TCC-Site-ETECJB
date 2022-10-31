@@ -107,13 +107,13 @@
     <% if (notice.notice_body !== undefined) { %>
         <script>
             const textarea = document.querySelector('textarea')
-            textarea.value = '<%= notice.notice_body %>'
+            textarea.value = `<%= notice.notice_body %>`
         </script>
     <% } %>
     <% if (notice.notice_date !== undefined) { %>
         <script>
             const dateInput = document.querySelector('input[type="date"]')
-            dateInput.value = '<%= notice.notice_date %>'
+            dateInput.value = `<%= notice.notice_date %>`
         </script>
     <% } %>
 </body>

@@ -33,7 +33,7 @@
                     <p><%= notice.notice_subtitle %></p>
                 </div>
                 <div class="notice__info">
-                    <span><strong><%= notice.notice_author %> &bull;</strong> <%= notice.notice_date %></span>
+                    <span><strong><%= notice.notice_author %> &bull;</strong> <%= notice.notice_date.split('-').reverse().join('/') %></span>
                 </div>
                 <hr>
             </div>
@@ -41,13 +41,12 @@
         <div class="notice__container container">
                 <div class="notice__img">
                     <img src="/uploads/news/<%= notice.notice_img %>">
-                    <em class="--desc">Descrição da Imagem</em>
                 </div>
                 <div class="notice__text">
                     <p><%= notice.notice_body %></p>
                 </div>
                 <div class="notice__categories">
-                    <span class="notice__category"><a href="#">Categoria</a></span>
+                    <span class="notice__category"><a href="/noticias/categoria/<%= notice.Category.category_name %> "><%= notice.Category.category_name %></a></span>
                 </div>
         </div>
     </section>
@@ -59,8 +58,9 @@
         <div class="moreNews__container container">
             <div class="swiper moreNewsSwiper">
                 <div class="swiper-wrapper">
-                    <% for( let i = 0; i < 4; i++ ) { %>
-                    <%- include('./components/news/more-notice') %> 
+                    <% for( let i = 0; i < news.length; i++ ) { %>
+                        <%- include('./components/news/more-notice', {notice: news[i]}) %>
+                        <% if (i == 6) { i = news.length} %> 
                     <% } %>
                 </div>
             </div>

@@ -23,13 +23,22 @@
 
     <%- include('./components/theme-switcher') %>
 
-    <section class="recent">
-        <div class="container recent__container">
-            <% for( let i = 0; i < 3; i++ ) { %>
-            <%- include('./components/news/recent-notice', { notice: news[i] }) %> 
-            <% } %>         
-        </div>
-    </section>
+    <% if (news.length >= 3) { %>
+        <section class="recent">
+            <div class="container recent__container">
+                <% for( let i = 0; i < 3; i++ ) { %>
+                <%- include('./components/news/recent-notice', { notice: news[i] }) %> 
+                <% } %>         
+            </div>
+        </section>
+    <% } else { %>
+        <style>
+            .search__bar {
+                padding-top: 6rem !important;
+            }
+        </style>
+    <% } %>
+
 
     <%- include('./components/search-bar', {item: 'Notícia'}) %>
 
@@ -60,7 +69,7 @@
                 </div>
                 <div class="categories__container">
                     <% categories.forEach(category => { %>
-                     <div class="category"><%= category.category_name %> </div>
+                     <div class="category"><a href="/noticias/categoria/<%= category.category_name %> "><%= category.category_name %></a> </div>
                     <% }) %>
                 </div>
             </div>

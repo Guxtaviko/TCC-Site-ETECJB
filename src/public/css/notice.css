@@ -137,6 +137,8 @@
 .news__img {
     position: relative;
     height: 100%;
+    aspect-ratio: 3/2;
+    overflow: hidden;
 }
 
 .news__img img {

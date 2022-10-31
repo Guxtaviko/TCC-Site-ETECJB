@@ -24,12 +24,63 @@ const renderNews = async (req, res) => {
 }
 
 const renderNotice = async (req, res) => {
-    let { title } = req.params
-    title = title.split('_').join(' ')
+    const { title } = req.params
 
-    const notice = await Notice.findOne({where: {notice_title: title}, raw: true})
+    const news = await Notice.findAll({ include: Category, order: [['updatedAt', 'DESC']]})
 
-    res.render('notice', {notice: notice})
+    const notice = await Notice.findOne({where: {notice_title: title}, 
+        include: {
+            model: Category
+        }
+    })
+    
+    res.render('notice', {notice: notice, news: news})
+}
+
+const  findNotice = async (req, res) => {
+    const { name } = req.query
+
+    const news = await Notice.findAll({
+        order: [['updatedAt', 'DESC']],
+        where: { 
+            ['notice_title']: {
+                [Sequelize.Op.startsWith]: name
+            }
+        },
+        include: {
+            model: Category,
+            attributes: ['category_name']
+        }
+    })
+
+    const categories = await Category.findAll()
+
+    res.render('news', {
+        news: news,
+        categories: categories
+    })
+    
+}
+
+const filterNews = async (req, res) => {
+    const { cat } = req.params
+
+    const category = await Category.findOne({
+        where: { 'category_name': cat },
+        order: [
+            [Notice ,'updatedAt', 'DESC']
+        ],
+        include: [{ model: Notice, include: Category}]
+    })
+
+    const news = category.Notices
+
+    const categories = await Category.findAll()
+
+    res.render('news', {
+        news: news,
+        categories: categories
+    })
 }
 
 const loginUser = async (req, res) => {
@@ -46,5 +97,7 @@ const loginUser = async (req, res) => {
 module.exports = {
     renderNews,
     renderNotice,
+    findNotice,
+    filterNews,
     loginUser
 }

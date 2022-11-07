@@ -29,25 +29,33 @@
 
     <section class="courses">
         <div class="container courses__container">
-            <div class="courses__container--title --integral" id="integral">
-                <hr class="courses__scroll" id="integralCourses">
-                <h2>Técnicos + Ensino Médio</h2>
-            </div>
-            <div class="courses__grid --integral">
-                <% for( let i = 0; i < 6; i++ ) { %>
-                    <%- include('./components/courses/course') %> 
-                <% } %>
-            </div>
+            <% if (integralCourses.length < 1 && parcialCourses.length < 1) { %>
+                <h1 style="text-align: center; margin-top: 4rem;">Nenhum Curso Encontrado</h1>
+            <% } %>
 
-            <div class="courses__container--title --parcial" id="parcial">
-                <hr class="courses__scroll" id="parcialCourses">
-                <h2>Técnicos</h2>
-            </div>
-            <div class="courses__grid --parcial">
-                <% for( let i = 0; i < 6; i++ ) { %>
-                    <%- include('./components/courses/course') %> 
-                <% } %>
-            </div>
+            <% if (integralCourses.length >= 1) { %>
+                <div class="courses__container--title --integral" id="integral">
+                    <hr class="courses__scroll" id="integralCourses">
+                    <h2>Técnicos + Ensino Médio</h2>
+                </div>
+                <div class="courses__grid --integral">
+                    <% integralCourses.forEach(course => { %>
+                        <%- include('./components/courses/course', {course}) %> 
+                    <% }) %>
+                </div>
+            <% } %>
+            
+            <% if (parcialCourses.length >= 1) { %>
+                <div class="courses__container--title --parcial" id="parcial">
+                    <hr class="courses__scroll" id="parcialCourses">
+                    <h2>Técnicos</h2>
+                </div>
+                <div class="courses__grid --parcial">
+                    <% parcialCourses.forEach(course => { %>
+                        <%- include('./components/courses/course', {course}) %> 
+                    <% }) %>
+                </div>
+            <% } %>
         </div>
     </section>
 
@@ -91,7 +99,7 @@
 
     </script>
 
-    <script src="js/main.js"></script>
+    <script src="/js/main.js"></script>
     <script>
         coursesModal();
     </script>

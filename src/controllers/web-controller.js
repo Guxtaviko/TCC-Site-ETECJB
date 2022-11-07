@@ -3,11 +3,78 @@ const connection = require('../database/database')
 const User = require('../models/user')(connection, Sequelize)
 const Notice = require('../models/notice')(connection, Sequelize)
 const Category = require('../models/category')(connection, Sequelize)
+const Testimonial = require('../models/testimonial')(connection, Sequelize)
+const Course = require('../models/course')(connection, Sequelize)
 
 Notice.associate({Category})
 Category.associate({Notice})
 
 const bcrypt = require('bcrypt');
+
+const renderIndex = async (req, res) => {
+    const news = await Notice.findAll({order: [['updatedAt', 'DESC']], limit: 3, include: {
+        model: Category
+    }})
+
+    const integralCourses = await Course.findAll({where: {
+        course_period: 'Integral'
+    }, limit: 4})
+
+    const parcialCourses = await Course.findAll({where: {
+        course_period: 'Parcial'
+    }, limit: 4})
+
+    const testimonials = await Testimonial.findAll()
+
+    res.render('index', {
+        news,
+        integralCourses,
+        parcialCourses,
+        testimonials
+    })
+}
+
+const renderCourses = async (req, res) => {
+    const integralCourses = await Course.findAll({where: {
+        course_period: 'Integral'
+    }})
+
+    const parcialCourses = await Course.findAll({where: {
+        course_period: 'Parcial'
+    }}) 
+
+    res.render('courses', {
+        integralCourses,
+        parcialCourses
+    })
+}
+
+const findCourse = async (req, res) => {
+    const { name } = req.query
+
+    const integralCourses = await Course.findAll({
+        where: {
+            course_period: 'Integral',
+            course_name: {
+                [Sequelize.Op.startsWith]: name
+            }
+        }
+    })
+
+    const parcialCourses = await Course.findAll({
+        where: {
+            course_period: 'Parcial',
+            course_name: {
+                [Sequelize.Op.startsWith]: name
+            }
+        }
+    })
+
+    res.render('courses', {
+        integralCourses,
+        parcialCourses
+    })
+}
 
 const renderNews = async (req, res) => {
     const news = await Notice.findAll({order: [['updatedAt', 'DESC']], include: {
@@ -36,7 +103,8 @@ const renderNotice = async (req, res) => {
             notice_title: {
                 [Sequelize.Op.not]: title
             }
-        }
+        },
+        limit: 5
     })
 
     const notice = await Notice.findOne({where: {notice_title: title}, 
@@ -119,7 +187,10 @@ const loginUser = async (req, res) => {
 }
 
 module.exports = {
+    renderIndex,
     renderNews,
+    renderCourses,
+    findCourse,
     renderNotice,
     findNotice,
     filterNews,

@@ -60,7 +60,6 @@
                 <div class="swiper-wrapper">
                     <% for( let i = 0; i < news.length; i++ ) { %>
                         <%- include('./components/news/more-notice', {notice: news[i]}) %>
-                        <% if (i == 6) { i = news.length} %> 
                     <% } %>
                 </div>
             </div>

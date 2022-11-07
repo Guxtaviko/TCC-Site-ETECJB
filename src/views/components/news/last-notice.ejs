@@ -1,16 +1,18 @@
 <div class="lastNotice">
-    <h2 class="lastNotice__title">Título Notícia</h2>
+    <h2 class="lastNotice__title"><%= notice.notice_title %></h2>
     <div class="lastNotice__img">
-        <img src="./imgs/slide-pics/img2.png">
-        <span class="img__category">Categoria</span>
+        <img src="/uploads/news/<%= notice.notice_img %> ">
+        <span class="img__category"><a href="/noticias/categoria/<%= notice.Category.category_name %> "><%= notice.Category.category_name %></a> </span>
     </div>
     <div class="lastNotice__text">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum, quam assumenda, tempore odit nobis nihil sapiente nulla consequuntur incidunt necessitatibus modi amet saepe recusandae? Beatae similique dolore, numquam at laborum eaque optio nemo consectetur id officiis, quae ipsum sint quibusdam doloribus amet magni praesentium maxime rem unde consequuntur vero quo?</p>
+        <p>
+            <%= notice.notice_body %> 
+        </p>
     </div>
     <div class="notice__info">
-        Nome Autor &bull; <i class="uil uil-calender"></i> 05/07/2005
+        <%= notice.notice_author %>  &bull; <%= notice.notice_date.split('-').reverse().join('/') %> 
     </div>
     <div class="lastNotice__btn">
-        <a href="/noticia/titulo">Continuar Lendo <i class="uil uil-arrow-right"></i> </a>
+        <a href="/noticia/<%= notice.notice_title %> ">Continuar Lendo <i class="uil uil-arrow-right"></i> </a>
     </div>
 </div>

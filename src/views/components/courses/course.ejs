@@ -1,10 +1,10 @@
 <div class="course">
-    <div class="course__img"><img src="./imgs/slide-pics/img5.png"></div>
+    <div class="course__img"><img src="/uploads/courses/imgs/<%= course.course_img %>"></div>
     <div class="course__content">
         <div class="course__info">
-            <div class="course__title"><h5>Nome Curso</h5></div>
-            <p class="course__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere autem asperiores voluptas numquam voluptatibus ab labore, quas cum repudiandae perferendis nesciunt, aliquam commodi atque quasi ipsam, esse officiis dicta suscipit fugit? Pariatur alias quam earum? Ullam illum saepe, vitae fugit delectus molestiae impedit, velit mollitia, doloremque exercitationem accusantium repellat reiciendis!</p>
+            <div class="course__title"><h5><%= course.course_name %> </h5></div>
+            <p class="course__desc"><%= course.course_desc %> </p>
         </div>
-        <div class="course__btn">Ver Mais</div>
+        <div class="course__btn" data-course="<%= JSON.stringify(course) %> ">Ver Mais</div>
     </div>
 </div>

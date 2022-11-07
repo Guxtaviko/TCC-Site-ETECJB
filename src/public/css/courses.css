@@ -67,8 +67,15 @@
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
 }
 
+.course__img {
+    height: 100%;
+    aspect-ratio: 3/2;
+    overflow: hidden;
+}
+
 .course__img img {
     height: 100%;
+    object-fit: cover;
 }
 
 .--integral .course__content {
@@ -169,12 +176,14 @@
 
 .modalSwiper{
     height: calc(100vh - 2rem);
+    max-height: 800px;
     display: none;
     position: fixed;
     top: 1rem;
     max-width: 800px;
     left: 50%;
-    transform: translateX(-50%);
+    top: 50%;
+    transform: translate(-50%, -50%);
     margin-inline: auto;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
     background: var(--color-white);

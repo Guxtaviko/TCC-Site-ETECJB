@@ -3,8 +3,9 @@ const router = express.Router();
 
 const controller = require('../controllers/web-controller')
 
-router.get('/', (req, res) => res.render('index'));
-router.get('/cursos', (req, res) => res.render('courses'));
+router.get('/', controller.renderIndex)
+router.get('/cursos', controller.renderCourses)
+router.get('/cursos/busca', controller.findCourse)
 
 
 router.get('/noticias', controller.renderNews);

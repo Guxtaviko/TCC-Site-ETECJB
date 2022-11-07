@@ -15,18 +15,29 @@ const renderNews = async (req, res) => {
         attributes: ['category_name']
     }})
 
+    const mostViewed = await Notice.findAll({order: [['notice_views', 'DESC']], limit: 5})
+
     const categories = await Category.findAll()
 
     res.render('news', {
-        news: news,
-        categories: categories
+        news,
+        mostViewed,
+        categories
     })
 }
 
 const renderNotice = async (req, res) => {
     const { title } = req.params
 
-    const news = await Notice.findAll({ include: Category, order: [['updatedAt', 'DESC']]})
+    const news = await Notice.findAll({ 
+        include: Category, 
+        order: [['updatedAt', 'DESC']],
+        where: {
+            notice_title: {
+                [Sequelize.Op.not]: title
+            }
+        }
+    })
 
     const notice = await Notice.findOne({where: {notice_title: title}, 
         include: {
@@ -34,7 +45,14 @@ const renderNotice = async (req, res) => {
         }
     })
     
-    res.render('notice', {notice: notice, news: news})
+    if(req.cookies[notice.notice_title] != 'Visited') { 
+        const views = notice.notice_views + 1
+        await Notice.update({notice_views: views}, { where: {id: notice.id}, silent: true})
+        res.cookie(notice.notice_title, 'Visited') 
+    }
+
+    res.render('notice', { notice: notice, news: news }) 
+    
 }
 
 const  findNotice = async (req, res) => {
@@ -53,11 +71,14 @@ const  findNotice = async (req, res) => {
         }
     })
 
+    const mostViewed = await Notice.findAll({order: [['notice_views', 'DESC']]})
+
     const categories = await Category.findAll()
 
     res.render('news', {
-        news: news,
-        categories: categories
+        news,
+        mostViewed,
+        categories
     })
     
 }
@@ -75,11 +96,14 @@ const filterNews = async (req, res) => {
 
     const news = category.Notices
 
+    const mostViewed = await Notice.findAll({order: [['notice_views', 'DESC']]})
+
     const categories = await Category.findAll()
 
     res.render('news', {
-        news: news,
-        categories: categories
+        news,
+        mostViewed,
+        categories
     })
 }
 

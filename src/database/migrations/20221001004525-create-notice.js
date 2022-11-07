@@ -28,7 +28,8 @@ module.exports = {
       notice_categoryId: {
         type: Sequelize.INTEGER,
         defaultValue: 1,
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
         references: {
           model: 'Categories', 
           key: 'id',

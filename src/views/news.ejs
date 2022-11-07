@@ -55,9 +55,9 @@
                     <h3>Mais Lidas</h3>
                 </div>
                 <div class="featured__list">
-                    <% for( let i = 1; i <= 5; i++ ) { %>
+                    <% for( let i = 0; i < mostViewed.length ; i++ ) { %>
                         <div class="featured__notice">
-                            <h1> <%- i %>  </h1> <h4><a href="/noticia/titulo">Lorem ipsum dolor sit amet consectetur.</a></h4>
+                            <h1> <%- i + 1 %>  </h1> <h4><a href="/noticia/<%= mostViewed[i].notice_title %>"><%= mostViewed[i].notice_title %> </a></h4>
                         </div>
                     <% } %> 
                 </div>

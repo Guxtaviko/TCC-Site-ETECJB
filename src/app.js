@@ -1,6 +1,7 @@
 const express = require('express');
 const methodOverride = require('method-override');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 
 require('dotenv').config();
 
@@ -12,7 +13,7 @@ const categoryRoutes = require('./routes/category.routes');
 const userRoutes = require('./routes/user.routes');
 const courseRoutes = require('./routes/course.routes');
 const noticeRoutes = require('./routes/notice.routes');
-const testimonialRoutes = require('./routes/testimonial.routes')
+const testimonialRoutes = require('./routes/testimonial.routes');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -23,6 +24,7 @@ app.set('views', __dirname + '/views');
 
 // App config
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser())
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 

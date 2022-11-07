@@ -12,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       Category.hasMany(models.Notice, {
         foreignKey: 'notice_categoryId',
+        defaultValue: 1,
+        onUpdate: 'CASCADE',
         onDelete: 'SET DEFAULT'
       })
     }

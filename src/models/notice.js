@@ -13,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
       Notice.belongsTo(models.Category, {
         foreignKey: 'notice_categoryId',
         defaultValue: 1,
-        onDelete: 'SET NULL'
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE'
       })
     }
   }
@@ -24,7 +25,8 @@ module.exports = (sequelize, DataTypes) => {
     notice_img: DataTypes.STRING,
     notice_categoryId: DataTypes.INTEGER,
     notice_author: DataTypes.STRING,
-    notice_date: DataTypes.DATEONLY
+    notice_date: DataTypes.DATEONLY,
+    notice_views: DataTypes.INTEGER
   }, {
     sequelize,
     tableName: 'news',

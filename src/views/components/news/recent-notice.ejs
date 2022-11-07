@@ -1,10 +1,12 @@
 <div class="recent__notice">
+    <a href="/noticia/<%= notice.notice_title %>">
     <div class="recent__img">
         <img src="./uploads/news/<%= notice.notice_img %> ">
     </div>
+    </a>
     <div class="recent__content">
         <div class="recent__title">
-            <h2><a href="/noticia/<%= notice.notice_title.split(' ').join('_') %> "><%= notice.notice_title %> </a></h2>
+            <h2><a href="/noticia/<%= notice.notice_title %> "><%= notice.notice_title %> </a></h2>
         </div>
         <div class="recent__desc">
             <p>

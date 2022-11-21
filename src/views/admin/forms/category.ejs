@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Categoria</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../../partials/admin/admin-nav') %> 
+
+    <%- include('../../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../../partials/admin/admin-menu', {current: 'categoria'}) %>
+        
+        <section class="admin__container container">
+            <div class="admin__content">
+                <% if (category.id !== undefined) { %>
+                    <div class="admin__header"><h1>Editar <%- category.category_name %> </h1></div>
+                    <form method="POST" action="/admin/categoria/<%- category.id %>?_method=PUT " class="admin__form">
+                <% } else {%>  
+                    <div class="admin__header"><h1>Nova Categoria</h1></div>
+                    <form class="admin__form" action="/admin/categoria/novo" method="POST">
+                <% } %> 
+                    <div class="form__group" >
+                        <div class="form__section" style="flex-grow: 0;">
+                            <label for="id">Id</label>
+                            <input type="text" readonly value="<%- category.id ?? '' %>" name="id" id="id"> 
+                        </div>
+                        <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'category_name' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'existing', field: 'category_name' , msg: 'Categoria já existe' }) %> 
+                            <label for="category_name">Nome</label>
+                            <input type="text" name="category_name" id="category_name" value="<%- category.category_name ?? '' %> ">
+                        </div>
+                    </div>
+                    <div class="form__section">
+                        <%- include('../../components/admin/required-field', { check: 'empty', field: 'category_desc' , msg: null }) %> 
+                        <label for="category_desc">Descrição</label>
+                        <input type="text" name="category_desc" id="category_desc" value="<%- category.category_desc ?? '' %> ">
+                    </div>
+                    <div class="form__group form__actions">
+                        <button type="reset" class="form__clear">Limpar</button>
+                        <button type="submit" class="form__send">Enviar</button>
+                    </div>
+                </form>
+                <div class="admin__info">
+                    <a href="/admin/categorias" class="admin__back">Voltar</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

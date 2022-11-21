@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Dashboard | Categorias</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../partials/admin/admin-nav') %> 
+
+    <%- include('../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../partials/admin/admin-menu', {current: 'categoria'}) %> 
+
+        <section class="admin__container container">
+
+            <%- include('../components/admin/admin-search-bar', {item: 'Categoria'}) %> 
+
+            <div class="admin__content">
+                <div class="admin__header">
+                    <h1>Categorias</h1>
+                    <a href="/admin/categoria/novo" class="admin__add">
+                        <i class="uil uil-plus"></i> Nova Categoria 
+                    </a>
+                </div>
+                <table class="admin__table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Categoria</th>
+                            <th>Descrição</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (categories.length < 1) { %>
+                            <tr>
+                                <td colspan="5" class="admin__empty">
+                                    Nenhuma Categoria Encontrada
+                                </td>
+                            </tr>
+                        <% } %>  
+                        <% categories.forEach(category => { %>
+                            <tr>
+                                <td><%- category.id %></td>
+                                <td><%- category.category_name %></td>
+                                <td><%- category.category_desc %></td>
+                                <td>
+                                    <div class="admin__actions">
+                                        <a href="/admin/categoria/editar/<%- category.id%> "><i class="uil uil-pen"></i> Editar</a>
+                                        <button class="deleteBtn" data-element="categoria" data-element-id="<%-category.id%>"><i class="uil uil-trash-alt"></i> Excluir</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% if (typeof search != 'undefined') { %>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/categoria/busca?name=${search}&`}) %> 
+                <% } else {%>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/categorias?`}) %> 
+                <% } %>
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../components/admin/confirmation', {item: 'Categoria'}) %> 
+
+    <script src="/js/admin.js"></script>
+    <script>
+        confirmation();
+    </script>
+</body>
+</html>

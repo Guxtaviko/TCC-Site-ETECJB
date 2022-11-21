@@ -1,0 +1,27 @@
+<nav>
+    <div class="adminNav__container container">
+        <div class="adminNav__logo">
+            <a href="/">
+                <img src="/imgs/logo/jb-logo.png" alt="Etec JB">
+            </a>
+        </div>
+        <div class="adminNav__info">
+            <span>Logado como <strong id="loggedUser">Admin</strong></span>
+        </div>
+        <div class="adminNav__signOut">
+            <a href="/logout">Sair <i class="uil uil-sign-out-alt"></i></a>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const strong = document.getElementById('loggedUser')
+    const getUser = async () => {
+        await fetch('/user').then(async response => {
+            const user = await response.json()
+            strong.innerHTML = user
+        })
+    }
+
+    getUser()
+</script>

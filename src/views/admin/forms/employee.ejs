@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Funcionário</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../../partials/admin/admin-nav') %> 
+
+    <%- include('../../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../../partials/admin/admin-menu', {current: 'funcionario'}) %>
+        
+        <section class="admin__container container">
+            <div class="admin__content">
+                <% if (employee.id !== undefined) { %>
+                    <div class="admin__header"><h1>Editar <%- employee.employee_name %> </h1></div>
+                    <form class="admin__form" method="POST" action="/admin/funcionario/<%- employee.id %>?_method=PUT">
+                <% } else {%>   
+                    <div class="admin__header"><h1>Novo Funcionário</h1></div>
+                    <form class="admin__form" action="/admin/funcionario/novo" method="POST">
+                <% } %> 
+                    <div class="form__group">
+                        <div class="form__section" style="flex-grow: 0;">
+                            <label for="id">Id</label>
+                            <input type="text" readonly value="<%- employee.id ?? '' %> " name="id" id="id">
+                        </div>
+                        <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'employee_name' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'employee_name' , msg: 'Esse campo deve conter apenas letras' }) %>  
+                            <label for="employee_name">Nome</label>
+                            <input type="text" name="employee_name" id="employee_name" value="<%- employee.employee_name ?? '' %> ">
+                        </div>
+                    </div> 
+                    <div class="form__group">
+                        <div class="form__section">
+                            <label for="employee_team">Equipe</label>
+                            <select name="employee_team" id="employee_team" >
+                                <option value="EQUIPE DOCENTE" <%= employee.employee_team == 'EQUIPE DOCENTE' ? 'selected' : '' %> >EQUIPE DOCENTE</option>
+                                <option value="EQUIPE ESCOLAR" <%= employee.employee_team == 'EQUIPE ESCOLAR' ? 'selected' : '' %> >EQUIPE ESCOLAR</option>
+                                <option value="CONSELHO ESCOLAR" <%= employee.employee_team == 'CONSELHO ESCOLAR' ? 'selected' : '' %> >CONSELHO ESCOLAR</option>
+                            </select>
+                        </div>
+                        <div class="form__section">
+                            <%- include('../../components/admin/required-field', { check: 'empty', field: 'employee_role' , msg: null }) %>
+                            <%- include('../../components/admin/required-field', { check: 'invalid', field: 'employee_role' , msg: 'Esse campo deve conter apenas letras' }) %> 
+                            <label for="employee_role">Cargo</label>
+                            <input type="text" name="employee_role" id="employee_role" value="<%- employee.employee_role ?? '' %>">
+                        </div>
+                    </div>
+                    <div class="form__group form__actions">
+                        <button type="reset" class="form__clear">Limpar</button>
+                        <button type="submit" class="form__send">Enviar</button>
+                    </div>
+                </form>
+                <div class="admin__info">
+                    <a href="/admin/funcionarios" class="admin__back">Voltar</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+<section class="search__bar admin__search">
+    <form action="/admin/<%- item.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() %>/busca" method="GET" class="container search__bar--container">
+        <div>
+            <i class="uil uil-search"></i>
+            <input type="search" name="name" id="name" placeholder="<%- item %>" 
+            <% if (typeof search != 'undefined') { %>
+             value = <%- search %> 
+            <% } %> >
+        </div>
+        <button class="search__btn" type="submit">IR</button>
+    </form>
+</section>

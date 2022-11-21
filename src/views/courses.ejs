@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Cursos</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/courses.css">
+</head>
+<body>
+    <%- include('./partials/nav') %> 
+
+    <%- include('./components/theme-switcher') %>
+
+    <section class="courses__title"><h1>Nossos Cursos</h1></section>
+
+    <%- include('./components/search-bar', {item: 'Curso'}) %> 
+
+    <section class="courses">
+        <div class="container courses__container">
+            <% if (integralCourses.length < 1 && parcialCourses.length < 1) { %>
+                <h1 style="text-align: center; margin-top: 4rem;">Nenhum Curso Encontrado</h1>
+            <% } %>
+
+            <% if (integralCourses.length >= 1) { %>
+                <div class="courses__container--title --integral" id="integral">
+                    <hr class="courses__scroll" id="integralCourses">
+                    <h2>Técnicos + Ensino Médio</h2>
+                </div>
+                <div class="courses__grid --integral">
+                    <% integralCourses.forEach(course => { %>
+                        <%- include('./components/courses/course', {course}) %> 
+                    <% }) %>
+                </div>
+            <% } %>
+            
+            <% if (parcialCourses.length >= 1) { %>
+                <div class="courses__container--title --parcial" id="parcial">
+                    <hr class="courses__scroll" id="parcialCourses">
+                    <h2>Técnicos</h2>
+                </div>
+                <div class="courses__grid --parcial">
+                    <% parcialCourses.forEach(course => { %>
+                        <%- include('./components/courses/course', {course}) %> 
+                    <% }) %>
+                </div>
+            <% } %>
+        </div>
+    </section>
+
+    <div class="modal__blur"></div>
+
+    <%- include('./components/courses/course-modal') %> 
+
+    <%- include('./partials/footer') %> 
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var modalSwiper = new Swiper(".modalSwiper", {
+        direction: "vertical",
+        slidesPerView: "auto",
+        freeMode: false,
+        scrollbar: {
+          el: ".swiper-scrollbar",
+        },
+        mousewheel: true,
+      });
+
+      var visitsSwiper = new Swiper(".visitsSwiper", {
+        slidesPerView: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        breakpoints: {
+                1060: {
+                    slidesPerView: 3,
+                },
+
+                600: {
+                    slidesPerView: 2,
+                }
+            }
+      });
+
+    </script>
+
+    <script src="/js/main.js"></script>
+    <script>
+        coursesModal();
+    </script>
+</body>
+</html>

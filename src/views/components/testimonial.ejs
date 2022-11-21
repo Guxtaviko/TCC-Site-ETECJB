@@ -1,0 +1,16 @@
+<article class="testimonial swiper-slide">
+    <div class="testimonial__body">
+        <span class="quotation__mark mark--upside-down">"</span>
+        <p>
+            <%= testimonial.testimonial_body %>
+        </p>
+        <span class="quotation__mark">"</span>
+    </div>
+    <div class="testimonial__info">
+        <img src=<%= testimonial.testimonial_img ? `uploads/testimonials/${testimonial.testimonial_img}` : 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Default_pfp.svg/1200px-Default_pfp.svg.png' %> class="avatar" >
+        <div class="testimonial__desc">
+            <h5><%= testimonial.testimonial_author %></h5>
+            <small><%= testimonial.testimonial_role %></small>
+        </div>
+    </div>
+</article>

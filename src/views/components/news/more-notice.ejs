@@ -1,0 +1,20 @@
+<div class="news swiper-slide">
+        <div class="news__img">
+            <a href="/noticia/<%= notice.notice_title %>">
+                <img src="/uploads/news/<%= notice.notice_img %> ">
+                <span class="category">
+                    <%= notice.Category.category_name %>
+                </span>
+            </a>
+        </div>
+    <div class="news__desc">
+        <a href="/noticia/<%= notice.notice_title %>">
+            <div class="news__title">
+                <h1><%= notice.notice_title %></h1>
+            </div>
+        </a>
+        <div class="news__text">
+            <p><%= notice.notice_body %> </p>
+        </div>
+    </div>
+</div>

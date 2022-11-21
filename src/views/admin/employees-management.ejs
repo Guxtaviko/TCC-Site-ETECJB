@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Dashboard | Funcionários</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../partials/admin/admin-nav') %> 
+
+    <%- include('../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../partials/admin/admin-menu', {current: 'funcionario'}) %> 
+
+        <section class="admin__container container">
+
+            <%- include('../components/admin/admin-search-bar', {item: 'Funcionário'}) %> 
+
+            <div class="admin__content">
+                <div class="admin__header">
+                    <h1>Funcionários</h1>
+                    <a href="/admin/funcionario/novo" class="admin__add">
+                        <i class="uil uil-plus"></i> Novo Funcionário
+                    </a>
+                </div>
+                <div class="admin__links">
+                    <a 
+                    href="<%- `/admin/funcionarios?team=Equipe Docente` %>" 
+                    <% if (team == 'Equipe Docente') { %> class="active__link" <% } %> >
+                    Equipe Docente </a>
+                    <a href="<%- `/admin/funcionarios?team=Equipe Escolar` %>"
+                    <% if (team == 'Equipe Escolar') { %> class="active__link" <% } %> >
+                    Equipe Escolar</a>
+                    <a href="<%- `/admin/funcionarios?team=Conselho Escolar` %>"
+                    <% if (team == 'Conselho Escolar') { %> class="active__link" <% } %> >
+                    Conselho Escolar</a>
+                </div>
+                <table class="admin__table bigger__table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Cargo</th>
+                            <th>Equipe</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (employees.length < 1) { %> 
+                            <tr>
+                                <td colspan="5" class="admin__empty">Nenhum Funcionário Encontrado</td>
+                            </tr>
+                        <% } %> 
+                        <% employees.forEach(employee => { %>
+                            <tr>
+                                <td><%- employee.id %></td>
+                                <td><%- employee.employee_name %></td>
+                                <td><%- employee.employee_role %> </td>
+                                <td><%- employee.employee_team %></td>
+                                <td>
+                                    <div class="admin__actions">
+                                        <a href="/admin/funcionario/editar/<%- employee.id%> "><i class="uil uil-pen"></i> Editar</a>
+                                        <button class="deleteBtn" data-element="funcionario" data-element-id="<%-employee.id%>"><i class="uil uil-trash-alt"></i> Excluir</button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+                <% if (typeof search != 'undefined') { %>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/funcionario/busca?name=${search}&`}) %>
+                <% } else { %>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/funcionarios?team=${team}&`}) %> 
+                <% } %>
+            </div>
+
+        </section>
+
+    </main>
+
+    <%- include('../components/admin/confirmation', {item: 'Funcionário'}) %> 
+
+    <script src="/js/admin.js"></script>
+    <script>
+        confirmation();
+    </script>
+</body>
+</html>

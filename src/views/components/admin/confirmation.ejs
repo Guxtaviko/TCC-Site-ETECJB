@@ -1,0 +1,23 @@
+<section class="confirmation">
+    <div class="confirmation__header">
+        <button class="confirmation__close">
+            <i class="uil uil-times-circle"></i>
+        </button>
+        <i class="uil uil-exclamation-octagon"></i>
+        <h1>Excluir <strong><%- item %> </strong></h1>
+    </div>
+    <div class="confirmation__body">
+        <h2>Aviso: Essa ação não pode ser desfeita</h2>
+        <div class="confirmation__list">
+            <p class="confirmation__item"><%- item %> será removido(a) de todo o site</p>
+            <p class="confirmation__item">Não haverá mais nenhum acesso a essa informação</p>
+            <p class="confirmation__item">Nenhuma informação ficará contida no site</p>
+        </div>
+        <div class="confirmation__btns">
+            <form method="POST" action="" id="confirmDelete">
+                <button class="confirmation__delete" type="submit">Excluir</button>
+            </form>
+            <button class="confirmation__cancel">Cancelar</button>
+        </div>
+    </div>
+</section>

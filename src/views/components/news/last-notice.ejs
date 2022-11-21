@@ -1,0 +1,18 @@
+<div class="lastNotice">
+    <h2 class="lastNotice__title"><%= notice.notice_title %></h2>
+    <div class="lastNotice__img">
+        <img src="/uploads/news/<%= notice.notice_img %> ">
+        <span class="img__category"><a href="/noticias/categoria/<%= notice.Category.category_name %> "><%= notice.Category.category_name %></a> </span>
+    </div>
+    <div class="lastNotice__text">
+        <p>
+            <%= notice.notice_body %> 
+        </p>
+    </div>
+    <div class="notice__info">
+        <%= notice.notice_author %>  &bull; <%= notice.notice_date.split('-').reverse().join('/') %> 
+    </div>
+    <div class="lastNotice__btn">
+        <a href="/noticia/<%= notice.notice_title %> ">Continuar Lendo <i class="uil uil-arrow-right"></i> </a>
+    </div>
+</div>

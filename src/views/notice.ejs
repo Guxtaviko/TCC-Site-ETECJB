@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Sobre</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/notice.css">
+</head>
+<body>
+    <%- include('./partials/nav') %> 
+
+    <%- include('./components/theme-switcher') %>
+
+    <section class="notice">
+        <div class="notice__header">
+            <div class="notice__header--container container">
+                <div class="notice__title">
+                    <h1><%= notice.notice_title %> </h1>
+                </div>
+                <div class="notice__subtitle">
+                    <p><%= notice.notice_subtitle %></p>
+                </div>
+                <div class="notice__info">
+                    <span><strong><%= notice.notice_author %> &bull;</strong> <%= notice.notice_date.split('-').reverse().join('/') %></span>
+                </div>
+                <hr>
+            </div>
+        </div>
+        <div class="notice__container container">
+                <div class="notice__img">
+                    <img src="/uploads/news/<%= notice.notice_img %>">
+                </div>
+                <div class="notice__text">
+                    <p><%= notice.notice_body %></p>
+                </div>
+                <div class="notice__categories">
+                    <span class="notice__category"><a href="/noticias/categoria/<%= notice.Category.category_name %> "><%= notice.Category.category_name %></a></span>
+                </div>
+        </div>
+    </section>
+
+    <section class="moreNews">
+        <div class="moreNews__title container">
+            <h1>Veja Também</h1>
+        </div>
+        <div class="moreNews__container container">
+            <div class="swiper moreNewsSwiper">
+                <div class="swiper-wrapper">
+                    <% for( let i = 0; i < news.length; i++ ) { %>
+                        <%- include('./components/news/more-notice', {notice: news[i]}) %>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+        <hr class="container">
+    </section>
+
+    <%- include('./partials/footer') %> 
+
+    <script src="/js/main.js"></script>
+
+    <!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <script>
+        var swiper = new Swiper(".moreNewsSwiper", {
+            slidesPerView: 1.1,
+            spaceBetween: 15,
+            loop: true,
+            breakpoints: {
+                // When window width is >= 1060px
+                600: {
+                    slidesPerView: 2.1,
+                    spaceBetween: 24,
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,9 @@
+<section class="search__bar">
+    <form action="/<%= item.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase() %>s/busca" class="container search__bar--container">
+        <div>
+            <i class="uil uil-search"></i>
+            <input type="search" name="name" placeholder="<%- item %> ">
+        </div>
+        <button class="search__btn" type="submit">IR</button>
+    </form>
+</section>

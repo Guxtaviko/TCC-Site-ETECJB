@@ -1,0 +1,10 @@
+<div class="course">
+    <div class="course__img"><img src="/uploads/courses/imgs/<%= course.course_img %>"></div>
+    <div class="course__content">
+        <div class="course__info">
+            <div class="course__title"><h5><%= course.course_name %> </h5></div>
+            <p class="course__desc"><%= course.course_desc %> </p>
+        </div>
+        <div class="course__btn" data-course-id="<%= course.id %>" data-course-type="<%= course.course_period %>">Ver Mais</div>
+    </div>
+</div>

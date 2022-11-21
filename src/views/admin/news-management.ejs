@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | Dashboard | Notícias</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <!-- SWIPER JS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
+
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+
+    <%- include('../partials/admin/admin-nav') %> 
+
+    <%- include('../components/theme-switcher') %> 
+
+    <main class="admin">
+
+        <%- include('../partials/admin/admin-menu', {current: 'noticia'}) %> 
+
+        <section class="admin__container container">
+
+            <%- include('../components/admin/admin-search-bar', {item: 'Notícia'}) %> 
+
+            <div class="admin__content">
+                <div class="admin__header">
+                    <h1>Notícias</h1>
+                    <a href="/admin/noticia/novo" class="admin__add">
+                        <i class="uil uil-plus"></i> Nova Notícia 
+                    </a>
+                </div>
+                <div class="admin__links">
+                    <div>
+                        <% categories.forEach(category => { %>
+                            <a 
+                            href="<%- `/admin/noticias?cat=${category.id}` %>" 
+                            <% if (cat == category.id) { %> class="active__link" <% } %> >
+                            <%- category.category_name %>  </a>
+                        <% }) %>
+                    </div>
+                </div>
+                <table class="admin__table bigger__table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Título</th>
+                            <th>Categoria</th>
+                            <th>Autor</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% if (news.length < 1) { %>
+                            <tr>
+                                <td colspan="5" class="admin__empty">
+                                    Nenhuma Notícia Encontrada
+                                </td>
+                            </tr>
+                        <% } %>
+                        <% news.forEach(notice => { %> 
+                            <tr>
+                                <td> <%- notice.id %>  </td>
+                                <td> <%- notice.notice_title %>  </td>
+                                <td> <%- notice.Category.category_name %>  </td>
+                                <td> <%- notice.notice_author %> </td>
+                                <td>
+                                    <div class="admin__actions">
+                                        <a href="/admin/noticia/editar/<%- notice.id %> ">
+                                            <i class="uil uil-pen"></i> Editar
+                                        </a>
+                                        <button class="deleteBtn"
+                                        data-element="noticia" data-element-id="<%- notice.id %> ">
+                                            <i class="uil uil-trash-alt"></i> Excluir
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        <% }) %> 
+                    </tbody>
+                </table>
+                <% if (typeof search != 'undefined') { %>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/noticia/busca?name=${search}&`}) %> 
+                <% } else {%>
+                    <%- include('../partials/admin/admin-info', {url: `/admin/noticias?cat=${cat}&`}) %> 
+                <% } %>
+            </div>
+        </section>
+    </main>
+
+    <%- include('../components/admin/confirmation', {item: 'Notícia'}) %> 
+
+    <script src="/js/admin.js"></script>
+    <script>
+        confirmation();
+    </script>
+</body>
+</html>

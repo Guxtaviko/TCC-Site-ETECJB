@@ -38,5 +38,6 @@ app.use('/admin/usuarios?', userRoutes)
 app.use('/admin/cursos?', courseRoutes)
 app.use('/admin/noticias?', noticeRoutes)
 app.use('/admin/depoimentos?', testimonialRoutes)
+app.use('*', (req, res) => res.status(404).render('404'))
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`)); 

@@ -6,7 +6,7 @@ const verifyJWT = (req, res, next) => {
   const token = req.cookies['x-access-token'];
   
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
-    if(err) return res.status(401).end();
+    if(err) return res.status(401).render('401');
 
     req.user = decoded.username;
     next();

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head> 
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ETEC JB | 401</title>
+
+    <link rel="shortcut icon" href="/imgs/logo/jb-logo.png" type="image/x-icon">
+
+    <!-- ICONSCOUT CDN -->
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        .error__container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .error__container h1 {
+            font-size: 2rem;
+            text-align: center;
+        }
+
+        .error__container a {
+            transition: var(--transition);
+        }
+
+        .error__container a:hover {
+            letter-spacing: 1px;
+        }
+
+        .error__img {
+            width: 95%;
+            max-width: 500px;
+        }
+    </style>
+</head>
+<body>
+
+    <%- include('./components/theme-switcher') %>
+
+    <div class="error__container">
+        <h1>Acesso Negado!</h1>
+        <div class="error__img">
+            <img src="/imgs/errors/401_error.svg" alt="Erro 401">
+        </div>
+        <a href="/">Voltar ao Início</a>
+    </div>
+
+    <script src="/js/admin.js"></script>
+</body>
+
+</html>

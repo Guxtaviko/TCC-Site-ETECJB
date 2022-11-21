@@ -412,7 +412,7 @@ async function coursesModal() {
                 <span class="modal__duration"><i class="uil uil-clock"></i> ${course.course_workload}hrs</span>
                 <span class="modal__vacancies"><i class="uil uil-users-alt"></i> ${course.course_vacancies}</span>
                 <span class="modal__period"><i class="uil uil-calendar-alt"></i> ${course.course_shift}</span>
-                <span class="modal__curriculum"><a href="/uploads/courses/curricula/${course.course_curriculum}"><i class="uil uil-diary"></i> Matriz Curricular</a></span>
+                <span class="modal__curriculum"><a href="/uploads/courses/curricula/${course.course_curriculum}" target='_blank'><i class="uil uil-diary"></i> Matriz Curricular</a></span>
                 <span class="modal__coordinator"><i class="uil uil-user-square"></i> ${course.course_coordinator}</span>
                 <span class="modal__coordinator--email"><i class="uil uil-envelope"></i> ${course.course_email}</span>
             `

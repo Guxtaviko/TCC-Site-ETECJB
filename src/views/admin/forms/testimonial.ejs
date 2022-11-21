@@ -92,7 +92,7 @@
     <% if (testimonial.testimonial_body !== undefined) { %>
         <script>
             const textarea = document.querySelector('textarea')
-            textarea.value = '<%= testimonial.testimonial_body %>'
+            textarea.value = `<%= testimonial.testimonial_body %>`
         </script>
         <% } %>
 </body>

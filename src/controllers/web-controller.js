@@ -135,6 +135,8 @@ const renderNotice = async (req, res) => {
         }
     })
 
+    if(!notice) return res.status(404).render('404')
+
     if (req.cookies[notice.notice_title] != 'Visited') {
         const views = notice.notice_views + 1
         await Notice.update({ notice_views: views }, { where: { id: notice.id }, silent: true })

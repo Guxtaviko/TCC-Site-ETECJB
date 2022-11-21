@@ -1,7 +1,9 @@
 <footer>
     <div class="container footer__container">
         <div class="footer__1">
-            <a href="index.html" class="footer__logo"><h4>ETEC João Belarmino</h4></a>
+            <a href="index.html" class="footer__logo">
+                <h4>ETEC João Belarmino</h4>
+            </a>
             <p>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut aperiam nisi autem?
             </p>
@@ -68,7 +70,7 @@
                     </p>
                     <p>
                         <i class="uil uil-location-point"></i>
-                        Centro, Amparo/SP 
+                        Centro, Amparo/SP
                     </p>
                     <p>
                         <i class="uil uil-location-point"></i>
@@ -77,7 +79,7 @@
                 </div>
             </div>
             <span class="footer__admin">
-                <i class="uil uil-lock"></i> Acesso <a href="/login">Admin </a>
+                <i class="uil uil-lock"></i> Acesso <a id="adminRoute" href="/login">Admin </a>
             </span>
         </div>
     </div>
@@ -87,22 +89,39 @@
             <span id="auto-type"></span>
             <div class="secret__devs">
                 <div class="secret__dev">
-                    <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+                    <img
+                        src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
                     <span class="dev__name">Gustavo</span>
                 </div>
                 <div class="secret__dev">
-                    <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+                    <img
+                        src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
                     <span class="dev__name">Francine</span>
                 </div>
                 <div class="secret__dev">
-                    <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+                    <img
+                        src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
                     <span class="dev__name">Gian</span>
                 </div>
                 <div class="secret__dev">
-                    <img src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
+                    <img
+                        src="https://www.business2community.com/wp-content/uploads/2017/08/blank-profile-picture-973460_640.png">
                     <span class="dev__name">Emily</span>
                 </div>
             </div>
         </div>
     </div>
 </footer>
+
+<script>
+    const adminRoute = document.getElementById('adminRoute')
+    const getUser = async () => {
+        await fetch('/user').then(async response => {
+            const user = await response.json()
+            if (user === '') adminRoute.href = '/login'
+            else adminRoute.href = '/admin/noticias'
+        })
+    }
+
+    getUser()
+</script>

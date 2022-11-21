@@ -147,15 +147,15 @@
     <section class="teams">
         <div class="teams__container container">
             <div class="team__selector">
-                <h3 class="team --current" onclick="setTableData(equipeDocente)">Equipe Docente</h3>
-                <h3 class="team" onclick="setTableData(equipeEscolar)">Equipe Escolar</h3>
-                <h3 class="team" onclick="setTableData(conselhoEscolar)">Conselho Escolar</h3>
+                <h3 class="team --current" onclick="teamTable('equipeDocente')">Equipe Docente</h3>
+                <h3 class="team" onclick="teamTable('equipeEscolar')">Equipe Escolar</h3>
+                <h3 class="team" onclick="teamTable('conselhoEscolar')">Conselho Escolar</h3>
             </div>
             <table>
                 <thead>
                     <tr>
-                        <th onclick="sortColumn('name')">Nome<i id="i__name" class="uil uil-angle-right th-icon"></i></th>
-                        <th onclick="sortColumn('role')">Cargo<i id="i__role" class="uil uil-angle-right th-icon"></i></th>
+                        <th onclick="teamTable('name')">Nome<i id="i__employee_name" class="uil uil-angle-right th-icon"></i></th>
+                        <th onclick="teamTable('role')">Cargo<i id="i__employee_role" class="uil uil-angle-right th-icon"></i></th>
                     </tr>
                 </thead>
                 <tbody id="tableData">
@@ -277,7 +277,7 @@
     <script src="/js/main.js"></script>
     <script>
         aboutFAQ()
-        setTableData(equipeDocente);
+        teamTable('equipeDocente')
         librarySwiper()
         var swiper = new Swiper(".librarySwiper", {
             slidesPerView: 1,

@@ -130,6 +130,15 @@
     flex-wrap: wrap;
 }
 
+.admin__links > div {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: nowrap;  
+    overflow-x: auto;
+}
+
 .admin__links a {
     font-size: 1.15rem;
     font-weight: 800;

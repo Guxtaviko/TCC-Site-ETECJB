@@ -14,6 +14,7 @@ const userRoutes = require('./routes/user.routes');
 const courseRoutes = require('./routes/course.routes');
 const noticeRoutes = require('./routes/notice.routes');
 const testimonialRoutes = require('./routes/testimonial.routes');
+const verifyJWT = require('./middlewares/verifyJWT');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -23,12 +24,14 @@ app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 
 // App config
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(methodOverride('_method'));
 app.use(express.static(__dirname + '/public'));
 
 app.use('/', webRoutes);
+app.use('/admin', verifyJWT)
 app.use('/admin/funcionarios?', employeeRoutes)
 app.use('/admin/categorias?', categoryRoutes)
 app.use('/admin/usuarios?', userRoutes)

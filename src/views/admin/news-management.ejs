@@ -40,12 +40,14 @@
                     </a>
                 </div>
                 <div class="admin__links">
-                    <% categories.forEach(category => { %>
-                        <a 
-                        href="<%- `/admin/noticias?cat=${category.id}` %>" 
-                        <% if (cat == category.id) { %> class="active__link" <% } %> >
-                        <%- category.category_name %>  </a>
-                    <% }) %>
+                    <div>
+                        <% categories.forEach(category => { %>
+                            <a 
+                            href="<%- `/admin/noticias?cat=${category.id}` %>" 
+                            <% if (cat == category.id) { %> class="active__link" <% } %> >
+                            <%- category.category_name %>  </a>
+                        <% }) %>
+                    </div>
                 </div>
                 <table class="admin__table bigger__table">
                     <thead>
@@ -89,7 +91,7 @@
                 <% if (typeof search != 'undefined') { %>
                     <%- include('../partials/admin/admin-info', {url: `/admin/noticia/busca?name=${search}&`}) %> 
                 <% } else {%>
-                    <%- include('../partials/admin/admin-info', {url: `/admin/noticias?cat=${cat}`}) %> 
+                    <%- include('../partials/admin/admin-info', {url: `/admin/noticias?cat=${cat}&`}) %> 
                 <% } %>
             </div>
         </section>

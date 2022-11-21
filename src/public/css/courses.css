@@ -69,7 +69,7 @@
 
 .course__img {
     height: 100%;
-    aspect-ratio: 3/2;
+    width: 100%;
     overflow: hidden;
 }
 
@@ -176,7 +176,6 @@
 
 .modalSwiper{
     height: calc(100vh - 2rem);
-    max-height: 800px;
     display: none;
     position: fixed;
     top: 1rem;

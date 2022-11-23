@@ -104,12 +104,12 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 5;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
 
     /* Non webkit browsers */
     line-height: 18px;
-    height: calc(18px * 5); 
+    height: calc(18px * 4); 
 }
 
 .course__btn {
